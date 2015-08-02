@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESDoc - A Documentation Generator For JavaScript(ES6)</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./prettify/prettify-tomorrow.css">
+    <script src="./prettify/prettify.js"></script>
+    <script src="./script/inner-link.js"></script>
+</head>
+<body>
+<nav>
+  <a class="title" href="./">ESDoc</a>
+  <ul>
+    <li><a href="./feature.html">Features</a></li>
+    <li><a href="./tutorial.html">Tutorial</a></li>
+    <li><a href="./config.html">Config</a></li>
+    <li><a href="./tags.html">Tags</a></li>
+    <li><a href="./api.html">API</a></li>
+    <li><a href="./faq.html">FAQ</a></li>
+    <li style="position: relative; top: 5px;"><a href="https://github.com/h13i32maru/esdoc"><img src="image/github.png" width="24px"></a></li>
+  </ul>
+</nav>
+
+<article class="content">
+<h1 id="features">Features</h1>
+<p>ESDoc has some features.
+I will introduce part of the features.
+If you want to see all features, you visit <a href="./#demo">Demo</a> page.</p>
+<p>(<a href="http://blog.h13i32maru.jp/entry/2015/05/06/221041">Japanese</a>)</p>
+<ul>
+<li><a href="#es6-class">ES6 Class</a></li>
+<li><a href="#es6-module">ES6 Module</a></li>
+<li><a href="#documentation-coverage">Documentation Coverage</a></li>
+<li><a href="#integration-test-codes">Integration Test Codes</a></li>
+<li><a href="#search-documentation">Search Documentation</a></li>
+<li><a href="#guess-type">Guess Type</a></li>
+<li><a href="#customize">Customize</a></li>
+</ul>
+<h2 id="es6-class">ES6 Class</h2>
+<p>ESDoc supports ES6 Class syntax and targets a code that is written by it.
+ES6 Class syntax makes the clear relation of class, method, member, constructor and inheritance.
+This means that ESDoc can generate a document without using a tag for these.</p>
+<p>ESDoc automatically generates the under contents by Class syntax.</p>
+<ul>
+<li>Super classes of self</li>
+<li>Direct Subclasses and Indirect Subclasses of self.</li>
+<li>Inherited methods and members from super class.</li>
+<li>Override methods and members from super class.</li>
+</ul>
+<h2 id="es6-module">ES6 Module</h2>
+<p>ESDoc supports ES6 Module syntax and targets a code that is written by it.
+ES6 Modules syntax is file base. So ESDoc treats as one file = one module.</p>
+<p>ESDoc displays the import style in accordance with the export style.</p>
+<ul>
+<li>If <code>export default class Foo{}</code>, displays <code>import Foo from &#39;./Foo.js&#39;</code></li>
+<li>If <code>export class Foo{}</code>, displays <code>import {Foo} from &#39;./Foo.js&#39;</code></li>
+</ul>
+<p>This is useful because you not need to see export style in source code.</p>
+<h2 id="documentation-coverage">Documentation Coverage</h2>
+<p>ESDoc measures a documentation coverage. This is useful information for following.</p>
+<ul>
+<li>This leads the motivation of documentation.</li>
+<li>This inspects a missing of documentation.</li>
+</ul>
+<p>ESDoc processes only top-level class, function and variable.
+This is based on, ESDoc measures coverage by how much the document is being written out of all the processing target.
+And, ESDoc is also to measure coverage of each module, you will have become easier to also find a missing of the document.
+For example, <a href="./esdoc/source.html">this</a> is coverage of ESDoc itself.</p>
+<h2 id="integration-test-codes">Integration Test Codes</h2>
+<p>Test codes are important information.
+So, ESDoc generates a cross reference of test codes and document.
+You need to use @test tag for this function.</p>
+<pre><code class="lang-javascript">/** @test {MyClass} */
+describe(&#39;MyClass is super useful class.&#39;, ()=&gt;{
+
+  /** @test {MyClass#sayMyName} */
+  it(&#39;say my name&#39;, ()=&gt;{
+    let foo = new MyClass(&#39;Alice&#39;);
+    assert.equal(foo.sayMyName(), &#39;My name is Alice&#39;);
+  })
+});
+</code></pre>
+<p>However, for now, ESDoc supports only Mocha.</p>
+<h2 id="search-documentation">Search Documentation</h2>
+<p>ESDoc supports searching in document with only JavaScript(without server implementation).
+The implementation of searching:</p>
+<ul>
+<li>ESDoc made the index(JSON) at the time of document generation.</li>
+<li>The user search from the index.</li>
+</ul>
+<p>However, this implementation is very naive. There might be a problem in search performance. For now, no problem in 500 indexes.</p>
+<h2 id="guess-type">Guess Type</h2>
+<p>ESDoc guesses type of function arguments by ES6 default argument syntax if there is not  <code>@param</code> at the function.
+This implementation is very simply. If Arguments has a primitive(number, boolean, string, etc) default value, ESDoc guesses that the function arguments type is the primitive value.
+ESDoc guesses type of function return in the same way if there is not <code>@return</code> at the function.</p>
+<h2 id="customize">Customize</h2>
+<p>If you want to customize a document, you can includes your stylesheets and scripts to the document.
+And, ESDoc will release plugin system for full customize in future. But, ESDoc has goal that generates the useful document without user plugins.</p>
+
+</article>
+
+<footer>
+© 2015 <a href="https://twitter.com/h13i32maru">Ryo Maruyama</a>. All rights reserved.
+</footer>
+
+<script src="./script/pretty.js"></script>
+<script src="./script/analytics.js"></script>
+</body>
+</html>

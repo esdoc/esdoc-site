@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESDoc - A Documentation Generator For JavaScript(ES6)</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./prettify/prettify-tomorrow.css">
+    <script src="./prettify/prettify.js"></script>
+    <script src="./script/inner-link.js"></script>
+</head>
+<body>
+<nav>
+  <a class="title" href="./">ESDoc</a>
+  <ul>
+    <li><a href="./feature.html">Features</a></li>
+    <li><a href="./tutorial.html">Tutorial</a></li>
+    <li><a href="./config.html">Config</a></li>
+    <li><a href="./tags.html">Tags</a></li>
+    <li><a href="./api.html">API</a></li>
+    <li><a href="./faq.html">FAQ</a></li>
+    <li style="position: relative; top: 5px;"><a href="https://github.com/h13i32maru/esdoc"><img src="image/github.png" width="24px"></a></li>
+  </ul>
+</nav>
+
+<article class="content">
+<h1 id="faq">FAQ</h1>
+<h3 id="difference-between-esdoc-and-jsdoc">Difference between ESDoc and JSDoc</h3>
+<p>JSDoc is most popular JavaScript API Documentation tool.
+ESDoc is inspired by JSDoc.</p>
+<ul>
+<li>ESDoc<ul>
+<li>supports ES6</li>
+<li>targets at ES6 <code>class</code> and <code>import/export</code> style</li>
+<li>generates detailed document</li>
+<li>measures document coverage</li>
+<li>associates test code to document.</li>
+<li>is slower than JSDoc(I want to improve it)</li>
+</ul>
+</li>
+<li>JSDoc<ul>
+<li>supports ES3/ES5 (JSDoc 3.3.0 will support ES6)</li>
+<li>targets Class-base OOP and Prototype-base OOP</li>
+<li>has many flexible document tags</li>
+</ul>
+</li>
+</ul>
+<h3 id="supported-languages">Supported Languages</h3>
+<p>ESDoc supports ES6(ECMAScript-262 6th, ES2015).</p>
+<p>The languages below are not supported.</p>
+<ul>
+<li>ES3, ES5: Use <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a></li>
+<li>ES7: Because ES7 is not stable.</li>
+<li>Alt-JS(TypeScript, CoffeeScript, Dart, etc...): Because supporting them is too hard.</li>
+</ul>
+<h3 id="supported-environment">Supported Environment</h3>
+<p>ESDoc supports Node.js(v0.12) and io.js</p>
+
+</article>
+
+<footer>
+© 2015 <a href="https://twitter.com/h13i32maru">Ryo Maruyama</a>. All rights reserved.
+</footer>
+
+<script src="./script/pretty.js"></script>
+<script src="./script/analytics.js"></script>
+</body>
+</html>

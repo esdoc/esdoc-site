@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESDoc - A Documentation Generator For JavaScript(ES6)</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./prettify/prettify-tomorrow.css">
+    <script src="./prettify/prettify.js"></script>
+    <script src="./script/inner-link.js"></script>
+</head>
+<body>
+<nav>
+  <a class="title" href="./">ESDoc</a>
+  <ul>
+    <li><a href="./feature.html">Features</a></li>
+    <li><a href="./tutorial.html">Tutorial</a></li>
+    <li><a href="./config.html">Config</a></li>
+    <li><a href="./tags.html">Tags</a></li>
+    <li><a href="./api.html">API</a></li>
+    <li><a href="./faq.html">FAQ</a></li>
+    <li style="position: relative; top: 5px;"><a href="https://github.com/h13i32maru/esdoc"><img src="image/github.png" width="24px"></a></li>
+  </ul>
+</nav>
+
+<article class="content">
+<p>ESDoc is a documentation generator for JavaScript(ES6).</p>
+<p><img class="screen-shot" src="./image/top.png"></p>
+<h1 id="feature">Feature</h1>
+<ul>
+<li>Generates detailed documentation.</li>
+<li>Measures documentation coverage.</li>
+<li>Integrate test codes into documentation.</li>
+</ul>
+<h1 id="demo">Demo</h1>
+<ul>
+<li><a href="https://esdoc.org/esdoc">ESDoc</a> is self-hosting &#x1F604;</li>
+</ul>
+<h1 id="install">Install</h1>
+<pre><code>npm install -g esdoc
+esdoc -h
+</code></pre><h1 id="usage">Usage</h1>
+<pre><code>esdoc -c esdoc.json
+</code></pre><h1 id="example">Example</h1>
+<pre><code>├── esdoc.json
+└── src/MyClass.js
+</code></pre><p class="file-path">src/MyClass.js</p>
+
+<pre><code class="lang-javascript">/**
+ * this is MyClass.
+ */
+export default class MyClass {
+  /**
+   * @param {number} param this is param.
+   * @return {number} this is return.
+   */
+  method(param){}
+}
+</code></pre>
+<p class="file-path">esdoc.json</p>
+
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./esdoc&quot;
+}
+</code></pre>
+<p>exec esdoc</p>
+<pre><code>esdoc -c esdoc.json
+open ./esdoc/index.html
+</code></pre><h1 id="license">License</h1>
+<p>MIT</p>
+
+</article>
+
+<footer>
+© 2015 <a href="https://twitter.com/h13i32maru">Ryo Maruyama</a>. All rights reserved.
+</footer>
+
+<script src="./script/pretty.js"></script>
+<script src="./script/analytics.js"></script>
+</body>
+</html>

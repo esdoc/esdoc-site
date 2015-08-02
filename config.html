@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESDoc - A Documentation Generator For JavaScript(ES6)</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./prettify/prettify-tomorrow.css">
+    <script src="./prettify/prettify.js"></script>
+    <script src="./script/inner-link.js"></script>
+</head>
+<body>
+<nav>
+  <a class="title" href="./">ESDoc</a>
+  <ul>
+    <li><a href="./feature.html">Features</a></li>
+    <li><a href="./tutorial.html">Tutorial</a></li>
+    <li><a href="./config.html">Config</a></li>
+    <li><a href="./tags.html">Tags</a></li>
+    <li><a href="./api.html">API</a></li>
+    <li><a href="./faq.html">FAQ</a></li>
+    <li style="position: relative; top: 5px;"><a href="https://github.com/h13i32maru/esdoc"><img src="image/github.png" width="24px"></a></li>
+  </ul>
+</nav>
+
+<article class="content">
+<h1 id="config">Config</h1>
+<p>ESDoc config file.</p>
+<p>minimum config</p>
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;./path/to/src&quot;,
+  &quot;destination&quot;: &quot;./path/to/esdoc&quot;
+}
+</code></pre>
+<p>full config</p>
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;./path/to/src&quot;,
+  &quot;destination&quot;: &quot;./path/to/esdoc&quot;,
+  &quot;includes&quot;: [&quot;\\.(js|es6)$&quot;],
+  &quot;excludes&quot;: [&quot;\\.config\\.(js|es6)$&quot;],
+  &quot;access&quot;: [&quot;public&quot;, &quot;protected&quot;],
+  &quot;autoPrivate&quot;: true,
+  &quot;unexportIdentifier&quot;: false,
+  &quot;undocumentIdentifier&quot;: true,
+  &quot;builtinExternal&quot;: true,
+  &quot;importPathPrefix&quot;: &quot;&quot;,
+  &quot;index&quot;: &quot;./README.md&quot;,
+  &quot;package&quot;: &quot;./package.json&quot;,
+  &quot;coverage&quot;: true,
+  &quot;test&quot;: {
+    &quot;type&quot;: &quot;mocha&quot;,
+    &quot;source&quot;: &quot;./test/src&quot;,
+    &quot;includes&quot;: [&quot;Test\\.(js|es6)$&quot;],
+    &quot;excludes&quot;: [&quot;\\.config\\.(js|es6)$&quot;]
+  }
+  &quot;title&quot;: &quot;My Software Name&quot;,
+  &quot;styles&quot;: [&quot;./path/to/style.css&quot;],
+  &quot;scripts&quot;: [&quot;./path/to/script.js&quot;],
+  &quot;plugins&quot;: [
+    {&quot;name&quot;: &quot;plugin-name-or-file-path&quot;, &quot;option&quot;: null}
+  ]
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td>true</td>
+<td>-</td>
+<td>JavaScript source codes directory path.</td>
+</tr>
+<tr>
+<td><code>destination</code></td>
+<td>true</td>
+<td>-</td>
+<td>Output directory path.</td>
+</tr>
+<tr>
+<td><code>includes</code></td>
+<td>-</td>
+<td><code>[&quot;\\.(js&#124;es6)$&quot;]</code></td>
+<td>Process files that are matched with the regexp at any one.</td>
+</tr>
+<tr>
+<td><code>excludes</code></td>
+<td>-</td>
+<td><code>[&quot;\\.config\\.(js&#124;es6)$&quot;]</code></td>
+<td>Not process files that are matched with the regexp at any one.</td>
+</tr>
+<tr>
+<td><code>access</code></td>
+<td>-</td>
+<td><code>[&quot;public&quot;, &quot;protected&quot;]</code></td>
+<td>Process only identifiers(class, method, etc...) that are have the access(public, protected and private).</td>
+</tr>
+<tr>
+<td><code>autoPrivate</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>Deal with identifiers beginning with &quot;_&quot; as a private. <br> e.g. <code>this._foo</code> is private. but <code>/** @public */ this._foo</code> is public.</td>
+</tr>
+<tr>
+<td><code>unexportIdentifier</code></td>
+<td>-</td>
+<td><code>false</code></td>
+<td>If true, also process unexported Identifiers. <br> e.g. <code>export class MyClass</code> is exported, <code>class MyClass</code> is not exported.</td>
+</tr>
+<tr>
+<td><code>undocumentIdentifier</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>If true, also process undocument Identifiers. <br> e.g. <code>/** @foo bar */ class MyClass</code> is document identifier, <code>class MyClass</code> is undocument identifier.</td>
+</tr>
+<tr>
+<td><code>builtinExternal</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>If true, use built-in external tag. The built-in external has number, string, boolean, Promise, Map, etc...</td>
+</tr>
+<tr>
+<td><code>importPathPrefix</code></td>
+<td>-</td>
+<td><code>&quot;&quot;</code></td>
+<td>Display identifier&#39;s import path with the prefix. <br> e.g. if <code>MyClass</code> in <code>src/foo/MyClass.js</code>, import path is <code>import MyClass from &#39;src/foo/MyClass.js&#39;</code>. <br> but specified the prefix with <code>importPathPrefix: &quot;out&quot;</code>, import path is <code>import MyClass from &#39;out/src/foo/MyClass.js&#39;</code>.</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>-</td>
+<td><code>./README.md</code></td>
+<td>Includes file into index page of document</td>
+</tr>
+<tr>
+<td><code>package</code></td>
+<td>-</td>
+<td><code>./package.json</code></td>
+<td>Use package.json info.</td>
+</tr>
+<tr>
+<td><code>coverage</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>If true, output document coverage.</td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>-</td>
+<td><code>null</code></td>
+<td>If specified, Generate document from test code.</td>
+</tr>
+<tr>
+<td><code>test.type</code></td>
+<td>true</td>
+<td>-</td>
+<td>Test code type. Now only support &quot;mocha&quot;.</td>
+</tr>
+<tr>
+<td><code>test.source</code></td>
+<td>true</td>
+<td>-</td>
+<td>Test codes directory path.</td>
+</tr>
+<tr>
+<td><code>test.includes</code></td>
+<td>-</td>
+<td><code>[&quot;(spec&#124;Spec&#124;test&#124;Test)\\.(js&#124;es6)$&quot;]</code></td>
+<td>Process files that are matched with the regexp at any one.</td>
+</tr>
+<tr>
+<td><code>test.excludes</code></td>
+<td>-</td>
+<td><code>[&quot;\\.config\\.(js&#124;es6)$&quot;]</code></td>
+<td>Not process files that are matched with the regexp at any one.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>-</td>
+<td>&quot;&quot;</td>
+<td>Use title for output.</td>
+</tr>
+<tr>
+<td><code>styles</code></td>
+<td>-</td>
+<td><code>null</code></td>
+<td>Includes styles into output document.</td>
+</tr>
+<tr>
+<td><code>scripts</code></td>
+<td>-</td>
+<td><code>null</code></td>
+<td>Includes scripts into output document.</td>
+</tr>
+<tr>
+<td><code>plugins</code></td>
+<td>-</td>
+<td><code>null</code></td>
+<td>If specified, use each plugins. To see <a href="./api.html#plugin-feature">Plugin Feature</a> for more information.</td>
+</tr>
+<tr>
+<td><code>plugins[].name</code></td>
+<td>true</td>
+<td>-</td>
+<td>Plugin module name(e.g. <code>your-awesome-plugin</code>) or plugin file path(e.g. <code>./your-awesome-plugin.js</code>).</td>
+</tr>
+<tr>
+<td><code>plugins[].option</code></td>
+<td>-</td>
+<td>null</td>
+<td>If specified, the plugin get the option.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: A file path in config is based on current directory.</p>
+
+</article>
+
+<footer>
+© 2015 <a href="https://twitter.com/h13i32maru">Ryo Maruyama</a>. All rights reserved.
+</footer>
+
+<script src="./script/pretty.js"></script>
+<script src="./script/analytics.js"></script>
+</body>
+</html>

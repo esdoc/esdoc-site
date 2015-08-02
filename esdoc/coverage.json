@@ -1,0 +1,171 @@
+{
+  "coverage": "90.12%",
+  "expectCount": 324,
+  "actualCount": 292,
+  "files": {
+    "src/Doc/AbstractDoc.js": {
+      "expectCount": 54,
+      "actualCount": 49
+    },
+    "src/Doc/FileDoc.js": {
+      "expectCount": 6,
+      "actualCount": 6
+    },
+    "src/Doc/MethodDoc.js": {
+      "expectCount": 9,
+      "actualCount": 9
+    },
+    "src/Doc/FunctionDoc.js": {
+      "expectCount": 7,
+      "actualCount": 7
+    },
+    "src/Doc/TypedefDoc.js": {
+      "expectCount": 6,
+      "actualCount": 6
+    },
+    "src/Doc/TestDoc.js": {
+      "expectCount": 7,
+      "actualCount": 7
+    },
+    "src/Doc/MemberDoc.js": {
+      "expectCount": 7,
+      "actualCount": 7
+    },
+    "src/Doc/VariableDoc.js": {
+      "expectCount": 5,
+      "actualCount": 5
+    },
+    "src/Doc/ExternalDoc.js": {
+      "expectCount": 7,
+      "actualCount": 7
+    },
+    "src/Doc/AssignmentDoc.js": {
+      "expectCount": 4,
+      "actualCount": 4
+    },
+    "src/Doc/ClassDoc.js": {
+      "expectCount": 9,
+      "actualCount": 9
+    },
+    "src/Doc/TestFileDoc.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "src/Publisher/Builder/ASTDocBuilder.js": {
+      "expectCount": 4,
+      "actualCount": 3
+    },
+    "src/Util/ASTUtil.js": {
+      "expectCount": 8,
+      "actualCount": 8
+    },
+    "src/Publisher/Builder/ClassDocBuilder.js": {
+      "expectCount": 10,
+      "actualCount": 10
+    },
+    "src/Parser/CommentParser.js": {
+      "expectCount": 3,
+      "actualCount": 3
+    },
+    "src/Publisher/Builder/CoverageBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "src/Publisher/Builder/DocBuilder.js": {
+      "expectCount": 31,
+      "actualCount": 29
+    },
+    "src/Factory/DocFactory.js": {
+      "expectCount": 24,
+      "actualCount": 20
+    },
+    "src/Publisher/Builder/DocResolver.js": {
+      "expectCount": 15,
+      "actualCount": 13
+    },
+    "src/ESDoc.js": {
+      "expectCount": 8,
+      "actualCount": 8
+    },
+    "src/ESDocCLI.js": {
+      "expectCount": 7,
+      "actualCount": 7
+    },
+    "src/Parser/ESParser.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "src/Publisher/Builder/FileDocBuilder.js": {
+      "expectCount": 3,
+      "actualCount": 3
+    },
+    "src/Publisher/Builder/IdentifiersDocBuilder.js": {
+      "expectCount": 3,
+      "actualCount": 3
+    },
+    "src/Publisher/Builder/IndexDocBuilder.js": {
+      "expectCount": 5,
+      "actualCount": 4
+    },
+    "src/Util/InvalidCodeLogger.js": {
+      "expectCount": 4,
+      "actualCount": 4
+    },
+    "src/Util/NPMUtil.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "src/Util/NamingUtil.js": {
+      "expectCount": 2,
+      "actualCount": 0
+    },
+    "src/Parser/ParamParser.js": {
+      "expectCount": 6,
+      "actualCount": 6
+    },
+    "src/Util/PathResolver.js": {
+      "expectCount": 13,
+      "actualCount": 13
+    },
+    "src/Plugin/Plugin.js": {
+      "expectCount": 14,
+      "actualCount": 0
+    },
+    "src/Publisher/Builder/SearchIndexBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "src/Publisher/Builder/SingleDocBuilder.js": {
+      "expectCount": 3,
+      "actualCount": 3
+    },
+    "src/Publisher/Builder/SourceDocBuilder.js": {
+      "expectCount": 5,
+      "actualCount": 4
+    },
+    "src/Publisher/Builder/StaticFileBuilder.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "src/Publisher/Builder/TestDocBuilder.js": {
+      "expectCount": 4,
+      "actualCount": 4
+    },
+    "src/Factory/TestDocFactory.js": {
+      "expectCount": 11,
+      "actualCount": 11
+    },
+    "src/Publisher/Builder/TestFileDocBuilder.js": {
+      "expectCount": 3,
+      "actualCount": 3
+    },
+    "src/Publisher/Builder/util.js": {
+      "expectCount": 4,
+      "actualCount": 4
+    },
+    "src/Publisher/publish.js": {
+      "expectCount": 1,
+      "actualCount": 1
+    }
+  }
+}
