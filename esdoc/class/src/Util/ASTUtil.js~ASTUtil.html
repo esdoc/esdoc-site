@@ -332,6 +332,31 @@
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/src/Util/ASTUtil.js~ASTUtil.html#static-method-sanitize">sanitize</a></span></span><span data-ice="signature">(node: <span><a href="typedef/index.html#static-typedef-ASTNode">ASTNode</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>sanitize node.</p></div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/src/Util/ASTUtil.js~ASTUtil.html#static-method-traverse">traverse</a></span></span><span data-ice="signature">(ast: <span><a href="typedef/index.html#static-typedef-AST">AST</a></span>, callback: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(node: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, parent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span></span>)</span>
         </p>
       </div>
@@ -369,7 +394,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber123">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber136">source</a></span></span>
     </span>
   </h3>
 
@@ -452,7 +477,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber93">source</a></span></span>
     </span>
   </h3>
 
@@ -528,7 +553,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber94">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber107">source</a></span></span>
     </span>
   </h3>
 
@@ -604,7 +629,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber47">source</a></span></span>
     </span>
   </h3>
 
@@ -681,7 +706,7 @@ e.g. can find <code>./foo/bar.js</code> from <code>import Bar from &apos;./foo/b
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber62">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
@@ -757,7 +782,7 @@ e.g. can find <code>./foo/bar.js</code> from <code>import Bar from &apos;./foo/b
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber108">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber121">source</a></span></span>
     </span>
   </h3>
 
@@ -823,6 +848,65 @@ e.g. can find <code>./foo/bar.js</code> from <code>import Bar from &apos;./foo/b
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-sanitize">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    <span data-ice="name">sanitize</span><span data-ice="signature">(node: <span><a href="typedef/index.html#static-typedef-ASTNode">ASTNode</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber17">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>sanitize node.
+change node type to <code>Identifier</code> and empty comment.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">node</td>
+      <td data-ice="type"><span><a href="typedef/index.html#static-typedef-ASTNode">ASTNode</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>target node.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-method-traverse">
     <span class="access" data-ice="access">public</span>
     <span data-ice="static">static</span>
@@ -833,7 +917,7 @@ e.g. can find <code>./foo/bar.js</code> from <code>import Bar from &apos;./foo/b
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/ASTUtil.js.html#lineNumber30">source</a></span></span>
     </span>
   </h3>
 
@@ -900,7 +984,7 @@ e.g. can find <code>./foo/bar.js</code> from <code>import Bar from &apos;./foo/b
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.1.4)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.2.0)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

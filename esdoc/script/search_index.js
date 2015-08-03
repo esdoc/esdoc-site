@@ -1189,13 +1189,13 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
     "ParamParser: parse param with complex.",
     "test"
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
     "ParamParser: parse param with complex.",
     "test"
   ],
@@ -3327,6 +3327,12 @@ window.esdocSearchIndex = [
     "src/util/astutil.js~astutil.findvariabledeclarationnode",
     "class/src/Util/ASTUtil.js~ASTUtil.html#static-method-findVariableDeclarationNode",
     "src/Util/ASTUtil.js~ASTUtil.findVariableDeclarationNode",
+    "method"
+  ],
+  [
+    "src/util/astutil.js~astutil.sanitize",
+    "class/src/Util/ASTUtil.js~ASTUtil.html#static-method-sanitize",
+    "src/Util/ASTUtil.js~ASTUtil.sanitize",
     "method"
   ],
   [

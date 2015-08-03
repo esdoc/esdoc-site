@@ -5673,7 +5673,10 @@
           "line": 76,
           "column": 1
         }
-      }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
     },
     {
       "type": "ClassDeclaration",
@@ -6313,7 +6316,10 @@
           "line": 88,
           "column": 28
         }
-      }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
     },
     {
       "type": "ExportDefaultDeclaration",

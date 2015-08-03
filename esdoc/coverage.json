@@ -1,7 +1,7 @@
 {
-  "coverage": "90.12%",
-  "expectCount": 324,
-  "actualCount": 292,
+  "coverage": "90.15%",
+  "expectCount": 325,
+  "actualCount": 293,
   "files": {
     "src/Doc/AbstractDoc.js": {
       "expectCount": 54,
@@ -56,8 +56,8 @@
       "actualCount": 3
     },
     "src/Util/ASTUtil.js": {
-      "expectCount": 8,
-      "actualCount": 8
+      "expectCount": 9,
+      "actualCount": 9
     },
     "src/Publisher/Builder/ClassDocBuilder.js": {
       "expectCount": 10,
