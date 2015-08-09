@@ -25,7 +25,13 @@
 
 <article class="content">
 <h1 id="faq">FAQ</h1>
-<h3 id="difference-between-esdoc-and-jsdoc">Difference between ESDoc and JSDoc</h3>
+<ul>
+<li><a href="#difference-between-esdoc-and-jsdoc">Difference between ESDoc and JSDoc</a></li>
+<li><a href="#supported-languages">Supported Languages</a></li>
+<li><a href="#supported-environment">Supported Environment</a></li>
+<li><a href="#import-path-in-documentation">Import Path In Documentation</a></li>
+</ul>
+<h2 id="difference-between-esdoc-and-jsdoc">Difference between ESDoc and JSDoc</h2>
 <p>JSDoc is most popular JavaScript API Documentation tool.
 ESDoc is inspired by JSDoc.</p>
 <ul>
@@ -45,16 +51,20 @@ ESDoc is inspired by JSDoc.</p>
 </ul>
 </li>
 </ul>
-<h3 id="supported-languages">Supported Languages</h3>
+<h2 id="supported-languages">Supported Languages</h2>
 <p>ESDoc supports ES6(ECMAScript-262 6th, ES2015).</p>
 <p>The languages below are not supported.</p>
 <ul>
 <li>ES3, ES5: Use <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a></li>
-<li>ES7: Because ES7 is not stable.</li>
+<li>ES7: Because ES7 is not stable. However, <a href="https://github.com/esdoc/esdoc-es7-plugin">ESDoc ES7 Plugin</a> experimentally supports to ES7.</li>
 <li>Alt-JS(TypeScript, CoffeeScript, Dart, etc...): Because supporting them is too hard.</li>
 </ul>
-<h3 id="supported-environment">Supported Environment</h3>
-<p>ESDoc supports Node.js(v0.12) and io.js</p>
+<h2 id="supported-environment">Supported Environment</h2>
+<p>ESDoc supports Node.js(v0.12)</p>
+<h2 id="import-path-in-documentation">Import Path In Documentation</h2>
+<p>ESDoc displays the import path of class/function into the document.
+However, the import path may be different from real import path because usually ES6 is transpiled to use it.</p>
+<p>So, <a href="https://github.com/esdoc/esdoc-importpath-plugin">ESDoc Import Path Plugin</a> converts import path to real import path.</p>
 
 </article>
 

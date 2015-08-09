@@ -4352,7 +4352,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import path from 'path';\n\nclass Plugin {\n  constructor()  {\n    this._plugins = null;\n  }\n\n  init(plugins = []) {\n    this._plugins = copy(plugins);\n  }\n\n  _execHandler(handlerName, ev, giveOption = false) {\n    for (let item of this._plugins) {\n      let plugin;\n      if (item.name.match(/^[.\\/]/)) {\n        const pluginPath = path.resolve(item.name);\n        plugin = require(pluginPath);\n      } else {\n        plugin = require(item.name);\n      }\n\n      if (!plugin[handlerName]) continue;\n\n      if (giveOption) ev.data.option = item.option;\n\n      plugin[handlerName](ev);\n    }\n  }\n\n  onStart() {\n    const ev = new PluginEvent();\n    this._execHandler('onStart', ev, true);\n  }\n\n  onHandleConfig(config) {\n    const ev = new PluginEvent({config});\n    this._execHandler('onHandleConfig', ev);\n    return ev.data.config;\n  }\n\n  onHandleCode(code) {\n    const ev = new PluginEvent({code});\n    this._execHandler('onHandleCode', ev);\n    return ev.data.code;\n  }\n\n  onHandleCodeParser(parser) {\n    const ev = new PluginEvent();\n    ev.data.parser = parser;\n    this._execHandler('onHandleCodeParser', ev);\n    return ev.data.parser;\n  }\n\n  onHandleAST(ast) {\n    const ev = new PluginEvent({ast});\n    this._execHandler('onHandleAST', ev);\n    return ev.data.ast;\n  }\n\n  onHandleTag(tag) {\n    const ev = new PluginEvent({tag});\n    this._execHandler('onHandleTag', ev);\n    return ev.data.tag;\n  }\n\n  onHandleHTML(html) {\n    const ev = new PluginEvent({html});\n    this._execHandler('onHandleHTML', ev);\n    return ev.data.html;\n  }\n\n  onComplete() {\n    const ev = new PluginEvent();\n    this._execHandler('onComplete', ev);\n  }\n}\n\nclass PluginEvent {\n  constructor(data = {}) {\n    this.data = copy(data);\n  }\n}\n\nfunction copy(obj) {\n  return JSON.parse(JSON.stringify(obj));\n}\n\nexport default new Plugin();\n"
+    "content": "import path from 'path';\n\nclass Plugin {\n  constructor()  {\n    this._plugins = null;\n  }\n\n  init(plugins = []) {\n    this._plugins = copy(plugins);\n  }\n\n  _execHandler(handlerName, ev, giveOption = false) {\n    for (let item of this._plugins) {\n      let plugin;\n      if (item.name.match(/^[.\\/]/)) {\n        const pluginPath = path.resolve(item.name);\n        plugin = require(pluginPath);\n      } else {\n        module.paths.push('./node_modules');\n        plugin = require(item.name);\n        module.paths.pop();\n      }\n\n      if (!plugin[handlerName]) continue;\n\n      if (giveOption) ev.data.option = item.option;\n\n      plugin[handlerName](ev);\n    }\n  }\n\n  onStart() {\n    const ev = new PluginEvent();\n    this._execHandler('onStart', ev, true);\n  }\n\n  onHandleConfig(config) {\n    const ev = new PluginEvent({config});\n    this._execHandler('onHandleConfig', ev);\n    return ev.data.config;\n  }\n\n  onHandleCode(code) {\n    const ev = new PluginEvent({code});\n    this._execHandler('onHandleCode', ev);\n    return ev.data.code;\n  }\n\n  onHandleCodeParser(parser) {\n    const ev = new PluginEvent();\n    ev.data.parser = parser;\n    this._execHandler('onHandleCodeParser', ev);\n    return ev.data.parser;\n  }\n\n  onHandleAST(ast) {\n    const ev = new PluginEvent({ast});\n    this._execHandler('onHandleAST', ev);\n    return ev.data.ast;\n  }\n\n  onHandleTag(tag) {\n    const ev = new PluginEvent({tag});\n    this._execHandler('onHandleTag', ev);\n    return ev.data.tag;\n  }\n\n  onHandleHTML(html) {\n    const ev = new PluginEvent({html});\n    this._execHandler('onHandleHTML', ev);\n    return ev.data.html;\n  }\n\n  onComplete() {\n    const ev = new PluginEvent();\n    this._execHandler('onComplete', ev);\n  }\n}\n\nclass PluginEvent {\n  constructor(data = {}) {\n    this.data = copy(data);\n  }\n}\n\nfunction copy(obj) {\n  return JSON.parse(JSON.stringify(obj));\n}\n\nexport default new Plugin();\n"
   },
   {
     "kind": "class",
@@ -4366,7 +4366,7 @@
     "importPath": "esdoc/out/src/Plugin/Plugin.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 78,
+    "lineNumber": 80,
     "undocument": true,
     "interface": false
   },
@@ -4379,7 +4379,7 @@
     "longname": "src/Plugin/Plugin.js~PluginEvent#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 79,
+    "lineNumber": 81,
     "undocument": true,
     "params": [
       {
@@ -4403,7 +4403,7 @@
     "longname": "src/Plugin/Plugin.js~PluginEvent#data",
     "access": null,
     "description": null,
-    "lineNumber": 80,
+    "lineNumber": 82,
     "undocument": true,
     "type": {
       "types": [
@@ -4423,7 +4423,7 @@
     "importPath": "esdoc/out/src/Plugin/Plugin.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 84,
+    "lineNumber": 86,
     "undocument": true,
     "params": [
       {
@@ -4574,7 +4574,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onStart",
     "access": null,
     "description": null,
-    "lineNumber": 30,
+    "lineNumber": 32,
     "undocument": true,
     "params": [],
     "generator": false
@@ -4588,7 +4588,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleConfig",
     "access": null,
     "description": null,
-    "lineNumber": 35,
+    "lineNumber": 37,
     "undocument": true,
     "params": [
       {
@@ -4614,7 +4614,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleCode",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 43,
     "undocument": true,
     "params": [
       {
@@ -4640,7 +4640,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleCodeParser",
     "access": null,
     "description": null,
-    "lineNumber": 47,
+    "lineNumber": 49,
     "undocument": true,
     "params": [
       {
@@ -4666,7 +4666,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleAST",
     "access": null,
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 56,
     "undocument": true,
     "params": [
       {
@@ -4692,7 +4692,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleTag",
     "access": null,
     "description": null,
-    "lineNumber": 60,
+    "lineNumber": 62,
     "undocument": true,
     "params": [
       {
@@ -4718,7 +4718,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleHTML",
     "access": null,
     "description": null,
-    "lineNumber": 66,
+    "lineNumber": 68,
     "undocument": true,
     "params": [
       {
@@ -4744,7 +4744,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#onComplete",
     "access": null,
     "description": null,
-    "lineNumber": 72,
+    "lineNumber": 74,
     "undocument": true,
     "params": [],
     "generator": false
@@ -4761,7 +4761,7 @@
     "importPath": "esdoc/out/src/Plugin/Plugin.js",
     "importStyle": "plugin",
     "description": null,
-    "lineNumber": 88,
+    "lineNumber": 90,
     "undocument": true,
     "type": {
       "types": [
