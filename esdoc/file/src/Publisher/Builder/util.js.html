@@ -122,7 +122,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Publisher/Builder/util.js</h1>
-<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">import marked from &apos;marked&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import marked from &apos;marked&apos;;
 import escape from &apos;escape-html&apos;;
 
 /**
@@ -183,7 +183,8 @@ export function markdown(text, breaks = false) {
     tables: true,
     breaks: breaks,
     highlight: function (code) {
-      return `&lt;pre class=&quot;source-code&quot;&gt;&lt;code class=&quot;prettyprint&quot;&gt;${escape(code)}&lt;/code&gt;&lt;/pre&gt;`;
+      //return `&lt;pre class=&quot;source-code&quot;&gt;&lt;code class=&quot;prettyprint&quot;&gt;${escape(code)}&lt;/code&gt;&lt;/pre&gt;`;
+      return `&lt;code class=&quot;source-code prettyprint&quot;&gt;${escape(code)}&lt;/code&gt;`;
     }
   });
 

@@ -121,7 +121,7 @@
 
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index"><p><a href="https://travis-ci.org/esdoc/esdoc"><img src="https://travis-ci.org/esdoc/esdoc.svg?branch=master" alt="Build Status"></a>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p><a href="https://travis-ci.org/esdoc/esdoc"><img src="https://travis-ci.org/esdoc/esdoc.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/esdoc/esdoc"><img src="https://coveralls.io/repos/esdoc/esdoc/badge.svg" alt="Coverage Status"></a>
 <a href="https://doc.esdoc.org/github.com/esdoc/esdoc"><img src="https://doc.esdoc.org/github.com/esdoc/esdoc/badge.svg" alt="Document"></a></p>
 <h1 id="esdoc">ESDoc</h1>
@@ -139,15 +139,15 @@
 <li><a href="https://esdoc.org/esdoc">ESDoc</a> is self-hosting &#x1F604;</li>
 </ul>
 <h1 id="install">Install</h1>
-<pre><code><pre class="source-code"><code class="prettyprint">npm install -g esdoc
-esdoc -h</code></pre>
+<pre><code><code class="source-code prettyprint">npm install -g esdoc
+esdoc -h</code>
 </code></pre><h1 id="usage">Usage</h1>
-<pre><code><pre class="source-code"><code class="prettyprint">esdoc -c esdoc.json</code></pre>
+<pre><code><code class="source-code prettyprint">esdoc -c esdoc.json</code>
 </code></pre><h1 id="example">Example</h1>
-<pre><code><pre class="source-code"><code class="prettyprint">&#x251C;&#x2500;&#x2500; esdoc.json
-&#x2514;&#x2500;&#x2500; src/MyClass.js</code></pre>
+<pre><code><code class="source-code prettyprint">&#x251C;&#x2500;&#x2500; esdoc.json
+&#x2514;&#x2500;&#x2500; src/MyClass.js</code>
 </code></pre><p><code>src/MyClass.js</code></p>
-<pre><code class="lang-javascript"><pre class="source-code"><code class="prettyprint">/**
+<pre><code class="lang-javascript"><code class="source-code prettyprint">/**
  * this is MyClass.
  */
 export default class MyClass {
@@ -156,17 +156,17 @@ export default class MyClass {
    * @return {number} this is return.
    */
   method(param){}
-}</code></pre>
+}</code>
 </code></pre>
 <p><code>esdoc.json</code></p>
-<pre><code class="lang-json"><pre class="source-code"><code class="prettyprint">{
+<pre><code class="lang-json"><code class="source-code prettyprint">{
   &quot;source&quot;: &quot;./src&quot;,
   &quot;destination&quot;: &quot;./esdoc&quot;
-}</code></pre>
+}</code>
 </code></pre>
 <p>exec esdoc</p>
-<pre><code><pre class="source-code"><code class="prettyprint">esdoc -c esdoc.json
-open ./esdoc/index.html</code></pre>
+<pre><code><code class="source-code prettyprint">esdoc -c esdoc.json
+open ./esdoc/index.html</code>
 </code></pre><h1 id="document">Document</h1>
 <p>please visit <a href="https://esdoc.org">esdoc.org</a> to see more document.</p>
 <h1 id="license">License</h1>

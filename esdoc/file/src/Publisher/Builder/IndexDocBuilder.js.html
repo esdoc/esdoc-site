@@ -122,7 +122,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Publisher/Builder/IndexDocBuilder.js</h1>
-<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">import fs from &apos;fs&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import fs from &apos;fs&apos;;
 import path from &apos;path&apos;;
 import cheerio from &apos;cheerio&apos;;
 import IceCap from &apos;ice-cap&apos;;
@@ -181,11 +181,13 @@ export default class IndexDocBuilder extends DocBuilder {
     }
 
     let result = ice.html;
-    // fixme: purge this code when esdoc hosting is shipped.
+
+    // fixme: deprecated
     if (this._config.coverage) {
       let $ = cheerio.load(result);
-      $(&apos;.esdoc-coverage&apos;).html(this._buildCoverageHTML(this._coverage));
-      result = $.root().html();
+      if ($(&apos;.esdoc-coverage&apos;).length) {
+        console.log(&apos;[31m[deprecated] coverage badge is deprecated. use badge of ESDoc Hosting Service(https://doc.esdoc.org)[0m&apos;);
+      }
     }
 
     return result;

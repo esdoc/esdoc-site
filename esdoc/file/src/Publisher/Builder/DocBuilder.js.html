@@ -122,7 +122,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Publisher/Builder/DocBuilder.js</h1>
-<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">import fs from &apos;fs&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import fs from &apos;fs&apos;;
 import path from &apos;path&apos;;
 import escape from &apos;escape-html&apos;;
 import IceCap from &apos;ice-cap&apos;;
@@ -259,20 +259,34 @@ export default class DocBuilder {
       packageObj = JSON.parse(json);
     }
 
-    let indexInfo = {
-      title: config.title || packageObj.name,
-      //desc: config.description || packageObj.description,
-      version: config.version || packageObj.version,
-      //url: config.url || packageObj.repository ? packageObj.repository.url : &apos;&apos;
-      url: packageObj.repository &amp;&amp; typeof packageObj.repository === &apos;object&apos; ? packageObj.repository.url : &apos;&apos;
-    };
+    // repository url
+    let url = &apos;&apos;;
+    if (packageObj.repository) {
+      if (packageObj.repository.url) {
+        url = packageObj.repository.url;
+      } else {
+        url = packageObj.repository;
+      }
 
-    if (indexInfo.url.indexOf(&apos;git@github.com:&apos;) === 0) {
-      let matched = indexInfo.url.match(/^git@github\.com:(.*)\.git$/);
-      if (matched &amp;&amp; matched[1]) {
-        indexInfo.url = `https://github.com/${matched[1]}`;
+      // url: git@github.com:foo/bar.git
+      if (url.indexOf(&apos;git@github.com:&apos;) === 0) {
+        let matched = url.match(/^git@github\.com:(.*)\.git$/);
+        if (matched &amp;&amp; matched[1]) {
+          url = `https://github.com/${matched[1]}`;
+        }
+      }
+
+      // url: foo/bar
+      if (url.match(/^[\w\d\-_]+\/[\w\d\-_]+$/)) {
+        url = `https://github.com/${url}`;
       }
     }
+
+    let indexInfo = {
+      title: config.title || packageObj.name,
+      version: config.version || packageObj.version,
+      url: url
+    };
 
     return indexInfo;
   }

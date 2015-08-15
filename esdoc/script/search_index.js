@@ -948,12 +948,6 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "indexdocbuilder#_buildindexdoc src/publisher/builder/indexdocbuilder.js~indexdocbuilder#_buildindexdoc,indexdocbuilder#_buildindexdoc",
-    "test-file/src/BuilderTest/IndexDocTest.js.html#lineNumber13",
-    "Index: has coverage badge",
-    "test"
-  ],
-  [
     "filedocbuilder src/publisher/builder/filedocbuilder.js~filedocbuilder,filedocbuilder",
     "test-file/src/BuilderTest/FileDocTest.js.html#lineNumber4",
     "MyClass.js.html:",
@@ -1189,7 +1183,7 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber98",
     "ParamParser: parse param with complex.",
     "test"
   ],
@@ -1201,7 +1195,7 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber98",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
     "ParamParser: parse param with complex.",
     "test"
   ],
@@ -2158,6 +2152,12 @@ window.esdocSearchIndex = [
     "file/src/ESDoc.js.html",
     "src/ESDoc.js",
     "file"
+  ],
+  [
+    "src/esdoc.js~esdoc._deprecatedconfig",
+    "class/src/ESDoc.js~ESDoc.html#static-method-_deprecatedConfig",
+    "src/ESDoc.js~ESDoc._deprecatedConfig",
+    "method"
   ],
   [
     "src/esdoc.js~esdoc._generatefortest",
@@ -3411,18 +3411,6 @@ window.esdocSearchIndex = [
     "src/util/pathresolver.js~pathresolver#_packagename",
     "class/src/Util/PathResolver.js~PathResolver.html#instance-member-_packageName",
     "src/Util/PathResolver.js~PathResolver#_packageName",
-    "member"
-  ],
-  [
-    "src/util/pathresolver.js~pathresolver#_pathprefix",
-    "class/src/Util/PathResolver.js~PathResolver.html#instance-member-_pathPrefix",
-    "src/Util/PathResolver.js~PathResolver#_pathPrefix",
-    "member"
-  ],
-  [
-    "src/util/pathresolver.js~pathresolver#_prefixedfilepath",
-    "class/src/Util/PathResolver.js~PathResolver.html#instance-member-_prefixedFilePath",
-    "src/Util/PathResolver.js~PathResolver#_prefixedFilePath",
     "member"
   ],
   [

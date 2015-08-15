@@ -158,7 +158,7 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">let pathResolver = new PathResolver(&apos;./src&apos;, &apos;foo/bar.js&apos;, &apos;foo-bar&apos;, &apos;out/foo/bar.js&apos;, &apos;out&apos;);
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">let pathResolver = new PathResolver(&apos;./src&apos;, &apos;foo/bar.js&apos;, &apos;foo-bar&apos;, &apos;foo/bar.js&apos;);
 pathResolver.importPath; // &apos;foo-bar&apos;
 pathResolver.filePath; // &apos;src/foo/bar.js&apos;
 pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code></pre>
@@ -187,7 +187,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/Util/PathResolver.js~PathResolver.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(inDirPath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, filePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, packageName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, mainFilePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, pathPrefix: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+           <span data-ice="name"><span><a href="class/src/Util/PathResolver.js~PathResolver.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(inDirPath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, filePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, packageName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, mainFilePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
@@ -389,56 +389,6 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
       
     </td>
   </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">private</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/Util/PathResolver.js~PathResolver.html#instance-member-_pathPrefix">_pathPrefix</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">private</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-           <span data-ice="name"><span><a href="class/src/Util/PathResolver.js~PathResolver.html#instance-member-_prefixedFilePath">_prefixedFilePath</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
 </tbody>
 </table>
 </div>
@@ -519,11 +469,11 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(inDirPath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, filePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, packageName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, mainFilePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, pathPrefix: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+    <span data-ice="name">constructor</span><span data-ice="signature">(inDirPath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, filePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, packageName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, mainFilePath: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber21">source</a></span></span>
     </span>
   </h3>
 
@@ -571,13 +521,6 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
       <td data-ice="description"><p>npm main file path.</p>
 </td>
     </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">pathPrefix</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"><ul><li>optional</li></ul></td>
-      <td data-ice="description"><p>import path prefix.</p>
-</td>
-    </tr>
 </tbody>
   </table>
 </div>
@@ -612,7 +555,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber65">source</a></span></span>
     </span>
   </h3>
 
@@ -653,7 +596,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber83">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber73">source</a></span></span>
     </span>
   </h3>
 
@@ -694,7 +637,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
@@ -737,7 +680,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber29">source</a></span></span>
     </span>
   </h3>
 
@@ -777,7 +720,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
@@ -817,7 +760,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber36">source</a></span></span>
     </span>
   </h3>
 
@@ -857,87 +800,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber33">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-_pathPrefix">
-    <span class="access" data-ice="access">private</span>
-    
-    
-    
-    
-    <span data-ice="name">_pathPrefix</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber41">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-_prefixedFilePath">
-    <span class="access" data-ice="access">private</span>
-    
-    
-    
-    
-    <span data-ice="name">_prefixedFilePath</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber45">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 
@@ -980,7 +843,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber92">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber82">source</a></span></span>
     </span>
   </h3>
 
@@ -1050,7 +913,7 @@ pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;</code>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber106">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Util/PathResolver.js.html#lineNumber96">source</a></span></span>
     </span>
   </h3>
 

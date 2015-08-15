@@ -1857,17 +1857,17 @@ let results = factory.results;</code></pre>
   
   <div data-ice="description"><p>inspect ExportDefaultDeclaration.</p>
 <p>case1: separated export</p>
-<pre><code class="lang-javascript"><pre class="source-code"><code class="prettyprint">class Foo {}
-export default Foo;</code></pre>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class Foo {}
+export default Foo;</code>
 </code></pre>
 <p>case2: export instance(directly).</p>
-<pre><code class="lang-javascript"><pre class="source-code"><code class="prettyprint">class Foo {}
-export default new Foo();</code></pre>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class Foo {}
+export default new Foo();</code>
 </code></pre>
 <p>case3: export instance(indirectly).</p>
-<pre><code class="lang-javascript"><pre class="source-code"><code class="prettyprint">class Foo {}
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class Foo {}
 let foo = new Foo();
-export default foo;</code></pre>
+export default foo;</code>
 </code></pre>
 </div>
 
@@ -1917,13 +1917,13 @@ export default foo;</code></pre>
   
   <div data-ice="description"><p>inspect ExportNamedDeclaration.</p>
 <p>case1: separated export</p>
-<pre><code class="lang-javascript"><pre class="source-code"><code class="prettyprint">class Foo {}
-export {Foo};</code></pre>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class Foo {}
+export {Foo};</code>
 </code></pre>
 <p>case2: export instance(indirectly).</p>
-<pre><code class="lang-javascript"><pre class="source-code"><code class="prettyprint">class Foo {}
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class Foo {}
 let foo = new Foo();
-export {foo};</code></pre>
+export {foo};</code>
 </code></pre>
 </div>
 

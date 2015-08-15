@@ -122,14 +122,14 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Util/PathResolver.js</h1>
-<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">import path from &apos;path&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import path from &apos;path&apos;;
 import assert from &apos;assert&apos;;
 import os from &apos;os&apos;;
 
 /**
  * file path resolver.
  * @example
- * let pathResolver = new PathResolver(&apos;./src&apos;, &apos;foo/bar.js&apos;, &apos;foo-bar&apos;, &apos;out/foo/bar.js&apos;, &apos;out&apos;);
+ * let pathResolver = new PathResolver(&apos;./src&apos;, &apos;foo/bar.js&apos;, &apos;foo-bar&apos;, &apos;foo/bar.js&apos;);
  * pathResolver.importPath; // &apos;foo-bar&apos;
  * pathResolver.filePath; // &apos;src/foo/bar.js&apos;
  * pathResolver.resolve(&apos;./baz.js&apos;); // &apos;src/foo/baz.js&apos;
@@ -141,9 +141,8 @@ export default class PathResolver {
    * @param {string} filePath - relative file path from root directory path.
    * @param {string} [packageName] - npm package name.
    * @param {string} [mainFilePath] - npm main file path.
-   * @param {string} [pathPrefix] - import path prefix.
    */
-  constructor(inDirPath, filePath, packageName = null, mainFilePath = null, pathPrefix = &apos;&apos;) {
+  constructor(inDirPath, filePath, packageName = null, mainFilePath = null) {
     assert(inDirPath);
     assert(filePath);
 
@@ -160,16 +159,6 @@ export default class PathResolver {
       /** @type {string} */
       this._mainFilePath = path.resolve(mainFilePath);
     }
-
-    /** @type {string} */
-    this._pathPrefix = pathPrefix || &apos;&apos;;
-
-    if (this._pathPrefix) {
-      /** @type {string} */
-      this._prefixedFilePath = path.resolve(`${this._pathPrefix}${path.sep}${this.filePath}`);
-    } else {
-      this._prefixedFilePath = path.resolve(this.filePath);
-    }
   }
 
   /**
@@ -177,14 +166,15 @@ export default class PathResolver {
    * @type {string}
    */
   get importPath() {
-    if (this._mainFilePath === this._prefixedFilePath) {
+    let relativeFilePath = this.filePath;
+
+    if (this._mainFilePath === path.resolve(relativeFilePath)) {
       return this._packageName;
     }
 
-    let relativeFilePath = this.filePath;
     let filePath;
     if (this._packageName) {
-      filePath = path.normalize(`${this._packageName}${path.sep}${this._pathPrefix}${path.sep}${relativeFilePath}`);
+      filePath = path.normalize(`${this._packageName}${path.sep}${relativeFilePath}`);
     } else {
       filePath = `./${relativeFilePath}`;
     }

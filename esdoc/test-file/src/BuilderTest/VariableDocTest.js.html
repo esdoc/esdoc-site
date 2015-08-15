@@ -122,7 +122,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/BuilderTest/VariableDocTest.js</h1>
-<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">import {readDoc, assert, find} from &apos;./../util.js&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {readDoc, assert, find} from &apos;./../util.js&apos;;
 
 /** @test {SingleDocBuilder} */
 describe(&apos;MyVariable:&apos;, ()=&gt; {
@@ -153,42 +153,42 @@ describe(&apos;MyVariable:&apos;, ()=&gt; {
   it(&apos;has detail.&apos;, ()=&gt; {
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(1)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myExport1&apos;, &apos;public myExport1: MyExport1&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myExport1 from &apos;esdoc-test-fixture/out/src/Export.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myExport1 from &apos;esdoc-test-fixture/src/Export.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(2)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myExport10&apos;, &apos;public myExport10: MyExport10&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myExport10} from &apos;esdoc-test-fixture/out/src/Export.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myExport10} from &apos;esdoc-test-fixture/src/Export.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(3)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myExport2&apos;, &apos;public myExport2: MyExport2&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myExport2 from &apos;esdoc-test-fixture/out/src/Export.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myExport2 from &apos;esdoc-test-fixture/src/Export.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(4)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myExport3&apos;, &apos;public myExport3: MyExport3&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myExport3 from &apos;esdoc-test-fixture/out/src/Export.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myExport3 from &apos;esdoc-test-fixture/src/Export.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(5)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myExport4&apos;, &apos;public myExport4: MyExport4&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myExport4} from &apos;esdoc-test-fixture/out/src/Export.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myExport4} from &apos;esdoc-test-fixture/src/Export.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(6)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myExport5&apos;, &apos;public myExport5: MyExport5&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myExport5} from &apos;esdoc-test-fixture/out/src/Export.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myExport5} from &apos;esdoc-test-fixture/src/Export.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(7)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myVariable1&apos;, &apos;public myVariable1: Object&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myVariable1 from &apos;esdoc-test-fixture/out/src/myVariable.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myVariable1 from &apos;esdoc-test-fixture/src/myVariable.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(8)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myVariable2&apos;, &apos;public myVariable2: number&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myVariable2} from &apos;esdoc-test-fixture/out/src/myVariable.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myVariable2} from &apos;esdoc-test-fixture/src/myVariable.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(9)&apos;, (doc)=&gt; {
@@ -205,12 +205,12 @@ describe(&apos;MyVariable:&apos;, ()=&gt; {
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(12)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myVariableSeparateExport1&apos;, &apos;public myVariableSeparateExport1: {foo: number, bar: string}&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myVariableSeparateExport1 from &apos;esdoc-test-fixture/out/src/myVariable.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myVariableSeparateExport1 from &apos;esdoc-test-fixture/src/myVariable.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(13)&apos;, (doc)=&gt; {
       assert.includes(doc, &apos;#static-variable-myVariableSeparateExport2&apos;, &apos;public myVariableSeparateExport2: Object&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myVariableSeparateExport2} from &apos;esdoc-test-fixture/out/src/myVariable.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myVariableSeparateExport2} from &apos;esdoc-test-fixture/src/myVariable.js&apos;&quot;);
     });
   });
 });

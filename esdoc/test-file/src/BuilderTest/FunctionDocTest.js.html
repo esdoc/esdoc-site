@@ -122,7 +122,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/BuilderTest/FunctionDocTest.js</h1>
-<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">import {readDoc, assert, find} from &apos;./../util.js&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {readDoc, assert, find} from &apos;./../util.js&apos;;
 
 /** @test {SingleDocBuilder} */
 describe(&apos;MyFunction:&apos;, ()=&gt;{
@@ -150,7 +150,7 @@ describe(&apos;MyFunction:&apos;, ()=&gt;{
   it(&apos;has detail.&apos;, ()=&gt;{
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(1)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;#static-function-myFunction1&apos;, &apos;public myFunction1()&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myFunction1 from &apos;esdoc-test-fixture/out/src/myFunction.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myFunction1 from &apos;esdoc-test-fixture/src/myFunction.js&apos;&quot;);
 
       find(doc, &apos;[data-ice=&quot;example&quot;]&apos;, (doc)=&gt;{
         assert.includes(doc, &apos;div.example-doc:nth-of-type(1)&apos;, &apos;This is example caption&apos;);
@@ -162,12 +162,12 @@ describe(&apos;MyFunction:&apos;, ()=&gt;{
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(2)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;#static-function-myFunction2&apos;, &apos;public myFunction2(p1: number, p2: string)&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myFunction2} from &apos;esdoc-test-fixture/out/src/myFunction.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myFunction2} from &apos;esdoc-test-fixture/src/myFunction.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(3)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;#static-function-myFunction3&apos;, &apos;public myFunction3(): number&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myFunction3} from &apos;esdoc-test-fixture/out/src/myFunction.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myFunction3} from &apos;esdoc-test-fixture/src/myFunction.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(4)&apos;, (doc)=&gt;{
@@ -192,12 +192,12 @@ describe(&apos;MyFunction:&apos;, ()=&gt;{
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(9)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;#static-function-myFunctionSeparateExport1&apos;, &apos;public myFunctionSeparateExport1(p1: number)&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myFunctionSeparateExport1 from &apos;esdoc-test-fixture/out/src/myFunction.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import myFunctionSeparateExport1 from &apos;esdoc-test-fixture/src/myFunction.js&apos;&quot;);
     });
 
     find(doc, &apos;[data-ice=&quot;detail&quot;]:nth-of-type(10)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;#static-function-myFunctionSeparateExport2&apos;, &apos;public myFunctionSeparateExport2(p1: number)&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myFunctionSeparateExport2} from &apos;esdoc-test-fixture/out/src/myFunction.js&apos;&quot;);
+      assert.includes(doc, &apos;[data-ice=&quot;importPath&quot;]&apos;, &quot;import {myFunctionSeparateExport2} from &apos;esdoc-test-fixture/src/myFunction.js&apos;&quot;);
     });
   });
 });

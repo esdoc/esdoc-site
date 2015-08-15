@@ -1,7 +1,7 @@
 {
-  "coverage": "90.15%",
-  "expectCount": 325,
-  "actualCount": 293,
+  "coverage": "89.81%",
+  "expectCount": 324,
+  "actualCount": 291,
   "files": {
     "src/Doc/AbstractDoc.js": {
       "expectCount": 54,
@@ -11,23 +11,19 @@
       "expectCount": 6,
       "actualCount": 6
     },
-    "src/Doc/MethodDoc.js": {
-      "expectCount": 9,
-      "actualCount": 9
-    },
     "src/Doc/FunctionDoc.js": {
       "expectCount": 7,
       "actualCount": 7
     },
-    "src/Doc/TypedefDoc.js": {
-      "expectCount": 6,
-      "actualCount": 6
+    "src/Doc/MethodDoc.js": {
+      "expectCount": 9,
+      "actualCount": 9
+    },
+    "src/Doc/AssignmentDoc.js": {
+      "expectCount": 4,
+      "actualCount": 4
     },
     "src/Doc/TestDoc.js": {
-      "expectCount": 7,
-      "actualCount": 7
-    },
-    "src/Doc/MemberDoc.js": {
       "expectCount": 7,
       "actualCount": 7
     },
@@ -35,21 +31,25 @@
       "expectCount": 5,
       "actualCount": 5
     },
-    "src/Doc/ExternalDoc.js": {
-      "expectCount": 7,
-      "actualCount": 7
-    },
-    "src/Doc/AssignmentDoc.js": {
-      "expectCount": 4,
-      "actualCount": 4
+    "src/Doc/TypedefDoc.js": {
+      "expectCount": 6,
+      "actualCount": 6
     },
     "src/Doc/ClassDoc.js": {
       "expectCount": 9,
       "actualCount": 9
     },
+    "src/Doc/MemberDoc.js": {
+      "expectCount": 7,
+      "actualCount": 7
+    },
     "src/Doc/TestFileDoc.js": {
       "expectCount": 2,
       "actualCount": 2
+    },
+    "src/Doc/ExternalDoc.js": {
+      "expectCount": 7,
+      "actualCount": 7
     },
     "src/Publisher/Builder/ASTDocBuilder.js": {
       "expectCount": 4,
@@ -84,7 +84,7 @@
       "actualCount": 13
     },
     "src/ESDoc.js": {
-      "expectCount": 8,
+      "expectCount": 9,
       "actualCount": 8
     },
     "src/ESDocCLI.js": {
@@ -124,8 +124,8 @@
       "actualCount": 6
     },
     "src/Util/PathResolver.js": {
-      "expectCount": 13,
-      "actualCount": 13
+      "expectCount": 11,
+      "actualCount": 11
     },
     "src/Plugin/Plugin.js": {
       "expectCount": 14,
