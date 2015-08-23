@@ -59,6 +59,7 @@
 <li data-ice="classDoc"><span><a href="class/src/Parser/ParamParser.js~ParamParser.html">ParamParser</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/Util/PathResolver.js~PathResolver.html">PathResolver</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/Plugin/Plugin.js~Plugin.html">Plugin</a></span></li>
+<li data-ice="classDoc"><span><a href="class/src/Plugin/Plugin.js~PluginEvent.html">PluginEvent</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/Publisher/Builder/SearchIndexBuilder.js~SearchIndexBuilder.html">SearchIndexBuilder</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/Publisher/Builder/SingleDocBuilder.js~SingleDocBuilder.html">SingleDocBuilder</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/Publisher/Builder/SourceDocBuilder.js~SourceDocBuilder.html">SourceDocBuilder</a></span></li>
@@ -124,15 +125,32 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/Plugin/Plugin.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import path from &apos;path&apos;;
 
+/**
+ * Plugin system for your plugin.
+ */
 class Plugin {
+  /**
+   * create instance.
+   */
   constructor()  {
     this._plugins = null;
   }
 
+  /**
+   * initialize with plugin property.
+   * @param {Array&lt;{name: string, option: object}&gt;} plugins - expect config.plugins property.
+   */
   init(plugins = []) {
     this._plugins = copy(plugins);
   }
 
+  /**
+   * exec plugin handler.
+   * @param {string} handlerName - handler name(e.g. onHandleCode)
+   * @param {PluginEvent} ev - plugin event object.
+   * @param {boolean} [giveOption=false] - if true, event has plugin option.
+   * @private
+   */
   _execHandler(handlerName, ev, giveOption = false) {
     for (let item of this._plugins) {
       let plugin;
@@ -153,23 +171,41 @@ class Plugin {
     }
   }
 
+  /**
+   * handle start.
+   */
   onStart() {
     const ev = new PluginEvent();
     this._execHandler(&apos;onStart&apos;, ev, true);
   }
 
+  /**
+   * handle config.
+   * @param {ESDocConfig} config - original esdoc config.
+   * @returns {ESDocConfig} handled config.
+   */
   onHandleConfig(config) {
     const ev = new PluginEvent({config});
     this._execHandler(&apos;onHandleConfig&apos;, ev);
     return ev.data.config;
   }
 
+  /**
+   * handle code.
+   * @param {string} code - original code.
+   * @returns {string} handled code.
+   */
   onHandleCode(code) {
     const ev = new PluginEvent({code});
     this._execHandler(&apos;onHandleCode&apos;, ev);
     return ev.data.code;
   }
 
+  /**
+   * handle code parser.
+   * @param {function(code: string)} parser - original js parser.
+   * @returns {function(code: string)} handled parser.
+   */
   onHandleCodeParser(parser) {
     const ev = new PluginEvent();
     ev.data.parser = parser;
@@ -177,31 +213,56 @@ class Plugin {
     return ev.data.parser;
   }
 
+  /**
+   * handle AST.
+   * @param {AST} ast - original ast.
+   * @returns {AST} handled AST.
+   */
   onHandleAST(ast) {
     const ev = new PluginEvent({ast});
     this._execHandler(&apos;onHandleAST&apos;, ev);
     return ev.data.ast;
   }
 
+  /**
+   * handle tag.
+   * @param {Tag} tag - original tag(s).
+   * @returns {Tag} handled tag.
+   */
   onHandleTag(tag) {
     const ev = new PluginEvent({tag});
     this._execHandler(&apos;onHandleTag&apos;, ev);
     return ev.data.tag;
   }
 
+  /**
+   * handle HTML.
+   * @param {string} html - original HTML.
+   * @returns {string} handled HTML.
+   */
   onHandleHTML(html) {
     const ev = new PluginEvent({html});
     this._execHandler(&apos;onHandleHTML&apos;, ev);
     return ev.data.html;
   }
 
+  /**
+   * handle complete
+   */
   onComplete() {
     const ev = new PluginEvent();
     this._execHandler(&apos;onComplete&apos;, ev);
   }
 }
 
-class PluginEvent {
+/**
+ * Plugin Event class.
+ */
+export class PluginEvent {
+  /**
+   * create instance.
+   * @param {Object} data - event content.
+   */
   constructor(data = {}) {
     this.data = copy(data);
   }
@@ -211,6 +272,9 @@ function copy(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
+/**
+ * Instance of Plugin class.
+ */
 export default new Plugin();
 </code></pre>
 </div>

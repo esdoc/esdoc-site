@@ -4363,7 +4363,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import path from 'path';\n\nclass Plugin {\n  constructor()  {\n    this._plugins = null;\n  }\n\n  init(plugins = []) {\n    this._plugins = copy(plugins);\n  }\n\n  _execHandler(handlerName, ev, giveOption = false) {\n    for (let item of this._plugins) {\n      let plugin;\n      if (item.name.match(/^[.\\/]/)) {\n        const pluginPath = path.resolve(item.name);\n        plugin = require(pluginPath);\n      } else {\n        module.paths.push('./node_modules');\n        plugin = require(item.name);\n        module.paths.pop();\n      }\n\n      if (!plugin[handlerName]) continue;\n\n      if (giveOption) ev.data.option = item.option;\n\n      plugin[handlerName](ev);\n    }\n  }\n\n  onStart() {\n    const ev = new PluginEvent();\n    this._execHandler('onStart', ev, true);\n  }\n\n  onHandleConfig(config) {\n    const ev = new PluginEvent({config});\n    this._execHandler('onHandleConfig', ev);\n    return ev.data.config;\n  }\n\n  onHandleCode(code) {\n    const ev = new PluginEvent({code});\n    this._execHandler('onHandleCode', ev);\n    return ev.data.code;\n  }\n\n  onHandleCodeParser(parser) {\n    const ev = new PluginEvent();\n    ev.data.parser = parser;\n    this._execHandler('onHandleCodeParser', ev);\n    return ev.data.parser;\n  }\n\n  onHandleAST(ast) {\n    const ev = new PluginEvent({ast});\n    this._execHandler('onHandleAST', ev);\n    return ev.data.ast;\n  }\n\n  onHandleTag(tag) {\n    const ev = new PluginEvent({tag});\n    this._execHandler('onHandleTag', ev);\n    return ev.data.tag;\n  }\n\n  onHandleHTML(html) {\n    const ev = new PluginEvent({html});\n    this._execHandler('onHandleHTML', ev);\n    return ev.data.html;\n  }\n\n  onComplete() {\n    const ev = new PluginEvent();\n    this._execHandler('onComplete', ev);\n  }\n}\n\nclass PluginEvent {\n  constructor(data = {}) {\n    this.data = copy(data);\n  }\n}\n\nfunction copy(obj) {\n  return JSON.parse(JSON.stringify(obj));\n}\n\nexport default new Plugin();\n"
+    "content": "import path from 'path';\n\n/**\n * Plugin system for your plugin.\n */\nclass Plugin {\n  /**\n   * create instance.\n   */\n  constructor()  {\n    this._plugins = null;\n  }\n\n  /**\n   * initialize with plugin property.\n   * @param {Array<{name: string, option: object}>} plugins - expect config.plugins property.\n   */\n  init(plugins = []) {\n    this._plugins = copy(plugins);\n  }\n\n  /**\n   * exec plugin handler.\n   * @param {string} handlerName - handler name(e.g. onHandleCode)\n   * @param {PluginEvent} ev - plugin event object.\n   * @param {boolean} [giveOption=false] - if true, event has plugin option.\n   * @private\n   */\n  _execHandler(handlerName, ev, giveOption = false) {\n    for (let item of this._plugins) {\n      let plugin;\n      if (item.name.match(/^[.\\/]/)) {\n        const pluginPath = path.resolve(item.name);\n        plugin = require(pluginPath);\n      } else {\n        module.paths.push('./node_modules');\n        plugin = require(item.name);\n        module.paths.pop();\n      }\n\n      if (!plugin[handlerName]) continue;\n\n      if (giveOption) ev.data.option = item.option;\n\n      plugin[handlerName](ev);\n    }\n  }\n\n  /**\n   * handle start.\n   */\n  onStart() {\n    const ev = new PluginEvent();\n    this._execHandler('onStart', ev, true);\n  }\n\n  /**\n   * handle config.\n   * @param {ESDocConfig} config - original esdoc config.\n   * @returns {ESDocConfig} handled config.\n   */\n  onHandleConfig(config) {\n    const ev = new PluginEvent({config});\n    this._execHandler('onHandleConfig', ev);\n    return ev.data.config;\n  }\n\n  /**\n   * handle code.\n   * @param {string} code - original code.\n   * @returns {string} handled code.\n   */\n  onHandleCode(code) {\n    const ev = new PluginEvent({code});\n    this._execHandler('onHandleCode', ev);\n    return ev.data.code;\n  }\n\n  /**\n   * handle code parser.\n   * @param {function(code: string)} parser - original js parser.\n   * @returns {function(code: string)} handled parser.\n   */\n  onHandleCodeParser(parser) {\n    const ev = new PluginEvent();\n    ev.data.parser = parser;\n    this._execHandler('onHandleCodeParser', ev);\n    return ev.data.parser;\n  }\n\n  /**\n   * handle AST.\n   * @param {AST} ast - original ast.\n   * @returns {AST} handled AST.\n   */\n  onHandleAST(ast) {\n    const ev = new PluginEvent({ast});\n    this._execHandler('onHandleAST', ev);\n    return ev.data.ast;\n  }\n\n  /**\n   * handle tag.\n   * @param {Tag} tag - original tag(s).\n   * @returns {Tag} handled tag.\n   */\n  onHandleTag(tag) {\n    const ev = new PluginEvent({tag});\n    this._execHandler('onHandleTag', ev);\n    return ev.data.tag;\n  }\n\n  /**\n   * handle HTML.\n   * @param {string} html - original HTML.\n   * @returns {string} handled HTML.\n   */\n  onHandleHTML(html) {\n    const ev = new PluginEvent({html});\n    this._execHandler('onHandleHTML', ev);\n    return ev.data.html;\n  }\n\n  /**\n   * handle complete\n   */\n  onComplete() {\n    const ev = new PluginEvent();\n    this._execHandler('onComplete', ev);\n  }\n}\n\n/**\n * Plugin Event class.\n */\nexport class PluginEvent {\n  /**\n   * create instance.\n   * @param {Object} data - event content.\n   */\n  constructor(data = {}) {\n    this.data = copy(data);\n  }\n}\n\nfunction copy(obj) {\n  return JSON.parse(JSON.stringify(obj));\n}\n\n/**\n * Instance of Plugin class.\n */\nexport default new Plugin();\n"
   },
   {
     "kind": "class",
@@ -4373,12 +4373,11 @@
     "memberof": "src/Plugin/Plugin.js",
     "longname": "src/Plugin/Plugin.js~PluginEvent",
     "access": null,
-    "export": false,
+    "export": true,
     "importPath": "esdoc/out/src/Plugin/Plugin.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 80,
-    "undocument": true,
+    "importStyle": "{PluginEvent}",
+    "description": "Plugin Event class.",
+    "lineNumber": 136,
     "interface": false
   },
   {
@@ -4389,18 +4388,18 @@
     "memberof": "src/Plugin/Plugin.js~PluginEvent",
     "longname": "src/Plugin/Plugin.js~PluginEvent#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 81,
-    "undocument": true,
+    "description": "create instance.",
+    "lineNumber": 141,
     "params": [
       {
-        "name": "data",
-        "optional": true,
+        "nullable": null,
         "types": [
-          "{}"
+          "Object"
         ],
-        "defaultRaw": {},
-        "defaultValue": "{}"
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "event content."
       }
     ],
     "generator": false
@@ -4414,7 +4413,7 @@
     "longname": "src/Plugin/Plugin.js~PluginEvent#data",
     "access": null,
     "description": null,
-    "lineNumber": 82,
+    "lineNumber": 142,
     "undocument": true,
     "type": {
       "types": [
@@ -4434,7 +4433,7 @@
     "importPath": "esdoc/out/src/Plugin/Plugin.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 86,
+    "lineNumber": 146,
     "undocument": true,
     "params": [
       {
@@ -4462,10 +4461,9 @@
     "export": true,
     "importPath": "esdoc/out/src/Plugin/Plugin.js",
     "importStyle": null,
-    "description": null,
-    "lineNumber": 3,
+    "description": "Plugin system for your plugin.",
+    "lineNumber": 6,
     "pseudoExport": true,
-    "undocument": true,
     "interface": false
   },
   {
@@ -4476,9 +4474,8 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "create instance.",
+    "lineNumber": 10,
     "params": [],
     "generator": false
   },
@@ -4491,7 +4488,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#_plugins",
     "access": null,
     "description": null,
-    "lineNumber": 5,
+    "lineNumber": 11,
     "undocument": true,
     "type": {
       "types": [
@@ -4507,18 +4504,18 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#init",
     "access": null,
-    "description": null,
-    "lineNumber": 8,
-    "undocument": true,
+    "description": "initialize with plugin property.",
+    "lineNumber": 18,
     "params": [
       {
-        "name": "plugins",
-        "optional": true,
+        "nullable": null,
         "types": [
-          "*[]"
+          "Array<{name: string, option: object}>"
         ],
-        "defaultRaw": [],
-        "defaultValue": "[]"
+        "spread": false,
+        "optional": false,
+        "name": "plugins",
+        "description": "expect config.plugins property."
       }
     ],
     "generator": false
@@ -4532,7 +4529,7 @@
     "longname": "src/Plugin/Plugin.js~Plugin#_plugins",
     "access": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 19,
     "undocument": true,
     "type": {
       "types": [
@@ -4547,31 +4544,41 @@
     "name": "_execHandler",
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#_execHandler",
-    "access": null,
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true,
+    "access": "private",
+    "description": "exec plugin handler.",
+    "lineNumber": 29,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "handlerName",
-        "types": [
-          "*"
-        ]
+        "description": "handler name(e.g. onHandleCode)"
       },
       {
+        "nullable": null,
+        "types": [
+          "PluginEvent"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "ev",
-        "types": [
-          "*"
-        ]
+        "description": "plugin event object."
       },
       {
-        "name": "giveOption",
-        "optional": true,
+        "nullable": null,
         "types": [
           "boolean"
         ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
         "defaultRaw": false,
-        "defaultValue": "false"
+        "name": "giveOption",
+        "description": "if true, event has plugin option."
       }
     ],
     "generator": false
@@ -4584,9 +4591,8 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onStart",
     "access": null,
-    "description": null,
-    "lineNumber": 32,
-    "undocument": true,
+    "description": "handle start.",
+    "lineNumber": 52,
     "params": [],
     "generator": false
   },
@@ -4598,21 +4604,33 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleConfig",
     "access": null,
-    "description": null,
-    "lineNumber": 37,
-    "undocument": true,
+    "description": "handle config.",
+    "lineNumber": 62,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{ESDocConfig} handled config."
+      }
+    ],
     "params": [
       {
-        "name": "config",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "ESDocConfig"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "original esdoc config."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "ESDocConfig"
+      ],
+      "spread": false,
+      "description": "handled config."
     },
     "generator": false
   },
@@ -4624,21 +4642,33 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleCode",
     "access": null,
-    "description": null,
-    "lineNumber": 43,
-    "undocument": true,
+    "description": "handle code.",
+    "lineNumber": 73,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} handled code."
+      }
+    ],
     "params": [
       {
-        "name": "code",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "code",
+        "description": "original code."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "handled code."
     },
     "generator": false
   },
@@ -4650,21 +4680,33 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleCodeParser",
     "access": null,
-    "description": null,
-    "lineNumber": 49,
-    "undocument": true,
+    "description": "handle code parser.",
+    "lineNumber": 84,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{function(code: string)} handled parser."
+      }
+    ],
     "params": [
       {
-        "name": "parser",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "function(code: string)"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "parser",
+        "description": "original js parser."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "function(code: string)"
+      ],
+      "spread": false,
+      "description": "handled parser."
     },
     "generator": false
   },
@@ -4676,21 +4718,33 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleAST",
     "access": null,
-    "description": null,
-    "lineNumber": 56,
-    "undocument": true,
+    "description": "handle AST.",
+    "lineNumber": 96,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{AST} handled AST."
+      }
+    ],
     "params": [
       {
-        "name": "ast",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "AST"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ast",
+        "description": "original ast."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "AST"
+      ],
+      "spread": false,
+      "description": "handled AST."
     },
     "generator": false
   },
@@ -4702,21 +4756,33 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleTag",
     "access": null,
-    "description": null,
-    "lineNumber": 62,
-    "undocument": true,
+    "description": "handle tag.",
+    "lineNumber": 107,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Tag} handled tag."
+      }
+    ],
     "params": [
       {
-        "name": "tag",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Tag"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tag",
+        "description": "original tag(s)."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Tag"
+      ],
+      "spread": false,
+      "description": "handled tag."
     },
     "generator": false
   },
@@ -4728,21 +4794,33 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onHandleHTML",
     "access": null,
-    "description": null,
-    "lineNumber": 68,
-    "undocument": true,
+    "description": "handle HTML.",
+    "lineNumber": 118,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} handled HTML."
+      }
+    ],
     "params": [
       {
-        "name": "html",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "html",
+        "description": "original HTML."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "handled HTML."
     },
     "generator": false
   },
@@ -4754,9 +4832,8 @@
     "memberof": "src/Plugin/Plugin.js~Plugin",
     "longname": "src/Plugin/Plugin.js~Plugin#onComplete",
     "access": null,
-    "description": null,
-    "lineNumber": 74,
-    "undocument": true,
+    "description": "handle complete",
+    "lineNumber": 127,
     "params": [],
     "generator": false
   },
@@ -4771,9 +4848,8 @@
     "export": true,
     "importPath": "esdoc/out/src/Plugin/Plugin.js",
     "importStyle": "plugin",
-    "description": null,
-    "lineNumber": 90,
-    "undocument": true,
+    "description": "Instance of Plugin class.",
+    "lineNumber": 153,
     "type": {
       "types": [
         "src/Plugin/Plugin.js~Plugin"
@@ -5316,7 +5392,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import fs from 'fs';\nimport path from 'path';\nimport escape from 'escape-html';\nimport IceCap from 'ice-cap';\nimport {shorten, parseExample} from './util.js';\nimport DocResolver from './DocResolver.js';\nimport NPMUtil from '../../Util/NPMUtil.js';\n\n/**\n * Builder base class.\n */\nexport default class DocBuilder {\n  /**\n   * create instance.\n   * @param {Taffy} data - doc object database.\n   * @param {ESDocConfig} config - esdoc config is used build output.\n   */\n  constructor(data, config) {\n    this._data = data;\n    this._config = config;\n    new DocResolver(this).resolve();\n  }\n\n  /**\n   * execute building output.\n   * @abstract\n   * @param {function} callback - is called with some data.\n   */\n  exec(callback) {\n  }\n\n  /**\n   * find doc object.\n   * @param {...Object} cond - find condition.\n   * @returns {DocObject[]} found doc objects.\n   * @private\n   */\n  _find(...cond) {\n    return this._orderedFind(null, ...cond);\n  }\n\n  /**\n   * fuzzy find doc object by name.\n   * - equal with longname\n   * - equal with name\n   * - include in longname\n   * - include in ancestor\n   *\n   * @param {string} name - target identifier name.\n   * @param {string} [kind] - target kind.\n   * @returns {DocObject[]} found doc objects.\n   * @private\n   */\n  _findByName(name, kind = null) {\n    let docs;\n\n    if (kind) {\n      docs = this._orderedFind(null, {longname: name, kind: kind});\n    } else {\n      docs = this._orderedFind(null, {longname: name});\n    }\n    if (docs.length) return docs;\n\n    if (kind) {\n      docs = this._orderedFind(null, {name: name, kind: kind});\n    } else {\n      docs = this._orderedFind(null, {name: name});\n    }\n    if (docs.length) return docs;\n\n    let regexp = new RegExp(`[~]\\\\${name}$`); // if name is `*`, need to escape.\n    if (kind) {\n      docs = this._orderedFind(null, {longname: {regex: regexp}, kind: kind});\n    } else {\n      docs = this._orderedFind(null, {longname: {regex: regexp}});\n    }\n    if (docs.length) return docs;\n\n    // inherited method?\n    let matched = name.match(/(.*)[.#](.*)$/); // instance method(Foo#bar) or static method(Foo.baz)\n    if (matched) {\n      let parent = matched[1];\n      let childName = matched[2];\n      let parentDoc = this._findByName(parent, 'class')[0];\n      if (parentDoc && parentDoc._custom_extends_chains) {\n        for (let superLongname of parentDoc._custom_extends_chains) {\n          let docs = this._find({memberof: superLongname, name: childName});\n          if (docs.length) return docs;\n        }\n      }\n    }\n\n    return [];\n  }\n\n  /**\n   * find doc objects that is ordered.\n   * @param {string} order - doc objects order(``column asec`` or ``column desc``).\n   * @param {...Object} cond - condition objects\n   * @returns {DocObject[]} found doc objects.\n   * @private\n   */\n  _orderedFind(order, ...cond) {\n    let data = this._data(...cond);\n\n    if (order) {\n      return data.order(order + ', name asec').map(v => v);\n    } else {\n      return data.order('name asec').map(v => v);\n    }\n  }\n\n  /**\n   * read html template.\n   * @param {string} fileName - template file name.\n   * @return {string} html of template.\n   * @private\n   */\n  _readTemplate(fileName) {\n    let filePath = path.resolve(__dirname, `./template/${fileName}`);\n    return fs.readFileSync(filePath, {encoding: 'utf-8'});\n  }\n\n  /**\n   * get target's essential info.\n   * @returns {{title: string, version: string, url: string}}\n   * @private\n   */\n  _getInfo() {\n    let config = this._config;\n    let packageObj = {};\n    if (config.package) {\n      let packagePath = config.package;\n      let json = fs.readFileSync(packagePath, {encoding: 'utf-8'});\n      packageObj = JSON.parse(json);\n    }\n\n    // repository url\n    let url = '';\n    if (packageObj.repository) {\n      if (packageObj.repository.url) {\n        url = packageObj.repository.url;\n      } else {\n        url = packageObj.repository;\n      }\n\n      // url: git@github.com:foo/bar.git\n      if (url.indexOf('git@github.com:') === 0) {\n        let matched = url.match(/^git@github\\.com:(.*)\\.git$/);\n        if (matched && matched[1]) {\n          url = `https://github.com/${matched[1]}`;\n        }\n      }\n\n      // url: foo/bar\n      if (url.match(/^[\\w\\d\\-_]+\\/[\\w\\d\\-_]+$/)) {\n        url = `https://github.com/${url}`;\n      }\n    }\n\n    let indexInfo = {\n      title: config.title || packageObj.name,\n      version: config.version || packageObj.version,\n      url: url\n    };\n\n    return indexInfo;\n  }\n\n  /**\n   * build common layout output.\n   * @return {IceCap} layout output.\n   * @private\n   */\n  _buildLayoutDoc() {\n    let info = this._getInfo();\n\n    let ice = new IceCap(this._readTemplate('layout.html'), {autoClose: false});\n\n    let packageObj = NPMUtil.findPackage();\n    if (packageObj) {\n      ice.text('esdocVersion', `(${packageObj.version})`);\n    } else {\n      ice.drop('esdocVersion');\n    }\n\n    if (info.url) {\n      ice.attr('repoURL', 'href', info.url);\n      if (info.url.match(new RegExp('^https?://github.com/'))) {\n        ice.attr('repoURL', 'class', 'repo-url-github');\n      }\n    } else {\n      ice.drop('repoURL');\n    }\n\n    ice.drop('testLink', !this._config.test);\n\n    // see StaticFileBuilder#exec\n    ice.loop('userScript', this._config.scripts || [], (i, userScript, ice)=>{\n      let name = `user/script/${i}-${path.basename(userScript)}`;\n      ice.attr('userScript', 'src', name);\n    });\n\n    ice.loop('userStyle', this._config.styles || [], (i, userStyle, ice)=>{\n      let name = `user/css/${i}-${path.basename(userStyle)}`;\n      ice.attr('userStyle', 'href', name);\n    });\n\n    ice.load('nav', this._buildNavDoc());\n    return ice;\n  }\n\n  /**\n   * build common navigation output.\n   * @return {IceCap} navigation output.\n   * @private\n   */\n  _buildNavDoc() {\n    let html = this._readTemplate('nav.html');\n    let ice = new IceCap(html);\n\n    // class\n    let classDocs = this._find({kind: 'class', interface: false});\n    ice.drop('classWrap', !classDocs.length);\n    ice.loop('classDoc', classDocs, (i, classDoc, ice)=>{\n      ice.load('classDoc', this._buildDocLinkHTML(classDoc.longname));\n    });\n\n    // interface\n    let interfaceDocs = this._find({kind: 'class', interface: true});\n    ice.drop('interfaceWrap', !interfaceDocs.length);\n    ice.loop('interfaceDoc', interfaceDocs, (i, interfaceDoc, ice)=>{\n      ice.load('interfaceDoc', this._buildDocLinkHTML(interfaceDoc.longname));\n    });\n\n    // function\n    let functionDocs = this._find({kind: 'function'});\n    ice.drop('functionWrap', !functionDocs.length);\n    ice.loop('functionDoc', functionDocs, (i, functionDoc, ice)=>{\n      ice.load('functionDoc', this._buildDocLinkHTML(functionDoc.longname));\n    });\n\n    // variable\n    let variableDocs = this._find({kind: 'variable'});\n    ice.drop('variableWrap', !variableDocs.length);\n    ice.loop('variableDoc', variableDocs, (i, variableDoc, ice)=>{\n      ice.load('variableDoc', this._buildDocLinkHTML(variableDoc.longname));\n    });\n\n    // typedef\n    let typedefDocs = this._find({kind: 'typedef'});\n    ice.drop('typedefWrap', !typedefDocs.length);\n    ice.loop('typedefDoc', typedefDocs, (i, typedefDoc, ice)=>{\n      ice.load('typedefDoc', this._buildDocLinkHTML(typedefDoc.longname));\n    });\n\n    // external\n    let externalDocs = this._find({kind: 'external'}).filter(v => !v.builtinExternal);\n    ice.drop('externalWrap', !externalDocs.length);\n    ice.loop('externalDoc', externalDocs, (i, externalDoc, ice)=>{\n      ice.load('externalDoc', this._buildDocLinkHTML(externalDoc.longname));\n    });\n\n    return ice;\n  }\n\n  /**\n   * find doc object for each access.\n   * @param {DocObject} doc - parent doc object.\n   * @param {string} kind - kind property condition.\n   * @param {boolean} isStatic - static property condition\n   * @returns {Array[]} found doc objects.\n   * @property {Array[]} 0 - ['Public', DocObject[]]\n   * @property {Array[]} 1 - ['Protected', DocObject[]]\n   * @property {Array[]} 2 - ['Private', DocObject[]]\n   * @private\n   */\n  _findAccessDocs(doc, kind, isStatic = true) {\n    let cond = {kind, static: isStatic};\n\n    if (doc) cond.memberof = doc.longname;\n\n    switch (kind) {\n      case 'class':\n        cond.interface = false;\n        break;\n      case 'interface':\n        cond.kind = 'class';\n        cond.interface = true;\n        break;\n      case 'member':\n        cond.kind = ['member', 'get', 'set'];\n        break;\n    }\n\n    let publicDocs = this._find(cond, {access: 'public'});\n    let protectedDocs = this._find(cond, {access: 'protected'});\n    let privateDocs = this._find(cond, {access: 'private'});\n    let accessDocs = [['Public', publicDocs], ['Protected', protectedDocs], ['Private', privateDocs]];\n\n    return accessDocs;\n  }\n\n  /**\n   * build summary output html by parent doc.\n   * @param {DocObject} doc - parent doc object.\n   * @param {string} kind - target kind property.\n   * @param {string} title - summary title.\n   * @param {boolean} [isStatic=true] - target static property.\n   * @returns {string} html of summary.\n   * @private\n   */\n  _buildSummaryHTML(doc, kind, title, isStatic = true) {\n    let accessDocs = this._findAccessDocs(doc, kind, isStatic);\n    let html = '';\n    for (let accessDoc of accessDocs) {\n      let docs = accessDoc[1];\n      if (!docs.length) continue;\n\n      let prefix = '';\n      if (docs[0].static) prefix = 'Static ';\n      let _title = `${prefix}${accessDoc[0]} ${title}`;\n\n      let result = this._buildSummaryDoc(docs, _title);\n      if (result) {\n        html += result.html;\n      }\n    }\n\n    return html;\n  }\n\n  /**\n   * build summary output html by docs.\n   * @param {DocObject[]} docs - target docs.\n   * @param {string} title - summary title.\n   * @param {boolean} innerLink - if true, link in summary is inner link.\n   * @return {IceCap} summary output.\n   * @private\n   */\n  _buildSummaryDoc(docs, title, innerLink) {\n    if (docs.length === 0) return;\n\n    let ice = new IceCap(this._readTemplate('summary.html'));\n\n    ice.text('title', title);\n    ice.loop('target', docs, (i, doc, ice)=>{\n      ice.text('generator', doc.generator ? '*' : '');\n      ice.load('name', this._buildDocLinkHTML(doc.longname, null, innerLink, doc.kind));\n      ice.load('signature', this._buildSignatureHTML(doc));\n      ice.load('description', shorten(doc));\n      ice.text('abstract', doc.abstract ? 'abstract' : '');\n      ice.text('access', doc.access);\n      if (['get', 'set'].includes(doc.kind)) {\n        ice.text('kind', doc.kind);\n      } else {\n        ice.drop('kind');\n      }\n\n      if (['member', 'method', 'get', 'set'].includes(doc.kind)) {\n        ice.text('static', doc.static ? 'static' : '');\n      } else {\n        ice.drop('static');\n      }\n\n      ice.text('since', doc.since);\n      ice.load('deprecated', this._buildDeprecatedHTML(doc));\n      ice.load('experimental', this._buildExperimentalHTML(doc));\n      ice.text('version', doc.version);\n    });\n\n    return ice;\n  }\n\n  /**\n   * build detail output html by parent doc.\n   * @param {DocObject} doc - parent doc object.\n   * @param {string} kind - target kind property.\n   * @param {string} title - detail title.\n   * @param {boolean} [isStatic=true] - target static property.\n   * @returns {string} html of detail.\n   * @private\n   */\n  _buildDetailHTML(doc, kind, title, isStatic = true) {\n    let accessDocs = this._findAccessDocs(doc, kind, isStatic);\n    let html = '';\n    for (let accessDoc of accessDocs) {\n      let docs = accessDoc[1];\n      if (!docs.length) continue;\n\n      let prefix = '';\n      if (docs[0].static) prefix = 'Static ';\n      let _title = `${prefix}${accessDoc[0]} ${title}`;\n\n      let result = this._buildDetailDocs(docs, _title);\n      if (result) html += result.html;\n    }\n\n    return html;\n  }\n\n  /**\n   * build detail output html by docs.\n   * @param {DocObject[]} docs - target docs.\n   * @param {string} title - detail title.\n   * @return {IceCap} detail output.\n   * @private\n   */\n  _buildDetailDocs(docs, title) {\n    let ice = new IceCap(this._readTemplate('details.html'));\n\n    ice.text('title', title);\n    ice.drop('title', !docs.length);\n\n    ice.loop('detail', docs, (i, doc, ice)=>{\n      let scope = doc.static ? 'static' : 'instance';\n      ice.attr('anchor', 'id', `${scope}-${doc.kind}-${doc.name}`);\n      ice.text('generator', doc.generator ? '*' : '');\n      ice.text('name', doc.name);\n      ice.load('signature', this._buildSignatureHTML(doc));\n      ice.load('description', doc.description);\n      ice.text('abstract', doc.abstract ? 'abstract' : '');\n      ice.text('access', doc.access);\n      if (['get', 'set'].includes(doc.kind)) {\n        ice.text('kind', doc.kind);\n      } else {\n        ice.drop('kind');\n      }\n      if (doc.export && doc.importPath && doc.importStyle) {\n        let link = this._buildFileDocLinkHTML(doc, doc.importPath);\n        ice.into('importPath', `import ${doc.importStyle} from '${link}'`, (code, ice)=>{\n          ice.load('importPathCode', code);\n        });\n      } else {\n        ice.drop('importPath');\n      }\n\n      if (['member', 'method', 'get', 'set'].includes(doc.kind)) {\n        ice.text('static', doc.static ? 'static' : '');\n      } else {\n        ice.drop('static');\n      }\n\n      ice.load('source', this._buildFileDocLinkHTML(doc, 'source'));\n      ice.text('since', doc.since, 'append');\n      ice.load('deprecated', this._buildDeprecatedHTML(doc));\n      ice.load('experimental', this._buildExperimentalHTML(doc));\n      ice.text('version', doc.version, 'append');\n      ice.load('see', this._buildDocsLinkHTML(doc.see), 'append');\n      ice.load('todo', this._buildDocsLinkHTML(doc.todo), 'append');\n      ice.load('override', this._buildOverrideMethod(doc));\n\n      if (['method', 'constructor', 'function'].indexOf(doc.kind) !== -1) {\n        ice.load('properties', this._buildProperties(doc.params, 'Params:'));\n      } else {\n        ice.load('properties', this._buildProperties(doc.properties, 'Properties:'));\n      }\n\n      // return\n      if (doc.return) {\n        ice.load('returnDescription', doc.return.description);\n        let typeNames = [];\n        for (let typeName of doc.return.types) {\n          typeNames.push(this._buildTypeDocLinkHTML(typeName));\n        }\n        if (typeof doc.return.nullable === 'boolean') {\n          let nullable = doc.return.nullable;\n          ice.load('returnType', typeNames.join(' | ') + ` (nullable: ${nullable})`);\n        } else {\n          ice.load('returnType', typeNames.join(' | '));\n        }\n\n        ice.load('returnProperties', this._buildProperties(doc.properties, 'Return Properties:'));\n      } else {\n        ice.drop('returnParams');\n      }\n\n      // throws\n      if (doc.throws) {\n        ice.loop('throw', doc.throws, (i, exceptionDoc, ice)=>{\n          ice.load('throwName', this._buildDocLinkHTML(exceptionDoc.types[0]));\n          ice.load('throwDesc', exceptionDoc.description);\n        });\n      } else {\n        ice.drop('throwWrap');\n      }\n\n      // fires\n      if (doc.emits) {\n        ice.loop('emit', doc.emits, (i, emitDoc, ice)=>{\n          ice.load('emitName', this._buildDocLinkHTML(emitDoc.types[0]));\n          ice.load('emitDesc', emitDoc.description);\n        });\n      } else {\n        ice.drop('emitWrap');\n      }\n\n      // listens\n      if (doc.listens) {\n        ice.loop('listen', doc.listens, (i, listenDoc, ice)=>{\n          ice.load('listenName', this._buildDocLinkHTML(listenDoc.types[0]));\n          ice.load('listenDesc', listenDoc.description);\n        });\n      } else {\n        ice.drop('listenWrap');\n      }\n\n      // example\n      ice.into('example', doc.examples, (examples, ice)=>{\n        ice.loop('exampleDoc', examples, (i, exampleDoc, ice)=>{\n          let parsed = parseExample(exampleDoc);\n          ice.text('exampleCode', parsed.body);\n          ice.text('exampleCaption', parsed.caption);\n        });\n      });\n\n      // tests\n      ice.into('tests', doc._custom_tests, (tests, ice)=>{\n        ice.loop('test', tests, (i, test, ice)=>{\n          let testDoc = this._find({longname: test})[0];\n          ice.load('test', this._buildFileDocLinkHTML(testDoc, testDoc.testFullDescription));\n        });\n      });\n    });\n\n    return ice;\n  }\n\n  /**\n   * get output html page title. use ``title`` in {@link ESDocConfig}.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} page title.\n   * @private\n   */\n  _getTitle(doc = '') {\n    let name = doc.name || doc.toString();\n\n    if (!name) {\n      if (this._config.title) {\n        return `${this._config.title} API Document`;\n      } else {\n        return 'API Document';\n      }\n    }\n\n    if (this._config.title) {\n      return `${name} | ${this._config.title} API Document`;\n    } else {\n      return `${name} | API Document`;\n    }\n  }\n\n  /**\n   * get base url html page. it is used html base tag.\n   * @param {string} fileName - output file path.\n   * @returns {string} base url.\n   * @private\n   */\n  _getBaseUrl(fileName) {\n    let baseUrl = '../'.repeat(fileName.split('/').length - 1);\n    return baseUrl;\n  }\n\n  /**\n   * gat url of output html page.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} url of output html. it is relative path from output root dir.\n   * @private\n   */\n  _getURL(doc) {\n    let inner = false;\n    if (['variable', 'function', 'member', 'typedef', 'method', 'constructor', 'get', 'set'].includes(doc.kind)) {\n      inner = true\n    }\n\n    if (inner) {\n      let scope = doc.static ? 'static' : 'instance';\n      let fileName = this._getOutputFileName(doc);\n      return `${fileName}#${scope}-${doc.kind}-${doc.name}`;\n    } else {\n      let fileName = this._getOutputFileName(doc);\n      return fileName;\n    }\n  }\n\n  /**\n   * get file name of output html page.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} file name.\n   * @private\n   */\n  _getOutputFileName(doc) {\n    switch (doc.kind) {\n      case 'variable':\n        return 'variable/index.html';\n      case 'function':\n        return 'function/index.html';\n      case 'member': // fall\n      case 'method': // fall\n      case 'constructor': // fall\n      case 'set': // fall\n      case 'get': // fal\n        let parentDoc = this._find({longname: doc.memberof})[0];\n        return this._getOutputFileName(parentDoc);\n      case 'external':\n        return 'external/index.html';\n      case 'typedef':\n        return 'typedef/index.html';\n      case 'class':\n        return `class/${doc.longname}.html`;\n      case 'file':\n        return `file/${doc.longname}.html`;\n      case 'testFile':\n        return `test-file/${doc.longname}.html`;\n      case 'testDescribe':\n        return `test.html`;\n      case 'testIt':\n        return `test.html`;\n      default:\n        throw new Error('DocBuilder: can not resolve file name.');\n    }\n  }\n\n  /**\n   * build html link to file page.\n   * @param {DocObject} doc - target doc object.\n   * @param {string} text - link text.\n   * @returns {string} html of link.\n   * @private\n   */\n  _buildFileDocLinkHTML(doc, text = null) {\n    if (!doc) return '';\n\n    let fileDoc;\n    if (doc.kind === 'file' || doc.kind === 'testFile') {\n      fileDoc = doc;\n    } else {\n      let filePath = doc.longname.split('~')[0];\n      fileDoc = this._find({kind: ['file', 'testFile'], longname: filePath})[0];\n    }\n\n    if (!fileDoc) return '';\n\n    if (!text) text = fileDoc.name;\n\n    if (doc.kind === 'file' || doc.kind === 'testFile') {\n      return `<span><a href=\"${this._getURL(fileDoc)}\">${text}</a></span>`;\n    } else {\n      return `<span><a href=\"${this._getURL(fileDoc)}#lineNumber${doc.lineNumber}\">${text}</a></span>`;\n    }\n  }\n\n  /**\n   * build html link of type.\n   * @param {string} typeName - type name(e.g. ``number[]``, ``Map<number, string}``)\n   * @returns {string} html of link.\n   * @private\n   * @todo re-implement with parser combinator.\n   */\n  _buildTypeDocLinkHTML(typeName) {\n    // e.g. number[]\n    let matched = typeName.match(/^(.*?)\\[\\]$/);\n    if (matched) {\n      typeName = matched[1];\n      return `<span>${this._buildDocLinkHTML(typeName, typeName)}<span>[]</span></span>`;\n    }\n\n    // e.g. function(a: number, b: string): boolean\n    matched = typeName.match(/function\\((.*?)\\)(.*)/);\n    if (matched) {\n      let functionLink = this._buildDocLinkHTML('function');\n      if (!matched[1] && !matched[2]) return `<span>${functionLink}<span>()</span></span>`;\n\n      let innerTypes = [];\n      if (matched[1]) {\n        // bad hack: Map.<string, boolean> => Map.<string\\Z boolean>\n        // bad hack: {a: string, b: boolean} => {a\\Y string\\Z b\\Y boolean}\n        let inner = matched[1]\n          .replace(/<.*?>/g, (a)=> a.replace(/,/g, '\\\\Z'))\n          .replace(/{.*?}/g, (a)=> a.replace(/,/g, '\\\\Z').replace(/:/g, '\\\\Y'));\n        innerTypes = inner.split(',').map((v)=>{\n          let tmp = v.split(':').map((v)=> v.trim());\n          let paramName = tmp[0];\n          let typeName = tmp[1].replace(/\\\\Z/g, ',').replace(/\\\\Y/g, ':');\n          return `${paramName}: ${this._buildTypeDocLinkHTML(typeName)}`;\n        });\n      }\n\n      let returnType = '';\n      if (matched[2]) {\n        let type = matched[2].split(':')[1];\n        if (type) returnType = ': ' + this._buildTypeDocLinkHTML(type.trim());\n      }\n\n      return `<span>${functionLink}<span>(${innerTypes.join(', ')})</span>${returnType}</span>`;\n    }\n\n    // e.g. {a: number, b: string}\n    matched = typeName.match(/^\\{(.*?)\\}$/);\n    if (matched) {\n      if (!matched[1]) return '{}';\n\n      // bad hack: Map.<string, boolean> => Map.<string\\Z boolean>\n      // bad hack: {a: string, b: boolean} => {a\\Y string\\Z b\\Y boolean}\n      let inner = matched[1]\n        .replace(/<.*?>/g, (a)=> a.replace(/,/g, '\\\\Z'))\n        .replace(/{.*?}/g, (a)=> a.replace(/,/g, '\\\\Z').replace(/:/g, '\\\\Y'));\n      let innerTypes = inner.split(',').map((v)=>{\n        let tmp = v.split(':').map((v)=> v.trim());\n        let paramName = tmp[0];\n        let typeName = tmp[1].replace(/\\\\Z/g, ',').replace(/\\\\Y/g, ':');\n        return `${paramName}: ${this._buildTypeDocLinkHTML(typeName)}`;\n      });\n\n      return `{${innerTypes.join(', ')}}`;\n    }\n\n    // e.g. Map<number, string>\n    matched = typeName.match(/^(.*?)\\.?<(.*?)>$/);\n    if (matched) {\n      let mainType = matched[1];\n      // bad hack: Map.<string, boolean> => Map.<string\\Z boolean>\n      // bad hack: {a: string, b: boolean} => {a\\Y string\\Z b\\Y boolean}\n      let inner = matched[2]\n        .replace(/<.*?>/g, (a)=> a.replace(/,/g, '\\\\Z'))\n        .replace(/{.*?}/g, (a)=> a.replace(/,/g, '\\\\Z').replace(/:/g, '\\\\Y'));\n      let innerTypes = inner.split(',').map((v) => {\n        v = v.trim().replace(/\\\\Z/g, ',').replace(/\\\\Y/g, ':');\n        return this._buildTypeDocLinkHTML(v);\n      });\n\n      let html = `${this._buildDocLinkHTML(mainType, mainType)}<${innerTypes.join(', ')}>`;\n      return html;\n    }\n\n    if (typeName.indexOf('...') === 0) {\n      typeName = typeName.replace('...', '');\n      return '...' + this._buildDocLinkHTML(typeName);\n    } else {\n      return this._buildDocLinkHTML(typeName);\n    }\n  }\n\n  /**\n   * build html link to identifier.\n   * @param {string} longname - link to this.\n   * @param {string} [text] - link text. default is name property of doc object.\n   * @param {boolean} [inner=false] - if true, use inner link.\n   * @param {string} [kind] - specify target kind property.\n   * @returns {string} html of link.\n   * @private\n   */\n  _buildDocLinkHTML(longname, text = null, inner = false, kind = null) {\n    if (!longname) return '';\n\n    if (typeof longname !== 'string') throw new Error(JSON.stringify(longname));\n\n    let doc = this._findByName(longname, kind)[0];\n\n    if (!doc) {\n      // if longname is HTML tag, not escape.\n      if (longname.indexOf('<') === 0) {\n        return `<span>${longname}</span>`;\n      } else {\n        return `<span>${escape(text || longname)}</span>`;\n      }\n    }\n\n    if (doc.kind === 'external') {\n      text = doc.name;\n      return `<span><a href=\"${doc.externalLink}\">${text}</a></span>`;\n    } else {\n      text = escape(text || doc.name);\n      let url = this._getURL(doc, inner);\n      if (url) {\n        return `<span><a href=\"${url}\">${text}</a></span>`;\n      } else {\n        return `<span>${text}</span>`;\n      }\n    }\n  }\n\n  /**\n   * build html links to identifiers\n   * @param {string[]} longnames - link to these.\n   * @param {string} [text] - link text. default is name property of doc object.\n   * @param {boolean} [inner=false] - if true, use inner link.\n   * @param {string} [separator='\\n'] - used link separator.\n   * @returns {string} html links.\n   * @private\n   */\n  _buildDocsLinkHTML(longnames, text = null, inner = false, separator = '\\n') {\n    if (!longnames) return '';\n    if (!longnames.length) return '';\n\n    let links = [];\n    for (var longname of longnames) {\n      if (!longname) continue;\n      let link = this._buildDocLinkHTML(longname, text, inner);\n      links.push(`<li>${link}</li>`);\n    }\n\n    if (!links.length) return '';\n\n    return `<ul>${links.join(separator)}</ul>`;\n  }\n\n  /**\n   * build identifier signature html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} signature html.\n   * @private\n   */\n  _buildSignatureHTML(doc) {\n    // call signature\n    let callSignatures = [];\n    if (doc.params) {\n      for (let param of doc.params) {\n        let paramName = param.name;\n        if (paramName.indexOf('.') !== -1) continue;\n\n        let types = [];\n        for (let typeName of param.types) {\n          types.push(this._buildTypeDocLinkHTML(typeName));\n        }\n\n        callSignatures.push(`${paramName}: ${types.join(' | ')}`);\n      }\n    }\n\n    // return signature\n    let returnSignatures = [];\n    if (doc.return) {\n      for (let typeName of doc.return.types) {\n        returnSignatures.push(this._buildTypeDocLinkHTML(typeName));\n      }\n    }\n\n    // type signature\n    let typeSignatures = [];\n    if (doc.type) {\n      for (let typeName of doc.type.types) {\n        typeSignatures.push(this._buildTypeDocLinkHTML(typeName));\n      }\n    }\n\n    // callback is not need type. because type is always function.\n    if (doc.kind === 'function') {\n      typeSignatures = [];\n    }\n\n    let html = '';\n    if (callSignatures.length) {\n      html = `(${callSignatures.join(', ')})`;\n    } else if (['function', 'method'].includes(doc.kind)) {\n      html = '()';\n    }\n    if (returnSignatures.length) html = `${html}: ${returnSignatures.join(' | ')}`;\n    if (typeSignatures.length) html = `${html}: ${typeSignatures.join(' | ')}`;\n\n    return html;\n  }\n\n  /**\n   * build properties output.\n   * @param {ParsedParam[]} [properties=[]] - properties in doc object.\n   * @param {string} title - output title.\n   * @return {IceCap} built properties output.\n   * @private\n   */\n  _buildProperties(properties = [], title = 'Properties:') {\n    let ice = new IceCap(this._readTemplate('properties.html'));\n\n    ice.text('title', title);\n\n    ice.loop('property', properties, (i, prop, ice)=>{\n      ice.autoDrop = false;\n      ice.attr('property', 'data-depth', prop.name.split('.').length - 1);\n      ice.text('name', prop.name);\n      ice.attr('name', 'data-depth', prop.name.split('.').length - 1);\n      ice.load('description', prop.description);\n\n      let typeNames = [];\n      for (var typeName of prop.types) {\n        typeNames.push(this._buildTypeDocLinkHTML(typeName));\n      }\n      ice.load('type', typeNames.join(' | '));\n\n      // appendix\n      let appendix = [];\n      if (prop.optional) {\n        appendix.push('<li>optional</li>');\n      }\n      if ('defaultValue' in prop) {\n        appendix.push(`<li>default: ${prop.defaultValue}</li>`);\n      }\n      if (typeof prop.nullable === 'boolean') {\n        appendix.push(`<li>nullable: ${prop.nullable}</li>`);\n      }\n      if (appendix.length) {\n        ice.load('appendix', `<ul>${appendix.join('\\n')}</ul>`);\n      } else {\n        ice.text('appendix', '');\n      }\n    });\n\n    if (!properties || properties.length === 0) {\n      ice.drop('properties');\n    }\n\n    return ice;\n  }\n\n  /**\n   * build deprecated html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} if doc is not deprecated, returns empty.\n   * @private\n   */\n  _buildDeprecatedHTML(doc) {\n    if (doc.deprecated) {\n      let deprecated = [`this ${doc.kind} was deprecated.`];\n      if (typeof doc.deprecated === 'string') deprecated.push(doc.deprecated);\n      return deprecated.join(' ');\n    } else {\n      return '';\n    }\n  }\n\n  /**\n   * build experimental html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} if doc is not experimental, returns empty.\n   * @private\n   */\n  _buildExperimentalHTML(doc) {\n    if (doc.experimental) {\n      let experimental = [`this ${doc.kind} is experimental.`];\n      if (typeof doc.experimental === 'string') experimental.push(doc.experimental);\n      return experimental.join(' ');\n    } else {\n      return '';\n    }\n  }\n\n  /**\n   * build method of ancestor class link html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} html link. if doc does not override ancestor method, returns empty.\n   * @private\n   */\n  _buildOverrideMethod(doc) {\n    let parentDoc = this._findByName(doc.memberof)[0];\n    if (!parentDoc) return '';\n    if (!parentDoc._custom_extends_chains) return;\n\n    let chains = [...parentDoc._custom_extends_chains].reverse();\n    for (let longname of chains) {\n      let superClassDoc = this._findByName(longname)[0];\n      if (!superClassDoc) continue;\n\n      let superMethodDoc = this._find({name: doc.name, memberof: superClassDoc.longname})[0];\n      if (!superMethodDoc) continue;\n\n      return this._buildDocLinkHTML(superMethodDoc.longname, `${superClassDoc.name}#${superMethodDoc.name}`, true);\n    }\n  }\n\n  /**\n   * build coverage html.\n   * @param {CoverageObject} coverageObj - target coverage object.\n   * @returns {string} html of coverage badge.\n   * @private\n   * @deprecated\n   */\n  _buildCoverageHTML(coverageObj) {\n    let coverage = Math.floor(100 * coverageObj.actualCount / coverageObj.expectCount);\n    let colorClass;\n    if (coverage < 50) {\n      colorClass = 'esdoc-coverage-low';\n    } else if (coverage < 90) {\n      colorClass = 'esdoc-coverage-middle';\n    } else {\n      colorClass = 'esdoc-coverage-high';\n    }\n\n    let html = `<a href=\"https://esdoc.org\" class=\"esdoc-coverage-wrap\">\n    <span class=\"esdoc-coverage-label\">document</span><span class=\"esdoc-coverage-ratio ${colorClass}\">${coverage}%</span>\n    </a>`;\n\n    return html;\n  }\n\n  //_buildAuthorHTML(doc, separator = '\\n') {\n  //  if (!doc.author) return '';\n  //\n  //  var html = [];\n  //  for (var author of doc.author) {\n  //    var matched = author.match(/(.*?) *<(.*?)>/);\n  //    if (matched) {\n  //      var name = matched[1];\n  //      var link = matched[2];\n  //      if (link.indexOf('http') === 0) {\n  //        html.push(`<li><a href=\"${link}\">${name}</a></li>`)\n  //      } else {\n  //        html.push(`<li><a href=\"mailto:${link}\">${name}</a></li>`)\n  //      }\n  //    } else {\n  //      html.push(`<li>${author}</li>`)\n  //    }\n  //  }\n  //\n  //  return `<ul>${html.join(separator)}</ul>`;\n  //}\n}\n"
+    "content": "import fs from 'fs';\nimport path from 'path';\nimport escape from 'escape-html';\nimport IceCap from 'ice-cap';\nimport {shorten, parseExample} from './util.js';\nimport DocResolver from './DocResolver.js';\nimport NPMUtil from '../../Util/NPMUtil.js';\n\n/**\n * Builder base class.\n */\nexport default class DocBuilder {\n  /**\n   * create instance.\n   * @param {Taffy} data - doc object database.\n   * @param {ESDocConfig} config - esdoc config is used build output.\n   */\n  constructor(data, config) {\n    this._data = data;\n    this._config = config;\n    new DocResolver(this).resolve();\n  }\n\n  /**\n   * execute building output.\n   * @abstract\n   * @param {function} callback - is called with some data.\n   */\n  exec(callback) {\n  }\n\n  /**\n   * find doc object.\n   * @param {...Object} cond - find condition.\n   * @returns {DocObject[]} found doc objects.\n   * @private\n   */\n  _find(...cond) {\n    return this._orderedFind(null, ...cond);\n  }\n\n  /**\n   * fuzzy find doc object by name.\n   * - equal with longname\n   * - equal with name\n   * - include in longname\n   * - include in ancestor\n   *\n   * @param {string} name - target identifier name.\n   * @param {string} [kind] - target kind.\n   * @returns {DocObject[]} found doc objects.\n   * @private\n   */\n  _findByName(name, kind = null) {\n    let docs;\n\n    if (kind) {\n      docs = this._orderedFind(null, {longname: name, kind: kind});\n    } else {\n      docs = this._orderedFind(null, {longname: name});\n    }\n    if (docs.length) return docs;\n\n    if (kind) {\n      docs = this._orderedFind(null, {name: name, kind: kind});\n    } else {\n      docs = this._orderedFind(null, {name: name});\n    }\n    if (docs.length) return docs;\n\n    let regexp = new RegExp(`[~]\\\\${name}$`); // if name is `*`, need to escape.\n    if (kind) {\n      docs = this._orderedFind(null, {longname: {regex: regexp}, kind: kind});\n    } else {\n      docs = this._orderedFind(null, {longname: {regex: regexp}});\n    }\n    if (docs.length) return docs;\n\n    // inherited method?\n    let matched = name.match(/(.*)[.#](.*)$/); // instance method(Foo#bar) or static method(Foo.baz)\n    if (matched) {\n      let parent = matched[1];\n      let childName = matched[2];\n      let parentDoc = this._findByName(parent, 'class')[0];\n      if (parentDoc && parentDoc._custom_extends_chains) {\n        for (let superLongname of parentDoc._custom_extends_chains) {\n          let docs = this._find({memberof: superLongname, name: childName});\n          if (docs.length) return docs;\n        }\n      }\n    }\n\n    return [];\n  }\n\n  /**\n   * find doc objects that is ordered.\n   * @param {string} order - doc objects order(``column asec`` or ``column desc``).\n   * @param {...Object} cond - condition objects\n   * @returns {DocObject[]} found doc objects.\n   * @private\n   */\n  _orderedFind(order, ...cond) {\n    let data = this._data(...cond);\n\n    if (order) {\n      return data.order(order + ', name asec').map(v => v);\n    } else {\n      return data.order('name asec').map(v => v);\n    }\n  }\n\n  /**\n   * read html template.\n   * @param {string} fileName - template file name.\n   * @return {string} html of template.\n   * @private\n   */\n  _readTemplate(fileName) {\n    let filePath = path.resolve(__dirname, `./template/${fileName}`);\n    return fs.readFileSync(filePath, {encoding: 'utf-8'});\n  }\n\n  /**\n   * get target's essential info.\n   * @returns {{title: string, version: string, url: string}}\n   * @private\n   */\n  _getInfo() {\n    let config = this._config;\n    let packageObj = {};\n    if (config.package) {\n      let packagePath = config.package;\n      try {\n        let json = fs.readFileSync(packagePath, {encoding: 'utf-8'});\n        packageObj = JSON.parse(json);\n      } catch (e) {\n        // ignore\n      }\n    }\n\n    // repository url\n    let url = '';\n    if (packageObj.repository) {\n      if (packageObj.repository.url) {\n        url = packageObj.repository.url;\n      } else {\n        url = packageObj.repository;\n      }\n\n      // url: git@github.com:foo/bar.git\n      if (url.indexOf('git@github.com:') === 0) {\n        let matched = url.match(/^git@github\\.com:(.*)\\.git$/);\n        if (matched && matched[1]) {\n          url = `https://github.com/${matched[1]}`;\n        }\n      }\n\n      // url: foo/bar\n      if (url.match(/^[\\w\\d\\-_]+\\/[\\w\\d\\-_]+$/)) {\n        url = `https://github.com/${url}`;\n      }\n    }\n\n    let indexInfo = {\n      title: config.title || packageObj.name,\n      version: config.version || packageObj.version,\n      url: url\n    };\n\n    return indexInfo;\n  }\n\n  /**\n   * build common layout output.\n   * @return {IceCap} layout output.\n   * @private\n   */\n  _buildLayoutDoc() {\n    let info = this._getInfo();\n\n    let ice = new IceCap(this._readTemplate('layout.html'), {autoClose: false});\n\n    let packageObj = NPMUtil.findPackage();\n    if (packageObj) {\n      ice.text('esdocVersion', `(${packageObj.version})`);\n    } else {\n      ice.drop('esdocVersion');\n    }\n\n    if (info.url) {\n      ice.attr('repoURL', 'href', info.url);\n      if (info.url.match(new RegExp('^https?://github.com/'))) {\n        ice.attr('repoURL', 'class', 'repo-url-github');\n      }\n    } else {\n      ice.drop('repoURL');\n    }\n\n    ice.drop('testLink', !this._config.test);\n\n    // see StaticFileBuilder#exec\n    ice.loop('userScript', this._config.scripts || [], (i, userScript, ice)=>{\n      let name = `user/script/${i}-${path.basename(userScript)}`;\n      ice.attr('userScript', 'src', name);\n    });\n\n    ice.loop('userStyle', this._config.styles || [], (i, userStyle, ice)=>{\n      let name = `user/css/${i}-${path.basename(userStyle)}`;\n      ice.attr('userStyle', 'href', name);\n    });\n\n    ice.load('nav', this._buildNavDoc());\n    return ice;\n  }\n\n  /**\n   * build common navigation output.\n   * @return {IceCap} navigation output.\n   * @private\n   */\n  _buildNavDoc() {\n    let html = this._readTemplate('nav.html');\n    let ice = new IceCap(html);\n\n    // class\n    let classDocs = this._find({kind: 'class', interface: false});\n    ice.drop('classWrap', !classDocs.length);\n    ice.loop('classDoc', classDocs, (i, classDoc, ice)=>{\n      ice.load('classDoc', this._buildDocLinkHTML(classDoc.longname));\n    });\n\n    // interface\n    let interfaceDocs = this._find({kind: 'class', interface: true});\n    ice.drop('interfaceWrap', !interfaceDocs.length);\n    ice.loop('interfaceDoc', interfaceDocs, (i, interfaceDoc, ice)=>{\n      ice.load('interfaceDoc', this._buildDocLinkHTML(interfaceDoc.longname));\n    });\n\n    // function\n    let functionDocs = this._find({kind: 'function'});\n    ice.drop('functionWrap', !functionDocs.length);\n    ice.loop('functionDoc', functionDocs, (i, functionDoc, ice)=>{\n      ice.load('functionDoc', this._buildDocLinkHTML(functionDoc.longname));\n    });\n\n    // variable\n    let variableDocs = this._find({kind: 'variable'});\n    ice.drop('variableWrap', !variableDocs.length);\n    ice.loop('variableDoc', variableDocs, (i, variableDoc, ice)=>{\n      ice.load('variableDoc', this._buildDocLinkHTML(variableDoc.longname));\n    });\n\n    // typedef\n    let typedefDocs = this._find({kind: 'typedef'});\n    ice.drop('typedefWrap', !typedefDocs.length);\n    ice.loop('typedefDoc', typedefDocs, (i, typedefDoc, ice)=>{\n      ice.load('typedefDoc', this._buildDocLinkHTML(typedefDoc.longname));\n    });\n\n    // external\n    let externalDocs = this._find({kind: 'external'}).filter(v => !v.builtinExternal);\n    ice.drop('externalWrap', !externalDocs.length);\n    ice.loop('externalDoc', externalDocs, (i, externalDoc, ice)=>{\n      ice.load('externalDoc', this._buildDocLinkHTML(externalDoc.longname));\n    });\n\n    return ice;\n  }\n\n  /**\n   * find doc object for each access.\n   * @param {DocObject} doc - parent doc object.\n   * @param {string} kind - kind property condition.\n   * @param {boolean} isStatic - static property condition\n   * @returns {Array[]} found doc objects.\n   * @property {Array[]} 0 - ['Public', DocObject[]]\n   * @property {Array[]} 1 - ['Protected', DocObject[]]\n   * @property {Array[]} 2 - ['Private', DocObject[]]\n   * @private\n   */\n  _findAccessDocs(doc, kind, isStatic = true) {\n    let cond = {kind, static: isStatic};\n\n    if (doc) cond.memberof = doc.longname;\n\n    switch (kind) {\n      case 'class':\n        cond.interface = false;\n        break;\n      case 'interface':\n        cond.kind = 'class';\n        cond.interface = true;\n        break;\n      case 'member':\n        cond.kind = ['member', 'get', 'set'];\n        break;\n    }\n\n    let publicDocs = this._find(cond, {access: 'public'});\n    let protectedDocs = this._find(cond, {access: 'protected'});\n    let privateDocs = this._find(cond, {access: 'private'});\n    let accessDocs = [['Public', publicDocs], ['Protected', protectedDocs], ['Private', privateDocs]];\n\n    return accessDocs;\n  }\n\n  /**\n   * build summary output html by parent doc.\n   * @param {DocObject} doc - parent doc object.\n   * @param {string} kind - target kind property.\n   * @param {string} title - summary title.\n   * @param {boolean} [isStatic=true] - target static property.\n   * @returns {string} html of summary.\n   * @private\n   */\n  _buildSummaryHTML(doc, kind, title, isStatic = true) {\n    let accessDocs = this._findAccessDocs(doc, kind, isStatic);\n    let html = '';\n    for (let accessDoc of accessDocs) {\n      let docs = accessDoc[1];\n      if (!docs.length) continue;\n\n      let prefix = '';\n      if (docs[0].static) prefix = 'Static ';\n      let _title = `${prefix}${accessDoc[0]} ${title}`;\n\n      let result = this._buildSummaryDoc(docs, _title);\n      if (result) {\n        html += result.html;\n      }\n    }\n\n    return html;\n  }\n\n  /**\n   * build summary output html by docs.\n   * @param {DocObject[]} docs - target docs.\n   * @param {string} title - summary title.\n   * @param {boolean} innerLink - if true, link in summary is inner link.\n   * @return {IceCap} summary output.\n   * @private\n   */\n  _buildSummaryDoc(docs, title, innerLink) {\n    if (docs.length === 0) return;\n\n    let ice = new IceCap(this._readTemplate('summary.html'));\n\n    ice.text('title', title);\n    ice.loop('target', docs, (i, doc, ice)=>{\n      ice.text('generator', doc.generator ? '*' : '');\n      ice.load('name', this._buildDocLinkHTML(doc.longname, null, innerLink, doc.kind));\n      ice.load('signature', this._buildSignatureHTML(doc));\n      ice.load('description', shorten(doc));\n      ice.text('abstract', doc.abstract ? 'abstract' : '');\n      ice.text('access', doc.access);\n      if (['get', 'set'].includes(doc.kind)) {\n        ice.text('kind', doc.kind);\n      } else {\n        ice.drop('kind');\n      }\n\n      if (['member', 'method', 'get', 'set'].includes(doc.kind)) {\n        ice.text('static', doc.static ? 'static' : '');\n      } else {\n        ice.drop('static');\n      }\n\n      ice.text('since', doc.since);\n      ice.load('deprecated', this._buildDeprecatedHTML(doc));\n      ice.load('experimental', this._buildExperimentalHTML(doc));\n      ice.text('version', doc.version);\n    });\n\n    return ice;\n  }\n\n  /**\n   * build detail output html by parent doc.\n   * @param {DocObject} doc - parent doc object.\n   * @param {string} kind - target kind property.\n   * @param {string} title - detail title.\n   * @param {boolean} [isStatic=true] - target static property.\n   * @returns {string} html of detail.\n   * @private\n   */\n  _buildDetailHTML(doc, kind, title, isStatic = true) {\n    let accessDocs = this._findAccessDocs(doc, kind, isStatic);\n    let html = '';\n    for (let accessDoc of accessDocs) {\n      let docs = accessDoc[1];\n      if (!docs.length) continue;\n\n      let prefix = '';\n      if (docs[0].static) prefix = 'Static ';\n      let _title = `${prefix}${accessDoc[0]} ${title}`;\n\n      let result = this._buildDetailDocs(docs, _title);\n      if (result) html += result.html;\n    }\n\n    return html;\n  }\n\n  /**\n   * build detail output html by docs.\n   * @param {DocObject[]} docs - target docs.\n   * @param {string} title - detail title.\n   * @return {IceCap} detail output.\n   * @private\n   */\n  _buildDetailDocs(docs, title) {\n    let ice = new IceCap(this._readTemplate('details.html'));\n\n    ice.text('title', title);\n    ice.drop('title', !docs.length);\n\n    ice.loop('detail', docs, (i, doc, ice)=>{\n      let scope = doc.static ? 'static' : 'instance';\n      ice.attr('anchor', 'id', `${scope}-${doc.kind}-${doc.name}`);\n      ice.text('generator', doc.generator ? '*' : '');\n      ice.text('name', doc.name);\n      ice.load('signature', this._buildSignatureHTML(doc));\n      ice.load('description', doc.description);\n      ice.text('abstract', doc.abstract ? 'abstract' : '');\n      ice.text('access', doc.access);\n      if (['get', 'set'].includes(doc.kind)) {\n        ice.text('kind', doc.kind);\n      } else {\n        ice.drop('kind');\n      }\n      if (doc.export && doc.importPath && doc.importStyle) {\n        let link = this._buildFileDocLinkHTML(doc, doc.importPath);\n        ice.into('importPath', `import ${doc.importStyle} from '${link}'`, (code, ice)=>{\n          ice.load('importPathCode', code);\n        });\n      } else {\n        ice.drop('importPath');\n      }\n\n      if (['member', 'method', 'get', 'set'].includes(doc.kind)) {\n        ice.text('static', doc.static ? 'static' : '');\n      } else {\n        ice.drop('static');\n      }\n\n      ice.load('source', this._buildFileDocLinkHTML(doc, 'source'));\n      ice.text('since', doc.since, 'append');\n      ice.load('deprecated', this._buildDeprecatedHTML(doc));\n      ice.load('experimental', this._buildExperimentalHTML(doc));\n      ice.text('version', doc.version, 'append');\n      ice.load('see', this._buildDocsLinkHTML(doc.see), 'append');\n      ice.load('todo', this._buildDocsLinkHTML(doc.todo), 'append');\n      ice.load('override', this._buildOverrideMethod(doc));\n\n      if (['method', 'constructor', 'function'].indexOf(doc.kind) !== -1) {\n        ice.load('properties', this._buildProperties(doc.params, 'Params:'));\n      } else {\n        ice.load('properties', this._buildProperties(doc.properties, 'Properties:'));\n      }\n\n      // return\n      if (doc.return) {\n        ice.load('returnDescription', doc.return.description);\n        let typeNames = [];\n        for (let typeName of doc.return.types) {\n          typeNames.push(this._buildTypeDocLinkHTML(typeName));\n        }\n        if (typeof doc.return.nullable === 'boolean') {\n          let nullable = doc.return.nullable;\n          ice.load('returnType', typeNames.join(' | ') + ` (nullable: ${nullable})`);\n        } else {\n          ice.load('returnType', typeNames.join(' | '));\n        }\n\n        ice.load('returnProperties', this._buildProperties(doc.properties, 'Return Properties:'));\n      } else {\n        ice.drop('returnParams');\n      }\n\n      // throws\n      if (doc.throws) {\n        ice.loop('throw', doc.throws, (i, exceptionDoc, ice)=>{\n          ice.load('throwName', this._buildDocLinkHTML(exceptionDoc.types[0]));\n          ice.load('throwDesc', exceptionDoc.description);\n        });\n      } else {\n        ice.drop('throwWrap');\n      }\n\n      // fires\n      if (doc.emits) {\n        ice.loop('emit', doc.emits, (i, emitDoc, ice)=>{\n          ice.load('emitName', this._buildDocLinkHTML(emitDoc.types[0]));\n          ice.load('emitDesc', emitDoc.description);\n        });\n      } else {\n        ice.drop('emitWrap');\n      }\n\n      // listens\n      if (doc.listens) {\n        ice.loop('listen', doc.listens, (i, listenDoc, ice)=>{\n          ice.load('listenName', this._buildDocLinkHTML(listenDoc.types[0]));\n          ice.load('listenDesc', listenDoc.description);\n        });\n      } else {\n        ice.drop('listenWrap');\n      }\n\n      // example\n      ice.into('example', doc.examples, (examples, ice)=>{\n        ice.loop('exampleDoc', examples, (i, exampleDoc, ice)=>{\n          let parsed = parseExample(exampleDoc);\n          ice.text('exampleCode', parsed.body);\n          ice.text('exampleCaption', parsed.caption);\n        });\n      });\n\n      // tests\n      ice.into('tests', doc._custom_tests, (tests, ice)=>{\n        ice.loop('test', tests, (i, test, ice)=>{\n          let testDoc = this._find({longname: test})[0];\n          ice.load('test', this._buildFileDocLinkHTML(testDoc, testDoc.testFullDescription));\n        });\n      });\n    });\n\n    return ice;\n  }\n\n  /**\n   * get output html page title. use ``title`` in {@link ESDocConfig}.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} page title.\n   * @private\n   */\n  _getTitle(doc = '') {\n    let name = doc.name || doc.toString();\n\n    if (!name) {\n      if (this._config.title) {\n        return `${this._config.title} API Document`;\n      } else {\n        return 'API Document';\n      }\n    }\n\n    if (this._config.title) {\n      return `${name} | ${this._config.title} API Document`;\n    } else {\n      return `${name} | API Document`;\n    }\n  }\n\n  /**\n   * get base url html page. it is used html base tag.\n   * @param {string} fileName - output file path.\n   * @returns {string} base url.\n   * @private\n   */\n  _getBaseUrl(fileName) {\n    let baseUrl = '../'.repeat(fileName.split('/').length - 1);\n    return baseUrl;\n  }\n\n  /**\n   * gat url of output html page.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} url of output html. it is relative path from output root dir.\n   * @private\n   */\n  _getURL(doc) {\n    let inner = false;\n    if (['variable', 'function', 'member', 'typedef', 'method', 'constructor', 'get', 'set'].includes(doc.kind)) {\n      inner = true\n    }\n\n    if (inner) {\n      let scope = doc.static ? 'static' : 'instance';\n      let fileName = this._getOutputFileName(doc);\n      return `${fileName}#${scope}-${doc.kind}-${doc.name}`;\n    } else {\n      let fileName = this._getOutputFileName(doc);\n      return fileName;\n    }\n  }\n\n  /**\n   * get file name of output html page.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} file name.\n   * @private\n   */\n  _getOutputFileName(doc) {\n    switch (doc.kind) {\n      case 'variable':\n        return 'variable/index.html';\n      case 'function':\n        return 'function/index.html';\n      case 'member': // fall\n      case 'method': // fall\n      case 'constructor': // fall\n      case 'set': // fall\n      case 'get': // fal\n        let parentDoc = this._find({longname: doc.memberof})[0];\n        return this._getOutputFileName(parentDoc);\n      case 'external':\n        return 'external/index.html';\n      case 'typedef':\n        return 'typedef/index.html';\n      case 'class':\n        return `class/${doc.longname}.html`;\n      case 'file':\n        return `file/${doc.longname}.html`;\n      case 'testFile':\n        return `test-file/${doc.longname}.html`;\n      case 'testDescribe':\n        return `test.html`;\n      case 'testIt':\n        return `test.html`;\n      default:\n        throw new Error('DocBuilder: can not resolve file name.');\n    }\n  }\n\n  /**\n   * build html link to file page.\n   * @param {DocObject} doc - target doc object.\n   * @param {string} text - link text.\n   * @returns {string} html of link.\n   * @private\n   */\n  _buildFileDocLinkHTML(doc, text = null) {\n    if (!doc) return '';\n\n    let fileDoc;\n    if (doc.kind === 'file' || doc.kind === 'testFile') {\n      fileDoc = doc;\n    } else {\n      let filePath = doc.longname.split('~')[0];\n      fileDoc = this._find({kind: ['file', 'testFile'], longname: filePath})[0];\n    }\n\n    if (!fileDoc) return '';\n\n    if (!text) text = fileDoc.name;\n\n    if (doc.kind === 'file' || doc.kind === 'testFile') {\n      return `<span><a href=\"${this._getURL(fileDoc)}\">${text}</a></span>`;\n    } else {\n      return `<span><a href=\"${this._getURL(fileDoc)}#lineNumber${doc.lineNumber}\">${text}</a></span>`;\n    }\n  }\n\n  /**\n   * build html link of type.\n   * @param {string} typeName - type name(e.g. ``number[]``, ``Map<number, string}``)\n   * @returns {string} html of link.\n   * @private\n   * @todo re-implement with parser combinator.\n   */\n  _buildTypeDocLinkHTML(typeName) {\n    // e.g. number[]\n    let matched = typeName.match(/^(.*?)\\[\\]$/);\n    if (matched) {\n      typeName = matched[1];\n      return `<span>${this._buildDocLinkHTML(typeName, typeName)}<span>[]</span></span>`;\n    }\n\n    // e.g. function(a: number, b: string): boolean\n    matched = typeName.match(/function\\((.*?)\\)(.*)/);\n    if (matched) {\n      let functionLink = this._buildDocLinkHTML('function');\n      if (!matched[1] && !matched[2]) return `<span>${functionLink}<span>()</span></span>`;\n\n      let innerTypes = [];\n      if (matched[1]) {\n        // bad hack: Map.<string, boolean> => Map.<string\\Z boolean>\n        // bad hack: {a: string, b: boolean} => {a\\Y string\\Z b\\Y boolean}\n        let inner = matched[1]\n          .replace(/<.*?>/g, (a)=> a.replace(/,/g, '\\\\Z'))\n          .replace(/{.*?}/g, (a)=> a.replace(/,/g, '\\\\Z').replace(/:/g, '\\\\Y'));\n        innerTypes = inner.split(',').map((v)=>{\n          let tmp = v.split(':').map((v)=> v.trim());\n          let paramName = tmp[0];\n          let typeName = tmp[1].replace(/\\\\Z/g, ',').replace(/\\\\Y/g, ':');\n          return `${paramName}: ${this._buildTypeDocLinkHTML(typeName)}`;\n        });\n      }\n\n      let returnType = '';\n      if (matched[2]) {\n        let type = matched[2].split(':')[1];\n        if (type) returnType = ': ' + this._buildTypeDocLinkHTML(type.trim());\n      }\n\n      return `<span>${functionLink}<span>(${innerTypes.join(', ')})</span>${returnType}</span>`;\n    }\n\n    // e.g. {a: number, b: string}\n    matched = typeName.match(/^\\{(.*?)\\}$/);\n    if (matched) {\n      if (!matched[1]) return '{}';\n\n      // bad hack: Map.<string, boolean> => Map.<string\\Z boolean>\n      // bad hack: {a: string, b: boolean} => {a\\Y string\\Z b\\Y boolean}\n      let inner = matched[1]\n        .replace(/<.*?>/g, (a)=> a.replace(/,/g, '\\\\Z'))\n        .replace(/{.*?}/g, (a)=> a.replace(/,/g, '\\\\Z').replace(/:/g, '\\\\Y'));\n      let innerTypes = inner.split(',').map((v)=>{\n        let tmp = v.split(':').map((v)=> v.trim());\n        let paramName = tmp[0];\n        let typeName = tmp[1].replace(/\\\\Z/g, ',').replace(/\\\\Y/g, ':');\n        return `${paramName}: ${this._buildTypeDocLinkHTML(typeName)}`;\n      });\n\n      return `{${innerTypes.join(', ')}}`;\n    }\n\n    // e.g. Map<number, string>\n    matched = typeName.match(/^(.*?)\\.?<(.*?)>$/);\n    if (matched) {\n      let mainType = matched[1];\n      // bad hack: Map.<string, boolean> => Map.<string\\Z boolean>\n      // bad hack: {a: string, b: boolean} => {a\\Y string\\Z b\\Y boolean}\n      let inner = matched[2]\n        .replace(/<.*?>/g, (a)=> a.replace(/,/g, '\\\\Z'))\n        .replace(/{.*?}/g, (a)=> a.replace(/,/g, '\\\\Z').replace(/:/g, '\\\\Y'));\n      let innerTypes = inner.split(',').map((v) => {\n        v = v.trim().replace(/\\\\Z/g, ',').replace(/\\\\Y/g, ':');\n        return this._buildTypeDocLinkHTML(v);\n      });\n\n      let html = `${this._buildDocLinkHTML(mainType, mainType)}<${innerTypes.join(', ')}>`;\n      return html;\n    }\n\n    if (typeName.indexOf('...') === 0) {\n      typeName = typeName.replace('...', '');\n      return '...' + this._buildDocLinkHTML(typeName);\n    } else {\n      return this._buildDocLinkHTML(typeName);\n    }\n  }\n\n  /**\n   * build html link to identifier.\n   * @param {string} longname - link to this.\n   * @param {string} [text] - link text. default is name property of doc object.\n   * @param {boolean} [inner=false] - if true, use inner link.\n   * @param {string} [kind] - specify target kind property.\n   * @returns {string} html of link.\n   * @private\n   */\n  _buildDocLinkHTML(longname, text = null, inner = false, kind = null) {\n    if (!longname) return '';\n\n    if (typeof longname !== 'string') throw new Error(JSON.stringify(longname));\n\n    let doc = this._findByName(longname, kind)[0];\n\n    if (!doc) {\n      // if longname is HTML tag, not escape.\n      if (longname.indexOf('<') === 0) {\n        return `<span>${longname}</span>`;\n      } else {\n        return `<span>${escape(text || longname)}</span>`;\n      }\n    }\n\n    if (doc.kind === 'external') {\n      text = doc.name;\n      return `<span><a href=\"${doc.externalLink}\">${text}</a></span>`;\n    } else {\n      text = escape(text || doc.name);\n      let url = this._getURL(doc, inner);\n      if (url) {\n        return `<span><a href=\"${url}\">${text}</a></span>`;\n      } else {\n        return `<span>${text}</span>`;\n      }\n    }\n  }\n\n  /**\n   * build html links to identifiers\n   * @param {string[]} longnames - link to these.\n   * @param {string} [text] - link text. default is name property of doc object.\n   * @param {boolean} [inner=false] - if true, use inner link.\n   * @param {string} [separator='\\n'] - used link separator.\n   * @returns {string} html links.\n   * @private\n   */\n  _buildDocsLinkHTML(longnames, text = null, inner = false, separator = '\\n') {\n    if (!longnames) return '';\n    if (!longnames.length) return '';\n\n    let links = [];\n    for (var longname of longnames) {\n      if (!longname) continue;\n      let link = this._buildDocLinkHTML(longname, text, inner);\n      links.push(`<li>${link}</li>`);\n    }\n\n    if (!links.length) return '';\n\n    return `<ul>${links.join(separator)}</ul>`;\n  }\n\n  /**\n   * build identifier signature html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} signature html.\n   * @private\n   */\n  _buildSignatureHTML(doc) {\n    // call signature\n    let callSignatures = [];\n    if (doc.params) {\n      for (let param of doc.params) {\n        let paramName = param.name;\n        if (paramName.indexOf('.') !== -1) continue;\n\n        let types = [];\n        for (let typeName of param.types) {\n          types.push(this._buildTypeDocLinkHTML(typeName));\n        }\n\n        callSignatures.push(`${paramName}: ${types.join(' | ')}`);\n      }\n    }\n\n    // return signature\n    let returnSignatures = [];\n    if (doc.return) {\n      for (let typeName of doc.return.types) {\n        returnSignatures.push(this._buildTypeDocLinkHTML(typeName));\n      }\n    }\n\n    // type signature\n    let typeSignatures = [];\n    if (doc.type) {\n      for (let typeName of doc.type.types) {\n        typeSignatures.push(this._buildTypeDocLinkHTML(typeName));\n      }\n    }\n\n    // callback is not need type. because type is always function.\n    if (doc.kind === 'function') {\n      typeSignatures = [];\n    }\n\n    let html = '';\n    if (callSignatures.length) {\n      html = `(${callSignatures.join(', ')})`;\n    } else if (['function', 'method'].includes(doc.kind)) {\n      html = '()';\n    }\n    if (returnSignatures.length) html = `${html}: ${returnSignatures.join(' | ')}`;\n    if (typeSignatures.length) html = `${html}: ${typeSignatures.join(' | ')}`;\n\n    return html;\n  }\n\n  /**\n   * build properties output.\n   * @param {ParsedParam[]} [properties=[]] - properties in doc object.\n   * @param {string} title - output title.\n   * @return {IceCap} built properties output.\n   * @private\n   */\n  _buildProperties(properties = [], title = 'Properties:') {\n    let ice = new IceCap(this._readTemplate('properties.html'));\n\n    ice.text('title', title);\n\n    ice.loop('property', properties, (i, prop, ice)=>{\n      ice.autoDrop = false;\n      ice.attr('property', 'data-depth', prop.name.split('.').length - 1);\n      ice.text('name', prop.name);\n      ice.attr('name', 'data-depth', prop.name.split('.').length - 1);\n      ice.load('description', prop.description);\n\n      let typeNames = [];\n      for (var typeName of prop.types) {\n        typeNames.push(this._buildTypeDocLinkHTML(typeName));\n      }\n      ice.load('type', typeNames.join(' | '));\n\n      // appendix\n      let appendix = [];\n      if (prop.optional) {\n        appendix.push('<li>optional</li>');\n      }\n      if ('defaultValue' in prop) {\n        appendix.push(`<li>default: ${prop.defaultValue}</li>`);\n      }\n      if (typeof prop.nullable === 'boolean') {\n        appendix.push(`<li>nullable: ${prop.nullable}</li>`);\n      }\n      if (appendix.length) {\n        ice.load('appendix', `<ul>${appendix.join('\\n')}</ul>`);\n      } else {\n        ice.text('appendix', '');\n      }\n    });\n\n    if (!properties || properties.length === 0) {\n      ice.drop('properties');\n    }\n\n    return ice;\n  }\n\n  /**\n   * build deprecated html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} if doc is not deprecated, returns empty.\n   * @private\n   */\n  _buildDeprecatedHTML(doc) {\n    if (doc.deprecated) {\n      let deprecated = [`this ${doc.kind} was deprecated.`];\n      if (typeof doc.deprecated === 'string') deprecated.push(doc.deprecated);\n      return deprecated.join(' ');\n    } else {\n      return '';\n    }\n  }\n\n  /**\n   * build experimental html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} if doc is not experimental, returns empty.\n   * @private\n   */\n  _buildExperimentalHTML(doc) {\n    if (doc.experimental) {\n      let experimental = [`this ${doc.kind} is experimental.`];\n      if (typeof doc.experimental === 'string') experimental.push(doc.experimental);\n      return experimental.join(' ');\n    } else {\n      return '';\n    }\n  }\n\n  /**\n   * build method of ancestor class link html.\n   * @param {DocObject} doc - target doc object.\n   * @returns {string} html link. if doc does not override ancestor method, returns empty.\n   * @private\n   */\n  _buildOverrideMethod(doc) {\n    let parentDoc = this._findByName(doc.memberof)[0];\n    if (!parentDoc) return '';\n    if (!parentDoc._custom_extends_chains) return;\n\n    let chains = [...parentDoc._custom_extends_chains].reverse();\n    for (let longname of chains) {\n      let superClassDoc = this._findByName(longname)[0];\n      if (!superClassDoc) continue;\n\n      let superMethodDoc = this._find({name: doc.name, memberof: superClassDoc.longname})[0];\n      if (!superMethodDoc) continue;\n\n      return this._buildDocLinkHTML(superMethodDoc.longname, `${superClassDoc.name}#${superMethodDoc.name}`, true);\n    }\n  }\n\n  /**\n   * build coverage html.\n   * @param {CoverageObject} coverageObj - target coverage object.\n   * @returns {string} html of coverage badge.\n   * @private\n   * @deprecated\n   */\n  _buildCoverageHTML(coverageObj) {\n    let coverage = Math.floor(100 * coverageObj.actualCount / coverageObj.expectCount);\n    let colorClass;\n    if (coverage < 50) {\n      colorClass = 'esdoc-coverage-low';\n    } else if (coverage < 90) {\n      colorClass = 'esdoc-coverage-middle';\n    } else {\n      colorClass = 'esdoc-coverage-high';\n    }\n\n    let html = `<a href=\"https://esdoc.org\" class=\"esdoc-coverage-wrap\">\n    <span class=\"esdoc-coverage-label\">document</span><span class=\"esdoc-coverage-ratio ${colorClass}\">${coverage}%</span>\n    </a>`;\n\n    return html;\n  }\n\n  //_buildAuthorHTML(doc, separator = '\\n') {\n  //  if (!doc.author) return '';\n  //\n  //  var html = [];\n  //  for (var author of doc.author) {\n  //    var matched = author.match(/(.*?) *<(.*?)>/);\n  //    if (matched) {\n  //      var name = matched[1];\n  //      var link = matched[2];\n  //      if (link.indexOf('http') === 0) {\n  //        html.push(`<li><a href=\"${link}\">${name}</a></li>`)\n  //      } else {\n  //        html.push(`<li><a href=\"mailto:${link}\">${name}</a></li>`)\n  //      }\n  //    } else {\n  //      html.push(`<li>${author}</li>`)\n  //    }\n  //  }\n  //\n  //  return `<ul>${html.join(separator)}</ul>`;\n  //}\n}\n"
   },
   {
     "kind": "class",
@@ -5628,7 +5704,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildLayoutDoc",
     "access": "private",
     "description": "build common layout output.",
-    "lineNumber": 175,
+    "lineNumber": 179,
     "params": [],
     "return": {
       "nullable": null,
@@ -5649,7 +5725,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildNavDoc",
     "access": "private",
     "description": "build common navigation output.",
-    "lineNumber": 218,
+    "lineNumber": 222,
     "params": [],
     "return": {
       "nullable": null,
@@ -5670,7 +5746,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_findAccessDocs",
     "access": "private",
     "description": "find doc object for each access.",
-    "lineNumber": 278,
+    "lineNumber": 282,
     "unknown": [
       {
         "tagName": "@returns",
@@ -5760,7 +5836,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildSummaryHTML",
     "access": "private",
     "description": "build summary output html by parent doc.",
-    "lineNumber": 313,
+    "lineNumber": 317,
     "unknown": [
       {
         "tagName": "@returns",
@@ -5830,7 +5906,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildSummaryDoc",
     "access": "private",
     "description": "build summary output html by docs.",
-    "lineNumber": 341,
+    "lineNumber": 345,
     "params": [
       {
         "nullable": null,
@@ -5882,7 +5958,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildDetailHTML",
     "access": "private",
     "description": "build detail output html by parent doc.",
-    "lineNumber": 384,
+    "lineNumber": 388,
     "unknown": [
       {
         "tagName": "@returns",
@@ -5952,7 +6028,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildDetailDocs",
     "access": "private",
     "description": "build detail output html by docs.",
-    "lineNumber": 409,
+    "lineNumber": 413,
     "params": [
       {
         "nullable": null,
@@ -5994,7 +6070,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_getTitle",
     "access": "private",
     "description": "get output html page title. use ``title`` in {@link ESDocConfig}.",
-    "lineNumber": 535,
+    "lineNumber": 539,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6032,7 +6108,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_getBaseUrl",
     "access": "private",
     "description": "get base url html page. it is used html base tag.",
-    "lineNumber": 559,
+    "lineNumber": 563,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6070,7 +6146,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_getURL",
     "access": "private",
     "description": "gat url of output html page.",
-    "lineNumber": 570,
+    "lineNumber": 574,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6108,7 +6184,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_getOutputFileName",
     "access": "private",
     "description": "get file name of output html page.",
-    "lineNumber": 592,
+    "lineNumber": 596,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6146,7 +6222,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildFileDocLinkHTML",
     "access": "private",
     "description": "build html link to file page.",
-    "lineNumber": 631,
+    "lineNumber": 635,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6194,7 +6270,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildTypeDocLinkHTML",
     "access": "private",
     "description": "build html link of type.",
-    "lineNumber": 660,
+    "lineNumber": 664,
     "todo": [
       "re-implement with parser combinator."
     ],
@@ -6235,7 +6311,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildDocLinkHTML",
     "access": "private",
     "description": "build html link to identifier.",
-    "lineNumber": 753,
+    "lineNumber": 757,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6305,7 +6381,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildDocsLinkHTML",
     "access": "private",
     "description": "build html links to identifiers",
-    "lineNumber": 792,
+    "lineNumber": 796,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6377,7 +6453,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildSignatureHTML",
     "access": "private",
     "description": "build identifier signature html.",
-    "lineNumber": 814,
+    "lineNumber": 818,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6415,7 +6491,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildProperties",
     "access": "private",
     "description": "build properties output.",
-    "lineNumber": 871,
+    "lineNumber": 875,
     "params": [
       {
         "nullable": null,
@@ -6459,7 +6535,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildDeprecatedHTML",
     "access": "private",
     "description": "build deprecated html.",
-    "lineNumber": 920,
+    "lineNumber": 924,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6497,7 +6573,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildExperimentalHTML",
     "access": "private",
     "description": "build experimental html.",
-    "lineNumber": 936,
+    "lineNumber": 940,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6535,7 +6611,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildOverrideMethod",
     "access": "private",
     "description": "build method of ancestor class link html.",
-    "lineNumber": 952,
+    "lineNumber": 956,
     "unknown": [
       {
         "tagName": "@returns",
@@ -6573,7 +6649,7 @@
     "longname": "src/Publisher/Builder/DocBuilder.js~DocBuilder#_buildCoverageHTML",
     "access": "private",
     "description": "build coverage html.",
-    "lineNumber": 976,
+    "lineNumber": 980,
     "deprecated": true,
     "unknown": [
       {
@@ -7971,7 +8047,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import fs from 'fs-extra';\nimport path from 'path';\nimport {taffy} from 'taffydb';\nimport IceCap from 'ice-cap';\nimport StaticFileBuilder from './Builder/StaticFileBuilder.js';\nimport IdentifiersDocBuilder from './Builder/IdentifiersDocBuilder.js';\nimport IndexDocBuilder from './Builder/IndexDocBuilder.js';\nimport ClassDocBuilder from './Builder/ClassDocBuilder.js';\nimport SingleDocBuilder from './Builder/SingleDocBuilder.js';\nimport FileDocBuilder from './Builder/FileDocBuilder.js';\nimport SearchIndexBuilder from './Builder/SearchIndexBuilder.js';\nimport CoverageBuilder from './Builder/CoverageBuilder.js';\nimport ASTDocBuilder from './Builder/ASTDocBuilder.js';\nimport SourceDocBuilder from './Builder/SourceDocBuilder.js';\nimport TestDocBuilder from './Builder/TestDocBuilder.js';\nimport TestFileDocBuilder from './Builder/TestFileDocBuilder.js';\nimport Plugin from '../Plugin/Plugin.js';\n\n/**\n * publish document as HTML.\n * @param {DocObject[]} values - all doc objects.\n * @param {AST[]} asts - all ASTs.\n * @param {ESDocConfig} config - ESDoc config object.\n */\nexport default function publish(values, asts, config) {\n  IceCap.debug = !!config.debug;\n\n  let dumpPath = path.resolve(config.destination, 'dump.json');\n  fs.outputFileSync(dumpPath, JSON.stringify(values, null, 2));\n\n  let data = taffy(values);\n  let _coverage = null;\n\n  function log(text) {\n    console.log(text);\n  }\n\n  function writeHTML(html, fileName) {\n    log(fileName);\n    html = Plugin.onHandleHTML(html);\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, html, {encoding: 'utf8'});\n  }\n\n  function writeCoverage(coverage, fileName) {\n    _coverage = coverage;\n    let json = JSON.stringify(coverage, null, 2);\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, json, {encoding: 'utf8'});\n  }\n\n  function writeBadge(badge, fileName) {\n    log(fileName);\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, badge, {encoding: 'utf8'});\n  }\n\n  function writeAST(astJSON, fileName) {\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, astJSON, {encoding: 'utf8'});\n  }\n\n  function copy(srcPath, destPath) {\n    log(destPath);\n    fs.copySync(srcPath, path.resolve(config.destination, destPath));\n  }\n\n  if (config.coverage) {\n    new CoverageBuilder(data, config).exec(writeCoverage, writeBadge);\n  }\n\n  new IdentifiersDocBuilder(data, config).exec(writeHTML);\n  new IndexDocBuilder(data, config, _coverage).exec(writeHTML);\n  new ClassDocBuilder(data, config).exec(writeHTML);\n  new SingleDocBuilder(data, config).exec(writeHTML);\n  new FileDocBuilder(data, config).exec(writeHTML);\n  new StaticFileBuilder(data, config).exec(copy);\n  new SearchIndexBuilder(data, config).exec(writeHTML);\n  new ASTDocBuilder(data, asts, config).exec(writeAST);\n  new SourceDocBuilder(data, config, _coverage).exec(writeHTML);\n\n  if (config.test) {\n    new TestDocBuilder(data, config).exec(writeHTML);\n    new TestFileDocBuilder(data, config).exec(writeHTML);\n  }\n\n  if (config.coverage) {\n    console.log('==================================');\n    console.log(`Coverage: ${_coverage.coverage} (${_coverage.actualCount}/${_coverage.expectCount})`);\n    console.log('==================================');\n  }\n};\n"
+    "content": "import fs from 'fs-extra';\nimport path from 'path';\nimport {taffy} from 'taffydb';\nimport IceCap from 'ice-cap';\nimport StaticFileBuilder from './Builder/StaticFileBuilder.js';\nimport IdentifiersDocBuilder from './Builder/IdentifiersDocBuilder.js';\nimport IndexDocBuilder from './Builder/IndexDocBuilder.js';\nimport ClassDocBuilder from './Builder/ClassDocBuilder.js';\nimport SingleDocBuilder from './Builder/SingleDocBuilder.js';\nimport FileDocBuilder from './Builder/FileDocBuilder.js';\nimport SearchIndexBuilder from './Builder/SearchIndexBuilder.js';\nimport CoverageBuilder from './Builder/CoverageBuilder.js';\nimport ASTDocBuilder from './Builder/ASTDocBuilder.js';\nimport SourceDocBuilder from './Builder/SourceDocBuilder.js';\nimport TestDocBuilder from './Builder/TestDocBuilder.js';\nimport TestFileDocBuilder from './Builder/TestFileDocBuilder.js';\nimport Plugin from '../Plugin/Plugin.js';\n\n/**\n * publish document as HTML.\n * @param {DocObject[]} values - all doc objects.\n * @param {AST[]} asts - all ASTs.\n * @param {ESDocConfig} config - ESDoc config object.\n */\nexport default function publish(values, asts, config) {\n  IceCap.debug = !!config.debug;\n\n  let dumpPath = path.resolve(config.destination, 'dump.json');\n  fs.outputFileSync(dumpPath, JSON.stringify(values, null, 2));\n\n  let data = taffy(values);\n  let _coverage = null;\n\n  function log(text) {\n    console.log(text);\n  }\n\n  function writeHTML(html, fileName) {\n    log(fileName);\n    html = Plugin.onHandleHTML(html);\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, html, {encoding: 'utf8'});\n  }\n\n  function writeCoverage(coverage, fileName) {\n    _coverage = coverage;\n    let json = JSON.stringify(coverage, null, 2);\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, json, {encoding: 'utf8'});\n  }\n\n  function writeBadge(badge, fileName) {\n    log(fileName);\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, badge, {encoding: 'utf8'});\n  }\n\n  function writeAST(astJSON, fileName) {\n    let filePath = path.resolve(config.destination, fileName);\n    fs.outputFileSync(filePath, astJSON, {encoding: 'utf8'});\n  }\n\n  function copy(srcPath, destPath) {\n    log(destPath);\n    fs.copySync(srcPath, path.resolve(config.destination, destPath));\n  }\n\n  if (config.coverage) {\n    new CoverageBuilder(data, config).exec(writeCoverage, writeBadge);\n  }\n\n  new IdentifiersDocBuilder(data, config).exec(writeHTML);\n  new IndexDocBuilder(data, config, _coverage).exec(writeHTML);\n  new ClassDocBuilder(data, config).exec(writeHTML);\n  new SingleDocBuilder(data, config).exec(writeHTML);\n  new FileDocBuilder(data, config).exec(writeHTML);\n  new StaticFileBuilder(data, config).exec(copy);\n  new SearchIndexBuilder(data, config).exec(writeHTML);\n  new ASTDocBuilder(data, asts, config).exec(writeAST);\n  new SourceDocBuilder(data, config, _coverage).exec(writeHTML);\n\n  // package.json\n  try {\n    const json = fs.readFileSync(config.package, {encoding: 'utf-8'});\n    let filePath = path.resolve(config.destination, 'package.json');\n    fs.outputFileSync(filePath, json, {encoding: 'utf8'});\n  } catch (e) {\n    // ignore\n  }\n\n  if (config.test) {\n    new TestDocBuilder(data, config).exec(writeHTML);\n    new TestFileDocBuilder(data, config).exec(writeHTML);\n  }\n\n  if (config.coverage) {\n    console.log('==================================');\n    console.log(`Coverage: ${_coverage.coverage} (${_coverage.actualCount}/${_coverage.expectCount})`);\n    console.log('==================================');\n  }\n};\n"
   },
   {
     "kind": "function",
@@ -9478,7 +9554,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import path from 'path';\n\nlet filePathMap = {};\n\nexport default class NamingUtil {\n  static filePathToName(filePath) {\n    let basename = path.basename(filePath).split('.')[0];\n    basename = basename.replace(/[^a-zA-Z0-9_$]/g, '');\n\n    filePathMap[filePath] = filePathMap[filePath] || 0;\n    let count = filePathMap[filePath];\n    if (count > 0) basename += count;\n    filePathMap[filePath]++;\n\n    return basename;\n  }\n}\n"
+    "content": "import path from 'path';\n\nlet filePathMap = {};\n\n/**\n * Identifier Naming Util class.\n */\nexport default class NamingUtil {\n  /**\n   * naming with file path.\n   * @param {string} filePath - target file path.\n   * @returns {string} name\n   */\n  static filePathToName(filePath) {\n    let basename = path.basename(filePath).split('.')[0];\n    basename = basename.replace(/[^a-zA-Z0-9_$]/g, '');\n\n    filePathMap[filePath] = filePathMap[filePath] || 0;\n    let count = filePathMap[filePath];\n    if (count > 0) basename += count;\n    filePathMap[filePath]++;\n\n    return basename;\n  }\n}\n"
   },
   {
     "kind": "variable",
@@ -9511,9 +9587,8 @@
     "export": true,
     "importPath": "esdoc/out/src/Util/NamingUtil.js",
     "importStyle": "NamingUtil",
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Identifier Naming Util class.",
+    "lineNumber": 8,
     "interface": false
   },
   {
@@ -9524,21 +9599,33 @@
     "memberof": "src/Util/NamingUtil.js~NamingUtil",
     "longname": "src/Util/NamingUtil.js~NamingUtil.filePathToName",
     "access": null,
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
+    "description": "naming with file path.",
+    "lineNumber": 14,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} name"
+      }
+    ],
     "params": [
       {
-        "name": "filePath",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "filePath",
+        "description": "target file path."
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "name"
     },
     "generator": false
   },

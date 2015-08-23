@@ -1,7 +1,7 @@
 {
-  "coverage": "89.81%",
-  "expectCount": 324,
-  "actualCount": 291,
+  "coverage": "94.18%",
+  "expectCount": 327,
+  "actualCount": 308,
   "files": {
     "src/Doc/AbstractDoc.js": {
       "expectCount": 54,
@@ -19,17 +19,17 @@
       "expectCount": 9,
       "actualCount": 9
     },
-    "src/Doc/AssignmentDoc.js": {
-      "expectCount": 4,
-      "actualCount": 4
-    },
-    "src/Doc/TestDoc.js": {
+    "src/Doc/ExternalDoc.js": {
       "expectCount": 7,
       "actualCount": 7
     },
     "src/Doc/VariableDoc.js": {
       "expectCount": 5,
       "actualCount": 5
+    },
+    "src/Doc/MemberDoc.js": {
+      "expectCount": 7,
+      "actualCount": 7
     },
     "src/Doc/TypedefDoc.js": {
       "expectCount": 6,
@@ -39,17 +39,17 @@
       "expectCount": 9,
       "actualCount": 9
     },
-    "src/Doc/MemberDoc.js": {
+    "src/Doc/TestDoc.js": {
       "expectCount": 7,
       "actualCount": 7
+    },
+    "src/Doc/AssignmentDoc.js": {
+      "expectCount": 4,
+      "actualCount": 4
     },
     "src/Doc/TestFileDoc.js": {
       "expectCount": 2,
       "actualCount": 2
-    },
-    "src/Doc/ExternalDoc.js": {
-      "expectCount": 7,
-      "actualCount": 7
     },
     "src/Publisher/Builder/ASTDocBuilder.js": {
       "expectCount": 4,
@@ -117,7 +117,7 @@
     },
     "src/Util/NamingUtil.js": {
       "expectCount": 2,
-      "actualCount": 0
+      "actualCount": 2
     },
     "src/Parser/ParamParser.js": {
       "expectCount": 6,
@@ -128,8 +128,8 @@
       "actualCount": 11
     },
     "src/Plugin/Plugin.js": {
-      "expectCount": 14,
-      "actualCount": 0
+      "expectCount": 17,
+      "actualCount": 15
     },
     "src/Publisher/Builder/SearchIndexBuilder.js": {
       "expectCount": 2,

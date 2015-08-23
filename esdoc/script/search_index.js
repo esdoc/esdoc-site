@@ -168,6 +168,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "esdoc/out/src/plugin/plugin.js~pluginevent",
+    "class/src/Plugin/Plugin.js~PluginEvent.html",
+    "<span>PluginEvent</span> <span class=\"search-result-import-path\">esdoc/out/src/Plugin/Plugin.js</span>",
+    "class"
+  ],
+  [
     "esdoc/out/src/publisher/builder/searchindexbuilder.js~searchindexbuilder",
     "class/src/Publisher/Builder/SearchIndexBuilder.js~SearchIndexBuilder.html",
     "<span>SearchIndexBuilder</span> <span class=\"search-result-import-path\">esdoc/out/src/Publisher/Builder/SearchIndexBuilder.js</span>",
@@ -1183,13 +1189,13 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber98",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
     "ParamParser: parse param with complex.",
     "test"
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber98",
     "ParamParser: parse param with complex.",
     "test"
   ],
@@ -2596,6 +2602,18 @@ window.esdocSearchIndex = [
     "class/src/Plugin/Plugin.js~Plugin.html#instance-method-onStart",
     "src/Plugin/Plugin.js~Plugin#onStart",
     "method"
+  ],
+  [
+    "src/plugin/plugin.js~pluginevent#constructor",
+    "class/src/Plugin/Plugin.js~PluginEvent.html#instance-constructor-constructor",
+    "src/Plugin/Plugin.js~PluginEvent#constructor",
+    "method"
+  ],
+  [
+    "src/plugin/plugin.js~pluginevent#data",
+    "class/src/Plugin/Plugin.js~PluginEvent.html#instance-member-data",
+    "src/Plugin/Plugin.js~PluginEvent#data",
+    "member"
   ],
   [
     "src/publisher/builder/astdocbuilder.js",
