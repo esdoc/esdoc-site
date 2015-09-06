@@ -715,7 +715,7 @@ window.esdocSearchIndex = [
   ],
   [
     "coveragebuilder#exec src/publisher/builder/coveragebuilder.js~coveragebuilder#exec,coveragebuilder#exec",
-    "test-file/src/BuilderTest/CoverageDocTest.js.html#lineNumber79",
+    "test-file/src/BuilderTest/CoverageDocTest.js.html#lineNumber83",
     "Coverage: creates coverage badge",
     "test"
   ],
@@ -741,6 +741,24 @@ window.esdocSearchIndex = [
     "docresolver#_resolveignore src/publisher/builder/docresolver.js~docresolver#_resolveignore,docresolver#_resolveignore",
     "test-file/src/BuilderTest/DocResolverTest.js.html#lineNumber24",
     "DocResolver: ignores identifier that have @ignore.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/BuilderTest/DuplicationPropertyTest.js.html#lineNumber3",
+    "Duplication property:",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/BuilderTest/DuplicationPropertyTest.js.html#lineNumber14",
+    "Duplication property: excludes member because method",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/BuilderTest/DuplicationPropertyTest.js.html#lineNumber6",
+    "Duplication property: excludes member because setter/getter",
     "test"
   ],
   [
@@ -1081,7 +1099,7 @@ window.esdocSearchIndex = [
   ],
   [
     "singledocbuilder#_buildsingledoc src/publisher/builder/singledocbuilder.js~singledocbuilder#_buildsingledoc,singledocbuilder#_buildsingledoc",
-    "test-file/src/BuilderTest/TypedefDocTest.js.html#lineNumber16",
+    "test-file/src/BuilderTest/TypedefDocTest.js.html#lineNumber19",
     "MyTypedef: has detail.",
     "test"
   ],
@@ -1189,7 +1207,7 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
     "ParamParser: parse param with complex.",
     "test"
   ],
@@ -1201,7 +1219,7 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
     "ParamParser: parse param with complex.",
     "test"
   ],
@@ -1239,6 +1257,24 @@ window.esdocSearchIndex = [
     "",
     "test-file/src/UnitTest/ESDocPluginTest.js.html#lineNumber8",
     "Plugin: use plugin without error",
+    "test"
+  ],
+  [
+    "publish src/publisher/publish.js~publish,publish",
+    "test-file/src/UnitTest/NotIncludeSourceTest.js.html#lineNumber7",
+    "Source code:",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/UnitTest/NotIncludeSourceTest.js.html#lineNumber19",
+    "Source code: doest not include source code.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/UnitTest/NotIncludeSourceTest.js.html#lineNumber8",
+    "Source code: use esdoc-non-source.json without error",
     "test"
   ],
   [
@@ -1335,6 +1371,12 @@ window.esdocSearchIndex = [
     "src/buildertest/docresolvertest.js",
     "test-file/src/BuilderTest/DocResolverTest.js.html",
     "src/BuilderTest/DocResolverTest.js",
+    "testFile"
+  ],
+  [
+    "src/buildertest/duplicationpropertytest.js",
+    "test-file/src/BuilderTest/DuplicationPropertyTest.js.html",
+    "src/BuilderTest/DuplicationPropertyTest.js",
     "testFile"
   ],
   [
@@ -3297,6 +3339,12 @@ window.esdocSearchIndex = [
     "src/unittest/esdocplugintest.js",
     "test-file/src/UnitTest/ESDocPluginTest.js.html",
     "src/UnitTest/ESDocPluginTest.js",
+    "testFile"
+  ],
+  [
+    "src/unittest/notincludesourcetest.js",
+    "test-file/src/UnitTest/NotIncludeSourceTest.js.html",
+    "src/UnitTest/NotIncludeSourceTest.js",
     "testFile"
   ],
   [

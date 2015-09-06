@@ -5,167 +5,236 @@
   "files": {
     "src/Doc/AbstractDoc.js": {
       "expectCount": 54,
-      "actualCount": 49
+      "actualCount": 49,
+      "undocumentLines": [
+        20,
+        23,
+        21,
+        22,
+        24
+      ]
     },
     "src/Doc/FileDoc.js": {
       "expectCount": 6,
-      "actualCount": 6
+      "actualCount": 6,
+      "undocumentLines": []
     },
     "src/Doc/FunctionDoc.js": {
       "expectCount": 7,
-      "actualCount": 7
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Doc/MethodDoc.js": {
       "expectCount": 9,
-      "actualCount": 9
+      "actualCount": 9,
+      "undocumentLines": []
     },
     "src/Doc/ExternalDoc.js": {
       "expectCount": 7,
-      "actualCount": 7
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Doc/VariableDoc.js": {
       "expectCount": 5,
-      "actualCount": 5
+      "actualCount": 5,
+      "undocumentLines": []
     },
     "src/Doc/MemberDoc.js": {
       "expectCount": 7,
-      "actualCount": 7
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Doc/TypedefDoc.js": {
       "expectCount": 6,
-      "actualCount": 6
+      "actualCount": 6,
+      "undocumentLines": []
     },
     "src/Doc/ClassDoc.js": {
       "expectCount": 9,
-      "actualCount": 9
+      "actualCount": 9,
+      "undocumentLines": []
     },
     "src/Doc/TestDoc.js": {
       "expectCount": 7,
-      "actualCount": 7
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Doc/AssignmentDoc.js": {
       "expectCount": 4,
-      "actualCount": 4
+      "actualCount": 4,
+      "undocumentLines": []
     },
     "src/Doc/TestFileDoc.js": {
       "expectCount": 2,
-      "actualCount": 2
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/ASTDocBuilder.js": {
       "expectCount": 4,
-      "actualCount": 3
+      "actualCount": 3,
+      "undocumentLines": [
+        15
+      ]
     },
     "src/Util/ASTUtil.js": {
       "expectCount": 9,
-      "actualCount": 9
+      "actualCount": 9,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/ClassDocBuilder.js": {
       "expectCount": 10,
-      "actualCount": 10
+      "actualCount": 10,
+      "undocumentLines": []
     },
     "src/Parser/CommentParser.js": {
       "expectCount": 3,
-      "actualCount": 3
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/CoverageBuilder.js": {
       "expectCount": 2,
-      "actualCount": 2
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/DocBuilder.js": {
       "expectCount": 31,
-      "actualCount": 29
+      "actualCount": 29,
+      "undocumentLines": [
+        20,
+        19
+      ]
     },
     "src/Factory/DocFactory.js": {
       "expectCount": 24,
-      "actualCount": 20
+      "actualCount": 20,
+      "undocumentLines": [
+        39,
+        40,
+        42,
+        41
+      ]
     },
     "src/Publisher/Builder/DocResolver.js": {
       "expectCount": 15,
-      "actualCount": 13
+      "actualCount": 13,
+      "undocumentLines": [
+        14,
+        15
+      ]
     },
     "src/ESDoc.js": {
       "expectCount": 9,
-      "actualCount": 8
+      "actualCount": 8,
+      "undocumentLines": [
+        176
+      ]
     },
     "src/ESDocCLI.js": {
       "expectCount": 7,
-      "actualCount": 7
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Parser/ESParser.js": {
       "expectCount": 2,
-      "actualCount": 2
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/FileDocBuilder.js": {
       "expectCount": 3,
-      "actualCount": 3
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/IdentifiersDocBuilder.js": {
       "expectCount": 3,
-      "actualCount": 3
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/IndexDocBuilder.js": {
       "expectCount": 5,
-      "actualCount": 4
+      "actualCount": 4,
+      "undocumentLines": [
+        20
+      ]
     },
     "src/Util/InvalidCodeLogger.js": {
       "expectCount": 4,
-      "actualCount": 4
+      "actualCount": 4,
+      "undocumentLines": []
     },
     "src/Util/NPMUtil.js": {
       "expectCount": 2,
-      "actualCount": 2
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Util/NamingUtil.js": {
       "expectCount": 2,
-      "actualCount": 2
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Parser/ParamParser.js": {
       "expectCount": 6,
-      "actualCount": 6
+      "actualCount": 6,
+      "undocumentLines": []
     },
     "src/Util/PathResolver.js": {
       "expectCount": 11,
-      "actualCount": 11
+      "actualCount": 11,
+      "undocumentLines": []
     },
     "src/Plugin/Plugin.js": {
       "expectCount": 17,
-      "actualCount": 15
+      "actualCount": 15,
+      "undocumentLines": [
+        11,
+        142
+      ]
     },
     "src/Publisher/Builder/SearchIndexBuilder.js": {
       "expectCount": 2,
-      "actualCount": 2
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/SingleDocBuilder.js": {
       "expectCount": 3,
-      "actualCount": 3
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/SourceDocBuilder.js": {
       "expectCount": 5,
-      "actualCount": 4
+      "actualCount": 4,
+      "undocumentLines": [
+        19
+      ]
     },
     "src/Publisher/Builder/StaticFileBuilder.js": {
       "expectCount": 2,
-      "actualCount": 2
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/TestDocBuilder.js": {
       "expectCount": 4,
-      "actualCount": 4
+      "actualCount": 4,
+      "undocumentLines": []
     },
     "src/Factory/TestDocFactory.js": {
       "expectCount": 11,
-      "actualCount": 11
+      "actualCount": 11,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/TestFileDocBuilder.js": {
       "expectCount": 3,
-      "actualCount": 3
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "src/Publisher/Builder/util.js": {
       "expectCount": 4,
-      "actualCount": 4
+      "actualCount": 4,
+      "undocumentLines": []
     },
     "src/Publisher/publish.js": {
       "expectCount": 1,
-      "actualCount": 1
+      "actualCount": 1,
+      "undocumentLines": []
     }
   }
 }
