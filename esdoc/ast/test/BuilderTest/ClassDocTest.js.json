@@ -1516,8 +1516,8 @@
                                               },
                                               {
                                                 "type": "Literal",
-                                                "value": "file/src/MyClass.js.html#lineNumber52",
-                                                "raw": "'file/src/MyClass.js.html#lineNumber52'",
+                                                "value": "file/src/MyClass.js.html#lineNumber55",
+                                                "raw": "'file/src/MyClass.js.html#lineNumber55'",
                                                 "range": [
                                                   812,
                                                   851
