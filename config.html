@@ -26,13 +26,65 @@
 <article class="content">
 <h1 id="config">Config</h1>
 <p>ESDoc config file.</p>
-<p>minimum config</p>
+<ul>
+<li><a href="#minimum-config">Minimum Config</a></li>
+<li><a href="#integrate-test-codes-config">Integrate Test Codes Config</a></li>
+<li><a href="#integrate-manual-config">Integrate Manual Config</a></li>
+<li><a href="#use-es7-config">Use ES7 Config</a></li>
+<li><a href="#full-config">Full Config</a></li>
+</ul>
+<h2 id="minimum-config">Minimum Config</h2>
 <pre><code class="lang-json">{
   &quot;source&quot;: &quot;./path/to/src&quot;,
   &quot;destination&quot;: &quot;./path/to/esdoc&quot;
 }
 </code></pre>
-<p>full config</p>
+<h2 id="integrate-test-codes-config">Integrate Test Codes Config</h2>
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;./src&quot;
+  &quot;destination&quot;: &quot;./doc&quot;,
+  &quot;test&quot;: {
+    &quot;type&quot;: &quot;mocha&quot;,
+    &quot;source&quot;: &quot;./test&quot;
+  }
+}
+</code></pre>
+<p>And if use <code>@test</code>, more better integration.</p>
+<pre><code class="lang-javascript">/** @test {MyClass} */
+describe(&#39;MyClass has foo bar feature&#39;, ()=&gt;{
+
+  /** @test {MyClass#baz} */
+  it(&#39;MyClass#baz returns magic value&#39;, ()=&gt;{
+    assert(true);
+  });
+});
+</code></pre>
+<h2 id="integrate-manual-config">Integrate Manual Config</h2>
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./doc&quot;,
+  &quot;manual&quot;: {
+    &quot;overview&quot;: &quot;./manual/overview.md&quot;,
+    &quot;installation&quot;: &quot;./manual/installation.md&quot;,
+    &quot;usage&quot;: &quot;./manual/usage.md&quot;,
+    &quot;example&quot;: &quot;./manual/example.md&quot;,
+    &quot;faq&quot;: &quot;./manual/faq.md&quot;,
+    &quot;changelog&quot;: &quot;./CHANGELOG.md&quot;
+  }
+}
+</code></pre>
+<h2 id="use-es7-config">Use ES7 Config</h2>
+<pre><code class="lang-sh">npm install esdoc-es7-plugin
+</code></pre>
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./doc&quot;,
+  &quot;plugins&quot;: [
+    {&quot;name&quot;: &quot;esdoc-es7-plugin&quot;}
+  ]
+}
+</code></pre>
+<h2 id="full-config">Full Config</h2>
 <pre><code class="lang-json">{
   &quot;source&quot;: &quot;./path/to/src&quot;,
   &quot;destination&quot;: &quot;./path/to/esdoc&quot;,
@@ -52,13 +104,22 @@
     &quot;source&quot;: &quot;./test/src&quot;,
     &quot;includes&quot;: [&quot;Test\\.(js|es6)$&quot;],
     &quot;excludes&quot;: [&quot;\\.config\\.(js|es6)$&quot;]
-  }
+  },
   &quot;title&quot;: &quot;My Software Name&quot;,
   &quot;styles&quot;: [&quot;./path/to/style.css&quot;],
   &quot;scripts&quot;: [&quot;./path/to/script.js&quot;],
   &quot;plugins&quot;: [
     {&quot;name&quot;: &quot;plugin-name-or-file-path&quot;, &quot;option&quot;: null}
-  ]
+  ],
+  &quot;manual&quot;: {
+    &quot;overview&quot;: &quot;./manual/overview.md&quot;,
+    &quot;installation&quot;: &quot;./manual/installation.md&quot;,
+    &quot;usage&quot;: &quot;./manual/usage.md&quot;,
+    &quot;example&quot;: &quot;./manual/example.md&quot;,
+    &quot;faq&quot;: &quot;./manual/faq.md&quot;,
+    &quot;changelog&quot;: &quot;./CHANGELOG.md&quot;
+  },
+  &quot;lint&quot;: true
 }
 </code></pre>
 <table>
@@ -153,7 +214,7 @@
 <td><code>test</code></td>
 <td>-</td>
 <td><code>null</code></td>
-<td>If specified, Generate document from test code.</td>
+<td>If specified, generate document from test code.</td>
 </tr>
 <tr>
 <td><code>test.type</code></td>
@@ -214,6 +275,54 @@
 <td>-</td>
 <td>null</td>
 <td>If specified, the plugin get the option.</td>
+</tr>
+<tr>
+<td><code>manual</code></td>
+<td>-</td>
+<td>null</td>
+<td>If specified, generate manual from markdown.</td>
+</tr>
+<tr>
+<td><code>manual.overview</code></td>
+<td>-</td>
+<td>null</td>
+<td>markdown file path</td>
+</tr>
+<tr>
+<td><code>manual.installation</code></td>
+<td>-</td>
+<td>null</td>
+<td>markdown file path</td>
+</tr>
+<tr>
+<td><code>manual.usage</code></td>
+<td>-</td>
+<td>null</td>
+<td>markdown file path</td>
+</tr>
+<tr>
+<td><code>manual.example</code></td>
+<td>-</td>
+<td>null</td>
+<td>markdown file path</td>
+</tr>
+<tr>
+<td><code>manual.faq</code></td>
+<td>-</td>
+<td>null</td>
+<td>markdown file path</td>
+</tr>
+<tr>
+<td><code>manual.changelog</code></td>
+<td>-</td>
+<td>null</td>
+<td>markdown file path</td>
+</tr>
+<tr>
+<td><code>lint</code></td>
+<td>-</td>
+<td>true</td>
+<td>If specified, execute documentation lint.</td>
 </tr>
 </tbody>
 </table>

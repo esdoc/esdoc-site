@@ -3,26 +3,26 @@
   "body": [],
   "sourceType": "module",
   "range": [
-    3251,
-    3251
+    3547,
+    3547
   ],
   "loc": {
     "start": {
-      "line": 125,
+      "line": 134,
       "column": 0
     },
     "end": {
-      "line": 125,
+      "line": 134,
       "column": 0
     }
   },
   "leadingComments": [
     {
       "type": "Block",
-      "value": "*\n * ESDoc config object.\n * @typedef {Object} ESDocConfig\n * @property {!string} source - directory path of javascript source code.\n * @property {!string} destination - directory path of output.\n * @property {string} [title]\n * @property {string[]} [includes=[\"\\\\.(js|es6)$\"]]\n * @property {string[]} [excludes=[\"\\\\.config\\\\.(js|es6)$\"]]\n * @property {string[]} [access=[\"public\", \"protected\"]]\n * @property {boolean} [autoPrivate=true]\n * @property {boolean} [builtinExternal=true]\n * @property {boolean} [unexportIdentifier=false]\n * @property {boolean} [undocumentIdentifier=true]\n * @property {boolean} [coverage=true]\n * @property {boolean} [debug=false]\n * @property {string} [index=\"./README.md\"]\n * @property {string} [package=\"./package.json\"]\n * @property {string} [importPathPrefix=\"\"]\n * @property {string[]} [styles=[]]\n * @property {string[]} [scripts=[]]\n * @property {{type: string, source: string, includes: string[], excludes: string[]}} test\n * @see https://esdoc.org/config.html\n ",
+      "value": "*\n * ESDoc config object.\n * @typedef {Object} ESDocConfig\n * @property {!string} source - directory path of javascript source code.\n * @property {!string} destination - directory path of output.\n * @property {string} [title]\n * @property {string[]} [includes=[\"\\\\.(js|es6)$\"]]\n * @property {string[]} [excludes=[\"\\\\.config\\\\.(js|es6)$\"]]\n * @property {string[]} [access=[\"public\", \"protected\"]]\n * @property {boolean} [autoPrivate=true]\n * @property {boolean} [builtinExternal=true]\n * @property {boolean} [unexportIdentifier=false]\n * @property {boolean} [undocumentIdentifier=true]\n * @property {boolean} [coverage=true]\n * @property {boolean} [debug=false]\n * @property {string} [index=\"./README.md\"]\n * @property {string} [package=\"./package.json\"]\n * @property {string} [importPathPrefix=\"\"]\n * @property {string[]} [styles=[]]\n * @property {string[]} [scripts=[]]\n * @property {{type: string, source: string, includes: string[], excludes: string[]}} test\n * @property {{overview: string, installation: string, usage: string, example: string, faq: string, changelog: string}} manual\n * @see https://esdoc.org/config.html\n ",
       "range": [
         0,
-        1005
+        1132
       ],
       "loc": {
         "start": {
@@ -30,7 +30,7 @@
           "column": 0
         },
         "end": {
-          "line": 23,
+          "line": 24,
           "column": 3
         }
       }
@@ -39,16 +39,16 @@
       "type": "Block",
       "value": "*\n * doc comment tag.\n * @typedef {Object} Tag\n * @property {string} tagName\n * @property {*} tagValue\n ",
       "range": [
-        1007,
-        1115
+        1134,
+        1242
       ],
       "loc": {
         "start": {
-          "line": 25,
+          "line": 26,
           "column": 0
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 3
         }
       }
@@ -57,16 +57,16 @@
       "type": "Block",
       "value": "*\n * Parsed doc comment.\n * @typedef {Object} DocObject\n ",
       "range": [
-        1117,
-        1178
+        1244,
+        1305
       ],
       "loc": {
         "start": {
-          "line": 32,
+          "line": 33,
           "column": 0
         },
         "end": {
-          "line": 35,
+          "line": 36,
           "column": 3
         }
       }
@@ -75,16 +75,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} AST\n * @see https://github.com/estree/estree\n ",
       "range": [
-        1180,
-        1253
+        1307,
+        1380
       ],
       "loc": {
         "start": {
-          "line": 37,
+          "line": 38,
           "column": 0
         },
         "end": {
-          "line": 40,
+          "line": 41,
           "column": 3
         }
       }
@@ -93,16 +93,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} ASTNode\n * @see https://github.com/estree/estree\n * @property {Object} [superClass]\n * @property {Object[]} [leadingComments]\n * @property {Object[]} [trailingComments]\n * @property {Object[]} [body]\n * @property {ASTNode} [parent] - this is customize by ESDoc\n ",
       "range": [
-        1255,
-        1544
+        1382,
+        1671
       ],
       "loc": {
         "start": {
-          "line": 42,
+          "line": 43,
           "column": 0
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 3
         }
       }
@@ -111,16 +111,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} NPMPackageObject\n * @see https://docs.npmjs.com/files/package.json\n ",
       "range": [
-        1546,
-        1641
+        1673,
+        1768
       ],
       "loc": {
         "start": {
-          "line": 52,
+          "line": 53,
           "column": 0
         },
         "end": {
-          "line": 55,
+          "line": 56,
           "column": 3
         }
       }
@@ -129,16 +129,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} Taffy\n * @see http://www.taffydb.com/\n ",
       "range": [
-        1643,
-        1709
+        1770,
+        1836
       ],
       "loc": {
         "start": {
-          "line": 57,
+          "line": 58,
           "column": 0
         },
         "end": {
-          "line": 60,
+          "line": 61,
           "column": 3
         }
       }
@@ -147,16 +147,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} IceCap\n * @see https://github.com/h13i32maru/ice-cap\n ",
       "range": [
-        1711,
-        1792
+        1838,
+        1919
       ],
       "loc": {
         "start": {
-          "line": 62,
+          "line": 63,
           "column": 0
         },
         "end": {
-          "line": 65,
+          "line": 66,
           "column": 3
         }
       }
@@ -165,16 +165,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} CoverageObject\n * @property {string} coverage - ratio.\n * @property {number} expectCount - all identifier count.\n * @property {number} actualCount - documented identifier count.\n * @property {Object<string, Object>} files - file name and coverage.\n ",
       "range": [
-        1794,
-        2070
+        1921,
+        2197
       ],
       "loc": {
         "start": {
-          "line": 67,
+          "line": 68,
           "column": 0
         },
         "end": {
-          "line": 73,
+          "line": 74,
           "column": 3
         }
       }
@@ -183,16 +183,16 @@
       "type": "Block",
       "value": "*\n * ESDocCLI uses argv\n * @typedef {Object} ESDocCLIArgv\n * @property {boolean} [h] - for help\n * @property {boolean} [help] - for help\n * @property {boolean [v] - for version\n * @property {boolean} [version] - for version\n * @property {string} [c] - for config file path\n * @property {string[]} [_] - for source directory path\n ",
       "range": [
-        2072,
-        2406
+        2199,
+        2533
       ],
       "loc": {
         "start": {
-          "line": 75,
+          "line": 76,
           "column": 0
         },
         "end": {
-          "line": 84,
+          "line": 85,
           "column": 3
         }
       }
@@ -201,16 +201,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} DocTypedef\n ",
       "range": [
-        2408,
-        2447
+        2535,
+        2574
       ],
       "loc": {
         "start": {
-          "line": 86,
+          "line": 87,
           "column": 0
         },
         "end": {
-          "line": 88,
+          "line": 89,
           "column": 3
         }
       }
@@ -219,16 +219,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} PackageTypedef\n * @property {Object} repository\n * @property {string} repository.url\n ",
       "range": [
-        2449,
-        2562
+        2576,
+        2689
       ],
       "loc": {
         "start": {
-          "line": 90,
+          "line": 91,
           "column": 0
         },
         "end": {
-          "line": 94,
+          "line": 95,
           "column": 3
         }
       }
@@ -237,16 +237,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} ParsedParam\n * @property {boolean} [nullable]\n * @property {string[]} types\n * @property {boolean} [spread]\n * @property {boolean} [optional]\n * @property {string} [defaultValue]\n * @property {*} [defaultRaw]\n * @property {string} [name]\n * @property {string} [description]\n ",
       "range": [
-        2564,
-        2866
+        2691,
+        2993
       ],
       "loc": {
         "start": {
-          "line": 96,
+          "line": 97,
           "column": 0
         },
         "end": {
-          "line": 106,
+          "line": 107,
           "column": 3
         }
       }
@@ -255,16 +255,16 @@
       "type": "Block",
       "value": "*\n * @todo remove this typedef.\n * @typedef {Object} IceCapInstanceTypedef\n * @property {function} loop\n * @property {function} attr\n * @property {function} text\n * @property {function} load\n * @property {function} into\n * @property {function} drop\n * @property {string} html\n ",
       "range": [
-        2868,
-        3149
+        2995,
+        3276
       ],
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 0
         },
         "end": {
-          "line": 118,
+          "line": 119,
           "column": 3
         }
       }
@@ -273,16 +273,34 @@
       "type": "Block",
       "value": "*\n * @todo remove this typedef.\n * @typedef {Object} TaffyCursor\n * @property {function} each\n ",
       "range": [
-        3151,
-        3250
+        3278,
+        3377
       ],
       "loc": {
         "start": {
-          "line": 120,
+          "line": 121,
           "column": 0
         },
         "end": {
-          "line": 124,
+          "line": 125,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} ManualConfigItem\n * @property {string} label\n * @property {string} path\n * @property {string} [fileName]\n * @property {string} [reference]\n ",
+      "range": [
+        3379,
+        3546
+      ],
+      "loc": {
+        "start": {
+          "line": 127,
+          "column": 0
+        },
+        "end": {
+          "line": 133,
           "column": 3
         }
       }
@@ -291,10 +309,10 @@
   "comments": [
     {
       "type": "Block",
-      "value": "*\n * ESDoc config object.\n * @typedef {Object} ESDocConfig\n * @property {!string} source - directory path of javascript source code.\n * @property {!string} destination - directory path of output.\n * @property {string} [title]\n * @property {string[]} [includes=[\"\\\\.(js|es6)$\"]]\n * @property {string[]} [excludes=[\"\\\\.config\\\\.(js|es6)$\"]]\n * @property {string[]} [access=[\"public\", \"protected\"]]\n * @property {boolean} [autoPrivate=true]\n * @property {boolean} [builtinExternal=true]\n * @property {boolean} [unexportIdentifier=false]\n * @property {boolean} [undocumentIdentifier=true]\n * @property {boolean} [coverage=true]\n * @property {boolean} [debug=false]\n * @property {string} [index=\"./README.md\"]\n * @property {string} [package=\"./package.json\"]\n * @property {string} [importPathPrefix=\"\"]\n * @property {string[]} [styles=[]]\n * @property {string[]} [scripts=[]]\n * @property {{type: string, source: string, includes: string[], excludes: string[]}} test\n * @see https://esdoc.org/config.html\n ",
+      "value": "*\n * ESDoc config object.\n * @typedef {Object} ESDocConfig\n * @property {!string} source - directory path of javascript source code.\n * @property {!string} destination - directory path of output.\n * @property {string} [title]\n * @property {string[]} [includes=[\"\\\\.(js|es6)$\"]]\n * @property {string[]} [excludes=[\"\\\\.config\\\\.(js|es6)$\"]]\n * @property {string[]} [access=[\"public\", \"protected\"]]\n * @property {boolean} [autoPrivate=true]\n * @property {boolean} [builtinExternal=true]\n * @property {boolean} [unexportIdentifier=false]\n * @property {boolean} [undocumentIdentifier=true]\n * @property {boolean} [coverage=true]\n * @property {boolean} [debug=false]\n * @property {string} [index=\"./README.md\"]\n * @property {string} [package=\"./package.json\"]\n * @property {string} [importPathPrefix=\"\"]\n * @property {string[]} [styles=[]]\n * @property {string[]} [scripts=[]]\n * @property {{type: string, source: string, includes: string[], excludes: string[]}} test\n * @property {{overview: string, installation: string, usage: string, example: string, faq: string, changelog: string}} manual\n * @see https://esdoc.org/config.html\n ",
       "range": [
         0,
-        1005
+        1132
       ],
       "loc": {
         "start": {
@@ -302,7 +320,7 @@
           "column": 0
         },
         "end": {
-          "line": 23,
+          "line": 24,
           "column": 3
         }
       }
@@ -311,16 +329,16 @@
       "type": "Block",
       "value": "*\n * doc comment tag.\n * @typedef {Object} Tag\n * @property {string} tagName\n * @property {*} tagValue\n ",
       "range": [
-        1007,
-        1115
+        1134,
+        1242
       ],
       "loc": {
         "start": {
-          "line": 25,
+          "line": 26,
           "column": 0
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 3
         }
       }
@@ -329,16 +347,16 @@
       "type": "Block",
       "value": "*\n * Parsed doc comment.\n * @typedef {Object} DocObject\n ",
       "range": [
-        1117,
-        1178
+        1244,
+        1305
       ],
       "loc": {
         "start": {
-          "line": 32,
+          "line": 33,
           "column": 0
         },
         "end": {
-          "line": 35,
+          "line": 36,
           "column": 3
         }
       }
@@ -347,16 +365,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} AST\n * @see https://github.com/estree/estree\n ",
       "range": [
-        1180,
-        1253
+        1307,
+        1380
       ],
       "loc": {
         "start": {
-          "line": 37,
+          "line": 38,
           "column": 0
         },
         "end": {
-          "line": 40,
+          "line": 41,
           "column": 3
         }
       }
@@ -365,16 +383,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} ASTNode\n * @see https://github.com/estree/estree\n * @property {Object} [superClass]\n * @property {Object[]} [leadingComments]\n * @property {Object[]} [trailingComments]\n * @property {Object[]} [body]\n * @property {ASTNode} [parent] - this is customize by ESDoc\n ",
       "range": [
-        1255,
-        1544
+        1382,
+        1671
       ],
       "loc": {
         "start": {
-          "line": 42,
+          "line": 43,
           "column": 0
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 3
         }
       }
@@ -383,16 +401,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} NPMPackageObject\n * @see https://docs.npmjs.com/files/package.json\n ",
       "range": [
-        1546,
-        1641
+        1673,
+        1768
       ],
       "loc": {
         "start": {
-          "line": 52,
+          "line": 53,
           "column": 0
         },
         "end": {
-          "line": 55,
+          "line": 56,
           "column": 3
         }
       }
@@ -401,16 +419,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} Taffy\n * @see http://www.taffydb.com/\n ",
       "range": [
-        1643,
-        1709
+        1770,
+        1836
       ],
       "loc": {
         "start": {
-          "line": 57,
+          "line": 58,
           "column": 0
         },
         "end": {
-          "line": 60,
+          "line": 61,
           "column": 3
         }
       }
@@ -419,16 +437,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} IceCap\n * @see https://github.com/h13i32maru/ice-cap\n ",
       "range": [
-        1711,
-        1792
+        1838,
+        1919
       ],
       "loc": {
         "start": {
-          "line": 62,
+          "line": 63,
           "column": 0
         },
         "end": {
-          "line": 65,
+          "line": 66,
           "column": 3
         }
       }
@@ -437,16 +455,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} CoverageObject\n * @property {string} coverage - ratio.\n * @property {number} expectCount - all identifier count.\n * @property {number} actualCount - documented identifier count.\n * @property {Object<string, Object>} files - file name and coverage.\n ",
       "range": [
-        1794,
-        2070
+        1921,
+        2197
       ],
       "loc": {
         "start": {
-          "line": 67,
+          "line": 68,
           "column": 0
         },
         "end": {
-          "line": 73,
+          "line": 74,
           "column": 3
         }
       }
@@ -455,16 +473,16 @@
       "type": "Block",
       "value": "*\n * ESDocCLI uses argv\n * @typedef {Object} ESDocCLIArgv\n * @property {boolean} [h] - for help\n * @property {boolean} [help] - for help\n * @property {boolean [v] - for version\n * @property {boolean} [version] - for version\n * @property {string} [c] - for config file path\n * @property {string[]} [_] - for source directory path\n ",
       "range": [
-        2072,
-        2406
+        2199,
+        2533
       ],
       "loc": {
         "start": {
-          "line": 75,
+          "line": 76,
           "column": 0
         },
         "end": {
-          "line": 84,
+          "line": 85,
           "column": 3
         }
       }
@@ -473,16 +491,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} DocTypedef\n ",
       "range": [
-        2408,
-        2447
+        2535,
+        2574
       ],
       "loc": {
         "start": {
-          "line": 86,
+          "line": 87,
           "column": 0
         },
         "end": {
-          "line": 88,
+          "line": 89,
           "column": 3
         }
       }
@@ -491,16 +509,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} PackageTypedef\n * @property {Object} repository\n * @property {string} repository.url\n ",
       "range": [
-        2449,
-        2562
+        2576,
+        2689
       ],
       "loc": {
         "start": {
-          "line": 90,
+          "line": 91,
           "column": 0
         },
         "end": {
-          "line": 94,
+          "line": 95,
           "column": 3
         }
       }
@@ -509,16 +527,16 @@
       "type": "Block",
       "value": "*\n * @typedef {Object} ParsedParam\n * @property {boolean} [nullable]\n * @property {string[]} types\n * @property {boolean} [spread]\n * @property {boolean} [optional]\n * @property {string} [defaultValue]\n * @property {*} [defaultRaw]\n * @property {string} [name]\n * @property {string} [description]\n ",
       "range": [
-        2564,
-        2866
+        2691,
+        2993
       ],
       "loc": {
         "start": {
-          "line": 96,
+          "line": 97,
           "column": 0
         },
         "end": {
-          "line": 106,
+          "line": 107,
           "column": 3
         }
       }
@@ -527,16 +545,16 @@
       "type": "Block",
       "value": "*\n * @todo remove this typedef.\n * @typedef {Object} IceCapInstanceTypedef\n * @property {function} loop\n * @property {function} attr\n * @property {function} text\n * @property {function} load\n * @property {function} into\n * @property {function} drop\n * @property {string} html\n ",
       "range": [
-        2868,
-        3149
+        2995,
+        3276
       ],
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 0
         },
         "end": {
-          "line": 118,
+          "line": 119,
           "column": 3
         }
       }
@@ -545,16 +563,34 @@
       "type": "Block",
       "value": "*\n * @todo remove this typedef.\n * @typedef {Object} TaffyCursor\n * @property {function} each\n ",
       "range": [
-        3151,
-        3250
+        3278,
+        3377
       ],
       "loc": {
         "start": {
-          "line": 120,
+          "line": 121,
           "column": 0
         },
         "end": {
-          "line": 124,
+          "line": 125,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} ManualConfigItem\n * @property {string} label\n * @property {string} path\n * @property {string} [fileName]\n * @property {string} [reference]\n ",
+      "range": [
+        3379,
+        3546
+      ],
+      "loc": {
+        "start": {
+          "line": 127,
+          "column": 0
+        },
+        "end": {
+          "line": 133,
           "column": 3
         }
       }

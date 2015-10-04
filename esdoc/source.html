@@ -14,7 +14,8 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="identifiers.html">Identifier</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   <a href="test.html" data-ice="testLink">Test</a>
   <a data-ice="repoURL" href="https://github.com/esdoc/esdoc" class="repo-url-github">Repository</a>
@@ -61,6 +62,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/FileDocBuilder.js~FileDocBuilder.html">FileDocBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/IdentifiersDocBuilder.js~IdentifiersDocBuilder.html">IdentifiersDocBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/IndexDocBuilder.js~IndexDocBuilder.html">IndexDocBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/LintDocBuilder.js~LintDocBuilder.html">LintDocBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/ManualDocBuilder.js~ManualDocBuilder.html">ManualDocBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/SearchIndexBuilder.js~SearchIndexBuilder.html">SearchIndexBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/SingleDocBuilder.js~SingleDocBuilder.html">SingleDocBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Publisher/Builder/SourceDocBuilder.js~SourceDocBuilder.html">SourceDocBuilder</a></span></span></li>
@@ -80,23 +83,26 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ESDocConfig">ESDocConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IceCap">IceCap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-IceCapInstanceTypedef">IceCapInstanceTypedef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ManualConfigItem">ManualConfigItem</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NPMPackageObject">NPMPackageObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PackageTypedef">PackageTypedef</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ParsedParam">ParsedParam</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Taffy">Taffy</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-TaffyCursor">TaffyCursor</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Tag">Tag</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">Util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Util/ASTUtil.js~ASTUtil.html">ASTUtil</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">Util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Util/ASTNodeContainer.js~ASTNodeContainer.html">ASTNodeContainer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Util/ASTUtil.js~ASTUtil.html">ASTUtil</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Util/InvalidCodeLogger.js~InvalidCodeLogger.html">InvalidCodeLogger</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Util/NPMUtil.js~NPMUtil.html">NPMUtil</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Util/NamingUtil.js~NamingUtil.html">NamingUtil</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Util/PathResolver.js~PathResolver.html">PathResolver</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aSTNodeContainer">aSTNodeContainer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-invalidCodeLogger">invalidCodeLogger</a></span></span></li>
 </ul>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">308/327</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">323/350</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -112,12 +118,12 @@
   <tbody>
     
   <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/Doc/AbstractDoc.js.html#errorLines=20,21,22,23,24">src/Doc/AbstractDoc.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/Doc/AbstractDoc.js.html#errorLines=21,22,23,24,25">src/Doc/AbstractDoc.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/Doc/AbstractDoc.js~AbstractDoc.html">AbstractDoc</a></span></td>
       <td class="coverage"><span data-ice="coverage">90 %</span><span data-ice="coverageCount" class="coverage-count">49/54</span></td>
-      <td style="display: none;" data-ice="size">16089 byte</td>
-      <td style="display: none;" data-ice="lines">644</td>
-      <td style="display: none;" data-ice="updated">2015-08-07 08:29:46 (UTC)</td>
+      <td style="display: none;" data-ice="size">16210 byte</td>
+      <td style="display: none;" data-ice="lines">647</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 06:38:11 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Doc/AssignmentDoc.js.html">src/Doc/AssignmentDoc.js</a></span></td>
@@ -208,12 +214,12 @@
       <td style="display: none;" data-ice="updated">2015-09-07 15:29:59 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/ESDoc.js.html#errorLines=176">src/ESDoc.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/ESDoc.js.html#errorLines=178">src/ESDoc.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/ESDoc.js~ESDoc.html">ESDoc</a></span></td>
       <td class="coverage"><span data-ice="coverage">88 %</span><span data-ice="coverageCount" class="coverage-count">8/9</span></td>
-      <td style="display: none;" data-ice="size">8775 byte</td>
-      <td style="display: none;" data-ice="lines">288</td>
-      <td style="display: none;" data-ice="updated">2015-09-01 05:34:05 (UTC)</td>
+      <td style="display: none;" data-ice="size">8825 byte</td>
+      <td style="display: none;" data-ice="lines">290</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 08:48:06 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/ESDocCLI.js.html">src/ESDocCLI.js</a></span></td>
@@ -221,7 +227,7 @@
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">7/7</span></td>
       <td style="display: none;" data-ice="size">2177 byte</td>
       <td style="display: none;" data-ice="lines">97</td>
-      <td style="display: none;" data-ice="updated">2015-09-07 15:14:58 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2015-09-04 01:29:01 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Factory/DocFactory.js.html#errorLines=39,40,41,42">src/Factory/DocFactory.js</a></span></td>
@@ -300,10 +306,10 @@
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Publisher/Builder/DocBuilder.js.html#errorLines=19,20">src/Publisher/Builder/DocBuilder.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/Publisher/Builder/DocBuilder.js~DocBuilder.html">DocBuilder</a></span></td>
-      <td class="coverage"><span data-ice="coverage">93 %</span><span data-ice="coverageCount" class="coverage-count">29/31</span></td>
-      <td style="display: none;" data-ice="size">31249 byte</td>
-      <td style="display: none;" data-ice="lines">1016</td>
-      <td style="display: none;" data-ice="updated">2015-09-01 14:34:39 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">93 %</span><span data-ice="coverageCount" class="coverage-count">30/32</span></td>
+      <td style="display: none;" data-ice="size">32091 byte</td>
+      <td style="display: none;" data-ice="lines">1035</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 09:08:15 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Publisher/Builder/DocResolver.js.html#errorLines=14,15">src/Publisher/Builder/DocResolver.js</a></span></td>
@@ -325,9 +331,9 @@
       <td data-ice="filePath"><span><a href="file/src/Publisher/Builder/IdentifiersDocBuilder.js.html">src/Publisher/Builder/IdentifiersDocBuilder.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/Publisher/Builder/IdentifiersDocBuilder.js~IdentifiersDocBuilder.html">IdentifiersDocBuilder</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">3/3</span></td>
-      <td style="display: none;" data-ice="size">1564 byte</td>
-      <td style="display: none;" data-ice="lines">45</td>
-      <td style="display: none;" data-ice="updated">2015-05-03 04:15:03 (UTC)</td>
+      <td style="display: none;" data-ice="size">1669 byte</td>
+      <td style="display: none;" data-ice="lines">46</td>
+      <td style="display: none;" data-ice="updated">2015-10-07 16:38:06 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Publisher/Builder/IndexDocBuilder.js.html#errorLines=20">src/Publisher/Builder/IndexDocBuilder.js</a></span></td>
@@ -336,6 +342,22 @@
       <td style="display: none;" data-ice="size">1946 byte</td>
       <td style="display: none;" data-ice="lines">71</td>
       <td style="display: none;" data-ice="updated">2015-08-07 16:47:32 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/Publisher/Builder/LintDocBuilder.js.html#errorLines=91">src/Publisher/Builder/LintDocBuilder.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/Publisher/Builder/LintDocBuilder.js~LintDocBuilder.html">LintDocBuilder</a></span></td>
+      <td class="coverage"><span data-ice="coverage">83 %</span><span data-ice="coverageCount" class="coverage-count">5/6</span></td>
+      <td style="display: none;" data-ice="size">3843 byte</td>
+      <td style="display: none;" data-ice="lines">137</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 10:46:25 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/Publisher/Builder/ManualDocBuilder.js.html">src/Publisher/Builder/ManualDocBuilder.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/Publisher/Builder/ManualDocBuilder.js~ManualDocBuilder.html">ManualDocBuilder</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">9/9</span></td>
+      <td style="display: none;" data-ice="size">6970 byte</td>
+      <td style="display: none;" data-ice="lines">197</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 05:49:47 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Publisher/Builder/SearchIndexBuilder.js.html">src/Publisher/Builder/SearchIndexBuilder.js</a></span></td>
@@ -392,25 +414,34 @@
 <span><a href="function/index.html#static-function-parseExample">parseExample</a></span>
 <span><a href="function/index.html#static-function-shorten">shorten</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">4/4</span></td>
-      <td style="display: none;" data-ice="size">2915 byte</td>
+      <td style="display: none;" data-ice="size">2936 byte</td>
       <td style="display: none;" data-ice="lines">110</td>
-      <td style="display: none;" data-ice="updated">2015-08-07 15:12:58 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2015-09-01 11:04:20 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Publisher/publish.js.html">src/Publisher/publish.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-publish">publish</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">3804 byte</td>
-      <td style="display: none;" data-ice="lines">109</td>
-      <td style="display: none;" data-ice="updated">2015-09-01 05:33:24 (UTC)</td>
+      <td style="display: none;" data-ice="size">4049 byte</td>
+      <td style="display: none;" data-ice="lines">116</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 08:48:46 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Typedef/typedef.js.html">src/Typedef/typedef.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">3251 byte</td>
-      <td style="display: none;" data-ice="lines">124</td>
-      <td style="display: none;" data-ice="updated">2015-08-02 11:43:01 (UTC)</td>
+      <td style="display: none;" data-ice="size">3547 byte</td>
+      <td style="display: none;" data-ice="lines">133</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 05:45:49 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/Util/ASTNodeContainer.js.html#errorLines=1,12,17,2,3,4,7">src/Util/ASTNodeContainer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/Util/ASTNodeContainer.js~ASTNodeContainer.html">ASTNodeContainer</a></span>
+<span><a href="variable/index.html#static-variable-aSTNodeContainer">aSTNodeContainer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/7</span></td>
+      <td style="display: none;" data-ice="size">267 byte</td>
+      <td style="display: none;" data-ice="lines">17</td>
+      <td style="display: none;" data-ice="updated">2015-10-01 06:33:28 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/Util/ASTUtil.js.html">src/Util/ASTUtil.js</a></span></td>
@@ -451,14 +482,14 @@
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">11/11</span></td>
       <td style="display: none;" data-ice="size">2746 byte</td>
       <td style="display: none;" data-ice="lines">103</td>
-      <td style="display: none;" data-ice="updated">2015-08-07 12:52:37 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2015-09-04 01:10:03 (UTC)</td>
     </tr>
 </tbody>
 </table>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.3.0)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.0)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

@@ -30,7 +30,8 @@
 <li><a href="#create-config-file">Create Config File</a></li>
 <li><a href="#write-documentation-tags">Write Documentation Tags</a></li>
 <li><a href="#document-coverage">Document Coverage</a></li>
-<li><a href="#generate-document-from-test-code">Generate Document From Test Code</a></li>
+<li><a href="#integrate-test-codes">Integrate Test Codes</a></li>
+<li><a href="#integrate-manual">Integrate Manual</a></li>
 <li><a href="#appendix">Appendix</a><ul>
 <li><a href="#target-code-style">Target Code Style</a></li>
 <li><a href="#target-identifier">Target Identifier</a></li>
@@ -156,8 +157,8 @@ You can see all tags in the <a href="./tags.html">Tags</a> page.</p>
 <p>See <code>my-project/out/esdoc/source.html</code></p>
 <p><img class="screen-shot" src="./image/tutorial/document-coverage1.png"></p>
 <p>If you want to display documentation coverage badge, use badge of <a href="https://doc.esdoc.org/-/faq.html">ESDoc Hosting Service</a>.</p>
-<h2 id="generate-document-from-test-code">Generate Document From Test Code</h2>
-<p>ESDoc can generate document from test code.
+<h2 id="integrate-test-codes">Integrate Test Codes</h2>
+<p>ESDoc can integrate test codes into documentation.
 (Now, support only <a href="http://mochajs.org/">Mocha</a>)</p>
 <p>Write test code.</p>
 <p class="file-path">my-project/test/MyClassTest.js</p>
@@ -206,6 +207,43 @@ describe(&#39;MyClass is super useful class.&#39;, ()=&gt;{
 </code></pre>
 <p><img class="screen-shot" src="./image/tutorial/generate-document-from-test-code2.png"></p>
 <p><img class="screen-shot" src="./image/tutorial/generate-document-from-test-code3.png"></p>
+<h2 id="integrate-manual">Integrate Manual</h2>
+<p>ESDoc can integrate manual into documentation.
+Write manual that is overview, installation, usage, example, FAQ and changelog.</p>
+<p class="file-path">my-project/manual/overview.md</p>
+
+<pre><code class="lang-markdown"># Overview
+This is my project overview.
+
+## Author
+Alice
+
+## License
+MIT
+</code></pre>
+<p>And add manual configuration.</p>
+<pre><code class="lang-json">{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./out/esdoc&quot;,
+  &quot;test&quot;: {
+    &quot;type&quot;: &quot;mocha&quot;,
+    &quot;source&quot;: &quot;./test&quot;
+  },
+  &quot;manual&quot;: {
+    &quot;overview&quot;: &quot;./manual/overview.md&quot;,
+    &quot;installation&quot;: &quot;./manual/installation.md&quot;,
+    &quot;usage&quot;: &quot;./manual/usage.md&quot;,
+    &quot;example&quot;: &quot;./manual/example.md&quot;,
+    &quot;faq&quot;: &quot;./manual/faq.md&quot;,
+    &quot;changelog&quot;: &quot;./CHANGELOG.md&quot;
+  }
+}
+</code></pre>
+<p>Execute ESDoc and see output document.</p>
+<pre><code>esdoc -c ./esdoc.json
+open ./out/esdoc/index.html
+</code></pre><p><img class="screen-shot" src="./image/tutorial/manual1.png"></p>
+<p><img class="screen-shot" src="./image/tutorial/manual2.png"></p>
 <hr>
 <h2 id="appendix">Appendix</h2>
 <h3 id="target-code-style">Target Code Style</h3>
