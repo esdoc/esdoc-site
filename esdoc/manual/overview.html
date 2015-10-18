@@ -9,8 +9,9 @@
   <script src="script/prettify/prettify.js"></script>
   
   
+  <script src="script/manual.js"></script>
 </head>
-<body class="layout-container">
+<body class="layout-container manual-root" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
@@ -28,23 +29,149 @@
   </div>
 </header>
 
-<nav class="navigation" data-ice="nav"><ul class="manual-nav">
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
   
-<li data-ice="navItem"><span class="manual-dot"></span><a href="manual/overview.html" data-ice="link">Overview</a></li>
-<li data-ice="navItem"><span class="manual-dot"></span><a href="manual/installation.html" data-ice="link">Installation</a></li>
-<li data-ice="navItem"><span class="manual-dot"></span><a href="manual/usage.html" data-ice="link">Usage</a></li>
-<li data-ice="navItem"><span class="manual-dot"></span><a href="manual/example.html" data-ice="link">Example</a></li>
-<li data-ice="navItem"><span class="manual-dot"></span><a href="identifiers.html" data-ice="link">Reference</a></li>
-<li data-ice="navItem"><span class="manual-dot"></span><a href="manual/faq.html" data-ice="link">FAQ</a></li>
-<li data-ice="navItem"><span class="manual-dot"></span><a href="manual/changelog.html" data-ice="link">Changelog</a></li>
+<div data-ice="manual" data-toc-name="overview">
+    <h1 class="manual-toc-title"><a href="manual/overview.html" data-ice="title">Overview</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#overview" data-ice="link">Overview</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#feature" data-ice="link">Feature</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#demo" data-ice="link">Demo</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#license" data-ice="link">License</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#author" data-ice="link">Author</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#features" data-ice="link">Features</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#es6-class" data-ice="link">ES6 Class</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#es6-module" data-ice="link">ES6 Module</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#documentation-coverage" data-ice="link">Documentation Coverage</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#integration-test-codes" data-ice="link">Integration Test Codes</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#integration-manual" data-ice="link">Integration Manual</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#search-documentation" data-ice="link">Search Documentation</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#guess-type" data-ice="link">Guess Type</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#documentation-lint" data-ice="link">Documentation Lint</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#customize" data-ice="link">Customize</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#esdoc-hosting-service" data-ice="link">ESDoc Hosting Service</a></li>
 </ul>
+  </div>
+<div data-ice="manual" data-toc-name="installation">
+    <h1 class="manual-toc-title"><a href="manual/installation.html" data-ice="title">Installation</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/installation.html#installation" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/installation.html#from-npm" data-ice="link">From npm</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/installation.html#from-repository" data-ice="link">From repository</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="tutorial">
+    <h1 class="manual-toc-title"><a href="manual/tutorial.html" data-ice="title">Tutorial</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/tutorial.html#tutorial" data-ice="link">Tutorial</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#install-esdoc" data-ice="link">Install ESDoc</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#create-config-file" data-ice="link">Create Config File</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#write-documentation-tags" data-ice="link">Write Documentation Tags</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#document-coverage" data-ice="link">Document Coverage</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#integrate-test-codes" data-ice="link">Integrate Test Codes</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#integrate-manual" data-ice="link">Integrate Manual</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#appendix" data-ice="link">Appendix</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/tutorial.html#target-code-style" data-ice="link">Target Code Style</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/tutorial.html#target-identifier" data-ice="link">Target Identifier</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="usage">
+    <h1 class="manual-toc-title"><a href="manual/usage.html" data-ice="title">Usage</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#usage" data-ice="link">Usage</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#cli" data-ice="link">CLI</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#api" data-ice="link">API</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#style-sheets-and-scripts" data-ice="link">Style Sheets and Scripts</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#plugin-feature" data-ice="link">Plugin Feature</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#publisher" data-ice="link">Publisher</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#internal-data" data-ice="link">Internal Data</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="configuration">
+    <h1 class="manual-toc-title"><a href="manual/configuration.html" data-ice="title">Configuration</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/configuration.html#config" data-ice="link">Config</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/configuration.html#minimum-config" data-ice="link">Minimum Config</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/configuration.html#integrate-test-codes-config" data-ice="link">Integrate Test Codes Config</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/configuration.html#integrate-manual-config" data-ice="link">Integrate Manual Config</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/configuration.html#use-es7-config" data-ice="link">Use ES7 Config</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/configuration.html#full-config" data-ice="link">Full Config</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="example">
+    <h1 class="manual-toc-title"><a href="manual/example.html" data-ice="title">Example</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/example.html#example" data-ice="link">Example</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/example.html#minimum" data-ice="link">Minimum</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/example.html#integrate-test-code-into-documentation" data-ice="link">Integrate Test Code Into Documentation</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/example.html#integrate-manual-into-documentation" data-ice="link">Integrate Manual Into Documentation</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/example.html#use-es7-with-plugin" data-ice="link">Use ES7 With Plugin</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <h1 class="manual-toc-title"><a href="identifiers.html" data-ice="title">Reference</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#class" data-ice="link">Class</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#function" data-ice="link">Function</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#variable" data-ice="link">Variable</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#typedef" data-ice="link">Typedef</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="faq">
+    <h1 class="manual-toc-title"><a href="manual/faq.html" data-ice="title">FAQ</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/faq.html#faq" data-ice="link">FAQ</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/faq.html#goal" data-ice="link">Goal</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/faq.html#difference-between-esdoc-and-jsdoc" data-ice="link">Difference between ESDoc and JSDoc</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/faq.html#supported-languages" data-ice="link">Supported Languages</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/faq.html#supported-environment" data-ice="link">Supported Environment</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/faq.html#import-path-in-documentation" data-ice="link">Import Path In Documentation</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/faq.html#articles" data-ice="link">Articles</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="changelog">
+    <h1 class="manual-toc-title"><a href="manual/changelog.html" data-ice="title">Changelog</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/changelog.html#changelog" data-ice="link">Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-4-1-2015-10-18-" data-ice="link">0.4.1 (2015-10-18)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-4-0-2015-10-04-" data-ice="link">0.4.0 (2015-10-04)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-3-1-2015-09-27-" data-ice="link">0.3.1 (2015-09-27)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-3-0-2015-09-21-" data-ice="link">0.3.0 (2015-09-21)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-2-6-2015-09-13-" data-ice="link">0.2.6 (2015-09-13)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-2-5-2015-09-06-" data-ice="link">0.2.5 (2015-09-06)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-2-4-2015-08-30-" data-ice="link">0.2.4 (2015-08-30)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-2-3-2015-08-29-" data-ice="link">0.2.3 (2015-08-29)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-2-2-2015-08-23-" data-ice="link">0.2.2 (2015-08-23)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-2-1-2015-08-09-" data-ice="link">0.2.1 (2015-08-09)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-2-0-2015-08-03-" data-ice="link">0.2.0 (2015-08-03)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-1-4-2015-07-20-" data-ice="link">0.1.4 (2015-07-20)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-1-3-2015-07-05-" data-ice="link">0.1.3 (2015-07-05)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-1-2-2015-06-06-" data-ice="link">0.1.2 (2015-06-06)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-1-1-2015-05-10-" data-ice="link">0.1.1 (2015-05-10)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-1-0-2015-05-05-" data-ice="link">0.1.0 (2015-05-05)</a></li>
+</ul>
+  </div>
+</div>
 </nav>
 
 <div class="content" data-ice="content"><div class="github-markdown">
-  <h1 data-ice="title" id="overview">Overview</h1>
-  <div data-ice="content">
+  <div class="manual-breadcrumb-list">
+    <a href="./manual/./index.html">Manual</a>
+    <span>&#xBB;</span>
+    <span data-ice="title">Overview</span>
+  </div>
+  <div data-ice="content"><h1 id="overview">Overview</h1>
 <p>ESDoc is a documentation generator for JavaScript(ES6).</p>
-<p><img class="screen-shot" src="https://esdoc.org/image/top.png" width="500px" style="max-width: 500px; border: 1px solid rgba(0,0,0,0.1); box-shadow: 1px 1px 1px rgba(0,0,0,0.5);"></p>
+<p><img src="https://esdoc.org/image/top.png" width="500px"></p>
 <h2 id="feature">Feature</h2>
 <ul>
 <li>Generates detailed document.</li>
@@ -60,12 +187,141 @@
 <p>MIT</p>
 <h2 id="author">Author</h2>
 <p><a href="https://twitter.com/h13i32maru">Ryo Maruyama@h13i32maru</a></p>
+<h1 id="features">Features</h1>
+<p>ESDoc has some features.
+I will introduce part of the features.
+If you want to see all features, you visit <a href="./manual/./#demo">Demo</a> page.</p>
+<ul>
+<li><a href="#es6-class">ES6 Class</a></li>
+<li><a href="#es6-module">ES6 Module</a></li>
+<li><a href="#documentation-coverage">Documentation Coverage</a></li>
+<li><a href="#integration-test-codes">Integration Test Codes</a></li>
+<li><a href="#integration-manual">Integration Manual</a></li>
+<li><a href="#search-documentation">Search Documentation</a></li>
+<li><a href="#guess-type">Guess Type</a></li>
+<li><a href="#documentation-lint">Documentation Lint</a></li>
+<li><a href="#customize">Customize</a></li>
+<li><a href="#esdoc-hosting-service">ESDoc Hosting Service</a></li>
+</ul>
+<h2 id="es6-class">ES6 Class</h2>
+<p>ESDoc supports ES6 Class syntax and targets a code that is written by it.
+ES6 Class syntax makes the clear relation of class, method, member, constructor and inheritance.
+This means that ESDoc can generate a document without using a tag for these.</p>
+<p>ESDoc automatically generates the under contents by Class syntax.</p>
+<ul>
+<li>Super classes of self</li>
+<li>Direct Subclasses and Indirect Subclasses of self.</li>
+<li>Inherited methods and members from super class.</li>
+<li>Override methods and members from super class.</li>
+</ul>
+<p><img src="./manual/./asset/image/feature/class1.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/class2.png" width="500px"></p>
+<h2 id="es6-module">ES6 Module</h2>
+<p>ESDoc supports ES6 Module syntax and targets a code that is written by it.
+ES6 Modules syntax is file base. So ESDoc treats as one file = one module.</p>
+<p>ESDoc displays the import style in accordance with the export style.</p>
+<ul>
+<li>If <code>export default class Foo{}</code>, displays <code>import Foo from &apos;./Foo.js&apos;</code></li>
+<li>If <code>export class Foo{}</code>, displays <code>import {Foo} from &apos;./Foo.js&apos;</code></li>
+</ul>
+<p>This is useful because you not need to see export style in source code.</p>
+<p><img src="./manual/./asset/image/feature/module1.png" width="500px"></p>
+<h2 id="documentation-coverage">Documentation Coverage</h2>
+<p>ESDoc measures a documentation coverage. This is useful information for following.</p>
+<ul>
+<li>This leads the motivation of documentation.</li>
+<li>This inspects a missing of documentation.</li>
+</ul>
+<p>ESDoc processes only top-level class, function and variable.
+This is based on, ESDoc measures coverage by how much the document is being written out of all the processing target.
+And, ESDoc is also to measure coverage of each module, you will have become easier to also find a missing of the document.
+For example, <a href="./manual/./esdoc/source.html">this</a> is coverage of ESDoc itself.</p>
+<p><img src="./manual/./asset/image/feature/coverage1.png" width="500px"></p>
+<h2 id="integration-test-codes">Integration Test Codes</h2>
+<p>Test codes are important information.
+So, ESDoc generates a cross reference of test codes and document.
+You need to use @test tag for this function.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">/** @test {MyClass} */
+describe(&apos;MyClass is super useful class.&apos;, ()=&gt;{
+
+  /** @test {MyClass#sayMyName} */
+  it(&apos;say my name&apos;, ()=&gt;{
+    let foo = new MyClass(&apos;Alice&apos;);
+    assert.equal(foo.sayMyName(), &apos;My name is Alice&apos;);
+  })
+});</code>
+</code></pre>
+<p><img src="./manual/./asset/image/feature/test1.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/test2.png" width="500px"></p>
+<p>However, for now, ESDoc supports only Mocha.</p>
+<h2 id="integration-manual">Integration Manual</h2>
+<p>You can integrate manual into documentation. The manual is:</p>
+<ul>
+<li>Overview</li>
+<li>Installation</li>
+<li>Usage</li>
+<li>Tutorial</li>
+<li>Configuration</li>
+<li>Example</li>
+<li>FAQ</li>
+<li>Changelog</li>
+</ul>
+<p>You write manual as markdown and add <code>manual</code> config.</p>
+<pre><code class="lang-json"><code class="source-code prettyprint">{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./doc&quot;,
+  &quot;manual&quot;: {
+    &quot;overview&quot;: &quot;./manual/overview.md&quot;,
+    &quot;installation&quot;: &quot;./manual/installation.md&quot;,
+    &quot;usage&quot;: &quot;./manual/usage.md&quot;,
+    &quot;tutorial&quot;: &quot;./manual/tutorial.md&quot;,
+    &quot;configuration&quot;: &quot;./manual/configuration.md&quot;,
+    &quot;example&quot;: &quot;./manual/example.md&quot;,
+    &quot;faq&quot;: &quot;./manual/faq.md&quot;,
+    &quot;changelog&quot;: &quot;./CHANGELOG.md&quot;
+  }
+}</code>
+</code></pre>
+<p>You can specify a only part of these manuals (e.g. only overview and installation).</p>
+<p><img src="./manual/./asset/image/feature/manual1.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/manual2.png" width="500px"></p>
+<h2 id="search-documentation">Search Documentation</h2>
+<p>ESDoc supports searching in document with only JavaScript(without server implementation).
+The implementation of searching:</p>
+<ul>
+<li>ESDoc made the index(JSON) at the time of document generation.</li>
+<li>The user search from the index.</li>
+</ul>
+<p>However, this implementation is very naive. There might be a problem in search performance. For now, no problem in 500 indexes.</p>
+<p><img src="./manual/./asset/image/feature/search1.png" width="500px"></p>
+<h2 id="guess-type">Guess Type</h2>
+<p>ESDoc guesses type of function arguments by ES6 default argument syntax if there is not  <code>@param</code> at the function.
+This implementation is very simply. If Arguments has a primitive(number, boolean, string, etc) default value, ESDoc guesses that the function arguments type is the primitive value.
+ESDoc guesses type of function return in the same way if there is not <code>@return</code> at the function.</p>
+<h2 id="documentation-lint">Documentation Lint</h2>
+<p>If documentation is invalid, show warning log.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">export default class Foo {
+  /**
+   * @param {number} x
+   */
+  method(p){}
+}</code>
+</code></pre>
+<p><img src="./manual/./asset/image/feature/lint.png" width="500px"></p>
+<p>For now, only validate method|function signature.</p>
+<h2 id="customize">Customize</h2>
+<p>If you want to customize a document, you can includes your stylesheets and scripts to the document.
+And, ESDoc support to plugin feature. But, ESDoc has goal that generates the useful document without user plugins.
+Please read <a href="/api.html">API</a> for more information.</p>
+<h2 id="esdoc-hosting-service">ESDoc Hosting Service</h2>
+<p><a href="https://doc.esdoc.org">ESDoc Hosting Service</a> generates your documentation via GitHub and hosts it.</p>
+<p><img src="./manual/./asset/image/feature/hosting1.png" width="500px"></p>
 </div>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.0)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.1)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

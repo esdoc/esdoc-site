@@ -9,8 +9,9 @@
   <script src="script/prettify/prettify.js"></script>
   
   
+  <script src="script/manual.js"></script>
 </head>
-<body class="layout-container">
+<body class="layout-container" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
@@ -117,21 +118,25 @@ describe(&apos;Manual:&apos;, ()=&gt;{
   it(&apos;has manual navigation&apos;, ()=&gt;{
     const doc = readDoc(&apos;manual/index.html&apos;);
     find(doc, &apos;[data-ice=&quot;nav&quot;]&apos;, (doc)=&gt;{
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(1)&apos;, &apos;Overview&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(2)&apos;, &apos;Installation&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(3)&apos;, &apos;Usage&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(4)&apos;, &apos;Example&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(5)&apos;, &apos;Reference&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(6)&apos;, &apos;FAQ&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(7)&apos;, &apos;Changelog&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(1)&apos;, &apos;Overview&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(2)&apos;, &apos;Installation&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(3)&apos;, &apos;Tutorial&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(4)&apos;, &apos;Usage&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(5)&apos;, &apos;Configuration&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(6)&apos;, &apos;Example&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(7)&apos;, &apos;Reference&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(8)&apos;, &apos;FAQ&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(9)&apos;, &apos;Changelog&apos;);
 
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(1) a&apos;, &apos;manual/overview.html&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(2) a&apos;, &apos;manual/installation.html&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(3) a&apos;, &apos;manual/usage.html&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(4) a&apos;, &apos;manual/example.html&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(5) a&apos;, &apos;identifiers.html&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(6) a&apos;, &apos;manual/faq.html&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;[data-ice=&quot;navItem&quot;]:nth-of-type(7) a&apos;, &apos;manual/changelog.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(1) .manual-toc-title a&apos;, &apos;manual/overview.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(2) .manual-toc-title a&apos;, &apos;manual/installation.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(3) .manual-toc-title a&apos;, &apos;manual/tutorial.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(4) .manual-toc-title a&apos;, &apos;manual/usage.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(5) .manual-toc-title a&apos;, &apos;manual/configuration.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(6) .manual-toc-title a&apos;, &apos;manual/example.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(7) .manual-toc-title a&apos;, &apos;identifiers.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(8) .manual-toc-title a&apos;, &apos;manual/faq.html&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(9) .manual-toc-title a&apos;, &apos;manual/changelog.html&apos;, &apos;href&apos;);
     });
   });
 
@@ -140,53 +145,69 @@ describe(&apos;Manual:&apos;, ()=&gt;{
     const doc = readDoc(&apos;manual/index.html&apos;);
 
     // overview
-    find(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(1)&apos;, (doc)=&gt;{
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(1)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Overview&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Feature&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;Demo&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(3)&apos;, &apos;License&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(4)&apos;, &apos;Author&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Overview&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;Feature&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(3)&apos;, &apos;Demo&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(4)&apos;, &apos;License&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(5)&apos;, &apos;Author&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/overview.html#feature&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/overview.html#demo&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(3) a&apos;, &apos;manual/overview.html#license&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(4) a&apos;, &apos;manual/overview.html#author&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/overview.html#overview&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/overview.html#feature&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(3) a&apos;, &apos;manual/overview.html#demo&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(4) a&apos;, &apos;manual/overview.html#license&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(5) a&apos;, &apos;manual/overview.html#author&apos;, &apos;href&apos;);
     });
 
     // installation
-    find(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(2)&apos;, (doc)=&gt;{
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(2)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Installation&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;indent 2&apos;);
-      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;indent 3&apos;);
-      assert.includes(doc, &apos;.indent-h3[data-ice=&quot;manualNav&quot;]:nth-of-type(3)&apos;, &apos;indent 4&apos;);
-      assert.includes(doc, &apos;.indent-h4[data-ice=&quot;manualNav&quot;]:nth-of-type(4)&apos;, &apos;indent 5&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Installation&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;indent 2&apos;);
+      assert.includes(doc, &apos;.indent-h3[data-ice=&quot;manualNav&quot;]:nth-of-type(3)&apos;, &apos;indent 3&apos;);
+      assert.includes(doc, &apos;.indent-h4[data-ice=&quot;manualNav&quot;]:nth-of-type(4)&apos;, &apos;indent 4&apos;);
+      assert.includes(doc, &apos;.indent-h5[data-ice=&quot;manualNav&quot;]:nth-of-type(5)&apos;, &apos;indent 5&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/installation.html#indent-2&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/installation.html#indent-3&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;.indent-h3[data-ice=&quot;manualNav&quot;]:nth-of-type(3) a&apos;, &apos;manual/installation.html#indent-4&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;.indent-h4[data-ice=&quot;manualNav&quot;]:nth-of-type(4) a&apos;, &apos;manual/installation.html#indent-5&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/installation.html#installation&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/installation.html#indent-2&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h3[data-ice=&quot;manualNav&quot;]:nth-of-type(3) a&apos;, &apos;manual/installation.html#indent-3&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h4[data-ice=&quot;manualNav&quot;]:nth-of-type(4) a&apos;, &apos;manual/installation.html#indent-4&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h5[data-ice=&quot;manualNav&quot;]:nth-of-type(5) a&apos;, &apos;manual/installation.html#indent-5&apos;, &apos;href&apos;);
+    });
+
+    // tutorial
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(3)&apos;, (doc)=&gt;{
+      assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Tutorial&apos;);
     });
 
     // usage
-    find(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(3)&apos;, (doc)=&gt;{
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(4)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Usage&apos;);
     });
 
+    // configuration
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(5)&apos;, (doc)=&gt;{
+      assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Configuration&apos;);
+    });
+
     // example
-    find(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(4)&apos;, (doc)=&gt;{
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(6)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Example&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Minimum Config&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;Integration Test Code Into Documentation&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Example&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;Minimum Config&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(3)&apos;, &apos;Integration Test Code Into Documentation&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/example.html#minimum-config&apos;, &apos;href&apos;);
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/example.html#integration-test-code-into-documentation&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/example.html#example&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/example.html#minimum-config&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(3) a&apos;, &apos;manual/example.html#integration-test-code-into-documentation&apos;, &apos;href&apos;);
     });
 
     // reference
-    find(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(5)&apos;, (doc)=&gt;{
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(7)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Reference&apos;);
 
       assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Class&apos;);
@@ -205,21 +226,25 @@ describe(&apos;Manual:&apos;, ()=&gt;{
     });
 
     // faq
-    find(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(6)&apos;, (doc)=&gt;{
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(8)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;FAQ&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Goal&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;FAQ&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;Goal&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/faq.html#goal&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/faq.html#faq&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/faq.html#goal&apos;, &apos;href&apos;);
     });
 
     // changelog
-    find(doc, &apos;[data-ice=&quot;manual&quot;]:nth-of-type(7)&apos;, (doc)=&gt;{
+    find(doc, &apos;.content [data-ice=&quot;manual&quot;]:nth-of-type(9)&apos;, (doc)=&gt;{
       assert.includes(doc, &apos;.manual-toc-title&apos;, &apos;Changelog&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;0.0.1&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1)&apos;, &apos;Changelog&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2)&apos;, &apos;0.0.1&apos;);
 
-      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/changelog.html#0-0-1&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h1[data-ice=&quot;manualNav&quot;]:nth-of-type(1) a&apos;, &apos;manual/changelog.html#changelog&apos;, &apos;href&apos;);
+      assert.includes(doc, &apos;.indent-h2[data-ice=&quot;manualNav&quot;]:nth-of-type(2) a&apos;, &apos;manual/changelog.html#0-0-1&apos;, &apos;href&apos;);
     });
   });
 
@@ -240,8 +265,22 @@ describe(&apos;Manual:&apos;, ()=&gt;{
   /** @test {ManualDocBuilder#_buldManual} */
   it(&apos;has usage&apos;, ()=&gt;{
     const doc = readDoc(&apos;manual/usage.html&apos;);
-    assert.includes(doc, &apos;.github-markdown h1&apos;, &apos;Usage&apos;);
+    assert.includes(doc, &apos;.github-markdown h1:nth-of-type(1)&apos;, &apos;Usage&apos;);
     assert.includes(doc, &apos;.github-markdown [data-ice=&quot;content&quot;]&apos;, &apos;esdoc -c esdoc.json&apos;);
+  });
+
+  /** @test {ManualDocBuilder#_buldManual} */
+  it(&apos;has tutorial&apos;, ()=&gt;{
+    const doc = readDoc(&apos;manual/tutorial.html&apos;);
+    assert.includes(doc, &apos;.github-markdown h1&apos;, &apos;Tutorial&apos;);
+    assert.includes(doc, &apos;.github-markdown [data-ice=&quot;content&quot;]&apos;, &apos;this is tutorial&apos;);
+  });
+
+  /** @test {ManualDocBuilder#_buldManual} */
+  it(&apos;has configuration&apos;, ()=&gt;{
+    const doc = readDoc(&apos;manual/configuration.html&apos;);
+    assert.includes(doc, &apos;.github-markdown h1&apos;, &apos;Configuration&apos;);
+    assert.includes(doc, &apos;.github-markdown [data-ice=&quot;content&quot;]&apos;, &apos;this is configuration&apos;);
   });
 
   /** @test {ManualDocBuilder#_buldManual} */
@@ -270,7 +309,7 @@ describe(&apos;Manual:&apos;, ()=&gt;{
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.0)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.1)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

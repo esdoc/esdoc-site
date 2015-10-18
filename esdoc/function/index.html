@@ -9,8 +9,9 @@
   <script src="script/prettify/prettify.js"></script>
   
   
+  <script src="script/manual.js"></script>
 </head>
-<body class="layout-container">
+<body class="layout-container" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
@@ -124,7 +125,8 @@
       <div>
         
         
-        <div data-ice="description">get UTC date string.</div>
+        <div data-ice="description"><p>get UTC date string.</p>
+</div>
       </div>
     </td>
     <td>
@@ -149,7 +151,8 @@
       <div>
         
         
-        <div data-ice="description">convert markdown text to html.</div>
+        <div data-ice="description"><p>convert markdown text to html.</p>
+</div>
       </div>
     </td>
     <td>
@@ -174,7 +177,8 @@
       <div>
         
         
-        <div data-ice="description">parse ``@example`` value.</div>
+        <div data-ice="description"><p>parse <code>@example</code> value.</p>
+</div>
       </div>
     </td>
     <td>
@@ -199,7 +203,8 @@
       <div>
         
         
-        <div data-ice="description">publish document as HTML.</div>
+        <div data-ice="description"><p>publish document as HTML.</p>
+</div>
       </div>
     </td>
     <td>
@@ -218,13 +223,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="function/index.html#static-function-shorten">shorten</a></span></span><span data-ice="signature">(doc: <span><a href="typedef/index.html#static-typedef-DocObject">DocObject</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+           <span data-ice="name"><span><a href="function/index.html#static-function-shorten">shorten</a></span></span><span data-ice="signature">(doc: <span><a href="typedef/index.html#static-typedef-DocObject">DocObject</a></span>, asMarkdown: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description">shorten description.</div>
+        <div data-ice="description"><p>shorten description.</p>
+</div>
       </div>
     </td>
     <td>
@@ -248,11 +254,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber92">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {dateForUTC} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber75">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {dateForUTC} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber92">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>get UTC date string.</p>
@@ -317,11 +323,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber62">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {markdown} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber56">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {markdown} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber62">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>convert markdown text to html.</p>
@@ -394,11 +400,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber98">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {parseExample} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber98">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {parseExample} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber115">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>parse <code>@example</code> value.
@@ -538,15 +544,15 @@
     
     
     
-    <span data-ice="name">shorten</span><span data-ice="signature">(doc: <span><a href="typedef/index.html#static-typedef-DocObject">DocObject</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span data-ice="name">shorten</span><span data-ice="signature">(doc: <span><a href="typedef/index.html#static-typedef-DocObject">DocObject</a></span>, asMarkdown: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber12">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Publisher/Builder/util.js.html#lineNumber13">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {shorten} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber12">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {shorten} from &apos;<span><a href="file/src/Publisher/Builder/util.js.html#lineNumber13">esdoc/out/src/Publisher/Builder/util.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>shorten description.
@@ -568,6 +574,14 @@ e.g. <code>this is JavaScript. this is Java.</code> =&gt; <code>this is JavaScri
       <td data-ice="type"><span><a href="typedef/index.html#static-typedef-DocObject">DocObject</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>target doc object.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">asMarkdown</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: false</li></ul></td>
+      <td data-ice="description"><p>is true, test as markdown and convert to html.</p>
 </td>
     </tr>
 </tbody>
@@ -605,7 +619,7 @@ e.g. <code>this is JavaScript. this is Java.</code> =&gt; <code>this is JavaScri
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.0)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.1)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

@@ -64,12 +64,12 @@ describe(&#39;MyClass has foo bar feature&#39;, ()=&gt;{
   &quot;source&quot;: &quot;./src&quot;,
   &quot;destination&quot;: &quot;./doc&quot;,
   &quot;manual&quot;: {
-    &quot;overview&quot;: &quot;./manual/overview.md&quot;,
-    &quot;installation&quot;: &quot;./manual/installation.md&quot;,
-    &quot;usage&quot;: &quot;./manual/usage.md&quot;,
-    &quot;example&quot;: &quot;./manual/example.md&quot;,
-    &quot;faq&quot;: &quot;./manual/faq.md&quot;,
-    &quot;changelog&quot;: &quot;./CHANGELOG.md&quot;
+    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
+    &quot;installation&quot;: [&quot;./manual/installation.md&quot;],
+    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
+    &quot;example&quot;: [&quot;./manual/example.md&quot;],
+    &quot;faq&quot;: [&quot;./manual/faq.md&quot;],
+    &quot;changelog&quot;: [&quot;./CHANGELOG.md&quot;]
   }
 }
 </code></pre>
@@ -112,12 +112,15 @@ describe(&#39;MyClass has foo bar feature&#39;, ()=&gt;{
     {&quot;name&quot;: &quot;plugin-name-or-file-path&quot;, &quot;option&quot;: null}
   ],
   &quot;manual&quot;: {
-    &quot;overview&quot;: &quot;./manual/overview.md&quot;,
-    &quot;installation&quot;: &quot;./manual/installation.md&quot;,
-    &quot;usage&quot;: &quot;./manual/usage.md&quot;,
-    &quot;example&quot;: &quot;./manual/example.md&quot;,
-    &quot;faq&quot;: &quot;./manual/faq.md&quot;,
-    &quot;changelog&quot;: &quot;./CHANGELOG.md&quot;
+    &quot;asset&quot;: &quot;./manual/asset&quot;
+    &quot;overview&quot;: [&quot;./manual/overview.md&quot;,
+    &quot;installation&quot;: [&quot;./manual/installation.md&quot;],
+    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
+    &quot;tutorial&quot;: [&quot;./manual/tutorial.md&quot;],
+    &quot;configuration&quot;: [&quot;./manual/configuration.md&quot;],
+    &quot;example&quot;: [&quot;./manual/example.md&quot;],
+    &quot;faq&quot;: [&quot;./manual/faq.md&quot;],
+    &quot;changelog&quot;: [&quot;./CHANGELOG.md&quot;]
   },
   &quot;lint&quot;: true
 }
@@ -283,40 +286,58 @@ describe(&#39;MyClass has foo bar feature&#39;, ()=&gt;{
 <td>If specified, generate manual from markdown.</td>
 </tr>
 <tr>
+<td><code>manual.asset</code></td>
+<td>-</td>
+<td>null</td>
+<td>if specify asset(image) directory path, include the directory into manual.</td>
+</tr>
+<tr>
 <td><code>manual.overview</code></td>
 <td>-</td>
 <td>null</td>
-<td>markdown file path</td>
+<td>if specify markdown files, show overview.</td>
 </tr>
 <tr>
 <td><code>manual.installation</code></td>
 <td>-</td>
 <td>null</td>
-<td>markdown file path</td>
+<td>if specify markdown files, show installation.</td>
 </tr>
 <tr>
 <td><code>manual.usage</code></td>
 <td>-</td>
 <td>null</td>
-<td>markdown file path</td>
+<td>if specify markdown files, show usage.</td>
+</tr>
+<tr>
+<td><code>manual.tutorial</code></td>
+<td>-</td>
+<td>null</td>
+<td>if specify markdown files, show tutorial.</td>
+</tr>
+<tr>
+<td><code>manual.configuration</code></td>
+<td>-</td>
+<td>null</td>
+<td>if specify markdown files, show configuration.</td>
 </tr>
 <tr>
 <td><code>manual.example</code></td>
 <td>-</td>
 <td>null</td>
-<td>markdown file path</td>
+<td>if specify markdown files, show example.</td>
 </tr>
 <tr>
 <td><code>manual.faq</code></td>
 <td>-</td>
 <td>null</td>
-<td>markdown file path</td>
+<td>if specify markdown files, show FAQ.</td>
 </tr>
 <tr>
 <td><code>manual.changelog</code></td>
 <td>-</td>
 <td>null</td>
-<td>markdown file path</td>
+<td>if specify markdown files, show changelog.</td>
 </tr>
 <tr>
 <td><code>lint</code></td>

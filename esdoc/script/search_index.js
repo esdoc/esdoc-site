@@ -732,6 +732,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "methoddoc#@_name methoddoc#@_name,methoddoc#@_name",
+    "test-file/src/BuilderTest/ComputedMethodTest.js.html#lineNumber4",
+    "ComputedMethod:",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/BuilderTest/ComputedMethodTest.js.html#lineNumber7",
+    "ComputedMethod: has computed method",
+    "test"
+  ],
+  [
     "coveragebuilder src/publisher/builder/coveragebuilder.js~coveragebuilder,coveragebuilder",
     "test-file/src/BuilderTest/CoverageDocTest.js.html#lineNumber5",
     "Coverage:",
@@ -1015,31 +1027,37 @@ window.esdocSearchIndex = [
   ],
   [
     "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
-    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber157",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber195",
     "Manual: has changelog",
     "test"
   ],
   [
+    "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber174",
+    "Manual: has configuration",
+    "test"
+  ],
+  [
     "manualdocbuilder#_buildmanualindex src/publisher/builder/manualdocbuilder.js~manualdocbuilder#_buildmanualindex,manualdocbuilder#_buildmanualindex",
-    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber34",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber38",
     "Manual: has each heading tags",
     "test"
   ],
   [
     "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
-    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber143",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber181",
     "Manual: has example",
     "test"
   ],
   [
     "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
-    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber150",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber188",
     "Manual: has faq",
     "test"
   ],
   [
     "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
-    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber129",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber153",
     "Manual: has installation",
     "test"
   ],
@@ -1057,13 +1075,19 @@ window.esdocSearchIndex = [
   ],
   [
     "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
-    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber122",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber146",
     "Manual: has overview",
     "test"
   ],
   [
     "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
-    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber136",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber167",
+    "Manual: has tutorial",
+    "test"
+  ],
+  [
+    "manualdocbuilder#_buldmanual manualdocbuilder#_buldmanual,manualdocbuilder#_buldmanual",
+    "test-file/src/BuilderTest/ManualDocTest.js.html#lineNumber160",
     "Manual: has usage",
     "test"
   ],
@@ -1177,7 +1201,7 @@ window.esdocSearchIndex = [
   ],
   [
     "singledocbuilder#_buildsingledoc src/publisher/builder/singledocbuilder.js~singledocbuilder#_buildsingledoc,singledocbuilder#_buildsingledoc",
-    "test-file/src/BuilderTest/FunctionDocTest.js.html#lineNumber26",
+    "test-file/src/BuilderTest/FunctionDocTest.js.html#lineNumber27",
     "MyFunction: has detail.",
     "test"
   ],
@@ -1279,14 +1303,14 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
     "ParamParser: parse param with complex.",
     "test"
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
-    "ParamParser: parse param with complex.",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber81",
+    "ParamParser: parse param with object ({}) as default.",
     "test"
   ],
   [
@@ -1425,6 +1449,12 @@ window.esdocSearchIndex = [
     "src/buildertest/classdoctest.js",
     "test-file/src/BuilderTest/ClassDocTest.js.html",
     "src/BuilderTest/ClassDocTest.js",
+    "testFile"
+  ],
+  [
+    "src/buildertest/computedmethodtest.js",
+    "test-file/src/BuilderTest/ComputedMethodTest.js.html",
+    "src/BuilderTest/ComputedMethodTest.js",
     "testFile"
   ],
   [

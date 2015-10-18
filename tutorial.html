@@ -214,6 +214,7 @@ Write manual that is overview, installation, usage, example, FAQ and changelog.<
 
 <pre><code class="lang-markdown"># Overview
 This is my project overview.
+&lt;img src=&quot;./asset/overview.png&quot;&gt;
 
 ## Author
 Alice
@@ -230,15 +231,19 @@ MIT
     &quot;source&quot;: &quot;./test&quot;
   },
   &quot;manual&quot;: {
-    &quot;overview&quot;: &quot;./manual/overview.md&quot;,
-    &quot;installation&quot;: &quot;./manual/installation.md&quot;,
-    &quot;usage&quot;: &quot;./manual/usage.md&quot;,
-    &quot;example&quot;: &quot;./manual/example.md&quot;,
-    &quot;faq&quot;: &quot;./manual/faq.md&quot;,
-    &quot;changelog&quot;: &quot;./CHANGELOG.md&quot;
+    &quot;asset&quot;: &quot;./manual/asset&quot;,
+    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
+    &quot;installation&quot;: [&quot;./manual/installation.md&quot;],
+    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
+    &quot;tutorial&quot;: [&quot;./manual/tutorial.md&quot;],
+    &quot;configuration&quot;: [&quot;./manual/configuration.md&quot;],
+    &quot;example&quot;: [&quot;./manual/example.md&quot;],
+    &quot;faq&quot;: [&quot;./manual/faq.md&quot;],
+    &quot;changelog&quot;: [&quot;./CHANGELOG.md]&quot;
   }
 }
 </code></pre>
+<p>You can specify a only part of these manuals (e.g. only overview and installation).</p>
 <p>Execute ESDoc and see output document.</p>
 <pre><code>esdoc -c ./esdoc.json
 open ./out/esdoc/index.html

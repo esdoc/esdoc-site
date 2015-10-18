@@ -1338,10 +1338,10 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "name": "_resolveMarkdown",
+                            "name": "_resolveLink",
                             "range": [
                               648,
-                              664
+                              660
                             ],
                             "loc": {
                               "start": {
@@ -1350,13 +1350,13 @@
                               },
                               "end": {
                                 "line": 29,
-                                "column": 25
+                                "column": 21
                               }
                             }
                           },
                           "range": [
                             643,
-                            664
+                            660
                           ],
                           "loc": {
                             "start": {
@@ -1365,14 +1365,14 @@
                             },
                             "end": {
                               "line": 29,
-                              "column": 25
+                              "column": 21
                             }
                           }
                         },
                         "arguments": [],
                         "range": [
                           643,
-                          666
+                          662
                         ],
                         "loc": {
                           "start": {
@@ -1381,13 +1381,13 @@
                           },
                           "end": {
                             "line": 29,
-                            "column": 27
+                            "column": 23
                           }
                         }
                       },
                       "range": [
                         643,
-                        667
+                        663
                       ],
                       "loc": {
                         "start": {
@@ -1396,7 +1396,7 @@
                         },
                         "end": {
                           "line": 29,
-                          "column": 28
+                          "column": 24
                         }
                       }
                     },
@@ -1410,8 +1410,8 @@
                           "object": {
                             "type": "ThisExpression",
                             "range": [
-                              672,
-                              676
+                              668,
+                              672
                             ],
                             "loc": {
                               "start": {
@@ -1426,9 +1426,9 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "name": "_resolveLink",
+                            "name": "_resolveMarkdown",
                             "range": [
-                              677,
+                              673,
                               689
                             ],
                             "loc": {
@@ -1438,12 +1438,12 @@
                               },
                               "end": {
                                 "line": 30,
-                                "column": 21
+                                "column": 25
                               }
                             }
                           },
                           "range": [
-                            672,
+                            668,
                             689
                           ],
                           "loc": {
@@ -1453,13 +1453,13 @@
                             },
                             "end": {
                               "line": 30,
-                              "column": 21
+                              "column": 25
                             }
                           }
                         },
                         "arguments": [],
                         "range": [
-                          672,
+                          668,
                           691
                         ],
                         "loc": {
@@ -1469,12 +1469,12 @@
                           },
                           "end": {
                             "line": 30,
-                            "column": 23
+                            "column": 27
                           }
                         }
                       },
                       "range": [
-                        672,
+                        668,
                         692
                       ],
                       "loc": {
@@ -1484,7 +1484,7 @@
                         },
                         "end": {
                           "line": 30,
-                          "column": 24
+                          "column": 28
                         }
                       }
                     },

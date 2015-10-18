@@ -9,8 +9,9 @@
   <script src="script/prettify/prettify.js"></script>
   
   
+  <script src="script/manual.js"></script>
 </head>
-<body class="layout-container">
+<body class="layout-container" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
@@ -116,13 +117,15 @@ export default class ManualDocBuilder extends DocBuilder {
   /**
    * execute building output.
    * @param {function(html: string, filePath: string)} callback - is called each manual.
+   * @param {function(src: string, dest: string)} callbackForCopy - is called asset.
    */
-  exec(callback) {
+  exec(callback, callbackForCopy) {
     if (!this._config.manual) return;
 
     const manualConfig = this._getManualConfig();
     const ice = this._buildLayoutDoc();
     ice.autoDrop = false;
+    ice.attr(&apos;rootContainer&apos;, &apos;class&apos;, &apos; manual-root&apos;);
 
     {
       const fileName = &apos;manual/index.html&apos;;
@@ -136,7 +139,7 @@ export default class ManualDocBuilder extends DocBuilder {
     }
 
     for (let item of manualConfig) {
-      if (!item.path) continue;
+      if (!item.paths) continue;
       const fileName = this._getManualOutputFileName(item);
       const baseUrl = this._getBaseUrl(fileName);
       ice.load(&apos;content&apos;, this._buildManual(item), IceCap.MODE_WRITE);
@@ -144,6 +147,10 @@ export default class ManualDocBuilder extends DocBuilder {
       ice.text(&apos;title&apos;, item.label, IceCap.MODE_WRITE);
       ice.attr(&apos;baseUrl&apos;, &apos;href&apos;, baseUrl, IceCap.MODE_WRITE);
       callback(ice.html, fileName);
+    }
+
+    if (this._config.manual.asset) {
+      callbackForCopy(this._config.manual.asset, &apos;manual/asset&apos;);
     }
   }
 
@@ -155,13 +162,15 @@ export default class ManualDocBuilder extends DocBuilder {
   _getManualConfig() {
     const m = this._config.manual;
     const manualConfig = [];
-    if (m.overview) manualConfig.push({label: &apos;Overview&apos;, path: m.overview});
-    if (m.installation) manualConfig.push({label: &apos;Installation&apos;, path: m.installation});
-    if (m.usage) manualConfig.push({label: &apos;Usage&apos;, path: m.usage});
-    if (m.example) manualConfig.push({label: &apos;Example&apos;, path: m.example});
+    if (m.overview) manualConfig.push({label: &apos;Overview&apos;, paths: m.overview});
+    if (m.installation) manualConfig.push({label: &apos;Installation&apos;, paths: m.installation});
+    if (m.tutorial) manualConfig.push({label: &apos;Tutorial&apos;, paths: m.tutorial});
+    if (m.usage) manualConfig.push({label: &apos;Usage&apos;, paths: m.usage});
+    if (m.configuration) manualConfig.push({label: &apos;Configuration&apos;, paths: m.configuration});
+    if (m.example) manualConfig.push({label: &apos;Example&apos;, paths: m.example});
     manualConfig.push({label: &apos;Reference&apos;, fileName: &apos;identifiers.html&apos;, references: true});
-    if (m.faq) manualConfig.push({label: &apos;FAQ&apos;, path: m.faq});
-    if (m.changelog) manualConfig.push({label: &apos;Changelog&apos;, path: m.changelog});
+    if (m.faq) manualConfig.push({label: &apos;FAQ&apos;, paths: m.faq});
+    if (m.changelog) manualConfig.push({label: &apos;Changelog&apos;, paths: m.changelog});
     return manualConfig;
   }
 
@@ -172,12 +181,10 @@ export default class ManualDocBuilder extends DocBuilder {
    * @private
    */
   _buildManualNav(manualConfig) {
-    const ice = new IceCap(this._readTemplate(&apos;manualNav.html&apos;));
-    ice.loop(&apos;navItem&apos;, manualConfig, (i, item, ice)=&gt;{
-      ice.text(&apos;link&apos;, item.label);
-      ice.attr(&apos;link&apos;, &apos;href&apos;, this._getManualOutputFileName(item));
-    });
-    return ice;
+    const ice = this._buildManualIndex(manualConfig);
+    const $root = cheerio.load(ice.html).root();
+    $root.find(&apos;.github-markdown&apos;).removeClass(&apos;github-markdown&apos;);
+    return $root.html();
   }
 
   /**
@@ -190,9 +197,29 @@ export default class ManualDocBuilder extends DocBuilder {
     const html = this._convertMDToHTML(item);
     const ice = new IceCap(this._readTemplate(&apos;manual.html&apos;));
     ice.text(&apos;title&apos;, item.label);
-    ice.attr(&apos;title&apos;, &apos;id&apos;, item.label.toLowerCase());
     ice.load(&apos;content&apos;, html);
-    return ice;
+
+    // convert relative src to base url relative src.
+    const $root = cheerio.load(ice.html).root();
+    $root.find(&apos;img&apos;).each((i, el)=&gt;{
+      const $el = cheerio(el);
+      const src = $el.attr(&apos;src&apos;);
+      if (!src) return;
+      if (src.match(/^http[s]?:/)) return;
+      if (src.charAt(0) === &apos;/&apos;) return;
+      $el.attr(&apos;src&apos;, &apos;./manual/&apos; + src);
+    });
+    $root.find(&apos;a&apos;).each((i, el)=&gt;{
+      const $el = cheerio(el);
+      const href = $el.attr(&apos;href&apos;);
+      if (!href) return;
+      if (href.match(/^http[s]?:/)) return;
+      if (href.charAt(0) === &apos;/&apos;) return;
+      if (href.charAt(0) === &apos;#&apos;) return;
+      $el.attr(&apos;href&apos;, &apos;./manual/&apos; + href);
+    });
+
+    return $root.html();
   }
 
   /**
@@ -234,6 +261,7 @@ export default class ManualDocBuilder extends DocBuilder {
         });
       }
 
+      ice.attr(&apos;manual&apos;, &apos;data-toc-name&apos;, item.label.toLowerCase());
       ice.text(&apos;title&apos;, item.label);
       ice.attr(&apos;title&apos;, &apos;href&apos;, this._getManualOutputFileName(item));
       ice.loop(&apos;manualNav&apos;, toc, (i, item, ice)=&gt;{
@@ -262,18 +290,17 @@ export default class ManualDocBuilder extends DocBuilder {
    * if markdown has only one ``h1`` and it&apos;s text is ``item.label``, remove the ``h1``.
    * because duplication ``h1`` in output html.
    * @param {ManualConfigItem} item - target.
-   * @returns {string} coverted html.
+   * @returns {string} converted html.
    * @private
    */
   _convertMDToHTML(item) {
-    const content = fs.readFileSync(item.path).toString();
+    const contents = [];
+    for (let path of item.paths) {
+      contents.push(fs.readFileSync(path).toString());
+    }
+    const content = contents.join(&apos;\n\n&apos;);
     const html = markdown(content);
     const $root = cheerio.load(html).root();
-    const $h1 = $root.find(&apos;h1&apos;);
-    const synonyms = this._getLabelSynonyms(item.label);
-    if ($h1.length === 1 &amp;&amp; synonyms.includes($h1.text().toLowerCase())) {
-      $h1.remove();
-    }
     return $root.html();
   }
 
@@ -289,6 +316,10 @@ export default class ManualDocBuilder extends DocBuilder {
         return [&apos;overview&apos;];
       case &apos;installation&apos;:
         return [&apos;installation&apos;, &apos;install&apos;];
+      case &apos;tutorial&apos;:
+        return [&apos;tutorial&apos;];
+      case &apos;configuration&apos;:
+        return [&apos;configuration&apos;, &apos;config&apos;];
       case &apos;usage&apos;:
         return [&apos;usage&apos;];
       case &apos;example&apos;:
@@ -305,7 +336,7 @@ export default class ManualDocBuilder extends DocBuilder {
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.0)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.1)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>
