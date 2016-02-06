@@ -324,13 +324,13 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "abstractdoc#@_undocument abstractdoc#@_undocument,abstractdoc#@_undocument",
+    "* *,*",
     "test-file/src/DocTest/AbstractDocTest.js.html#lineNumber15",
     "AbstractDoc: has undocument tag.",
     "test"
   ],
   [
-    "abstractdoc#@_unknown abstractdoc#@_unknown,abstractdoc#@_unknown",
+    "* *,*",
     "test-file/src/DocTest/AbstractDocTest.js.html#lineNumber7",
     "AbstractDoc: has unknown tag.",
     "test"
@@ -342,7 +342,7 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "classdoc#@_name classdoc#@_name,classdoc#@_name",
+    "* *,*",
     "test-file/src/BuilderTest/nAnonymousTest.js.html#lineNumber7",
     "Anonymous Anonymous Class",
     "test"
@@ -354,7 +354,7 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "functiondoc#@_name functiondoc#@_name,functiondoc#@_name",
+    "* *,*",
     "test-file/src/BuilderTest/nAnonymousTest.js.html#lineNumber18",
     "Anonymous Anonymous Function",
     "test"
@@ -648,6 +648,12 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "builtinexternal/webapiexternal.js~audiocontext",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "external"
+  ],
+  [
     "builtinexternal/webapiexternal.js~canvasrenderingcontext2d",
     "external/index.html",
     "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
@@ -696,7 +702,7 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "classdoc#@extends classdoc#@extends,classdoc#@extends",
+    "* *,*",
     "test-file/src/DocTest/ClassDocTest.js.html#lineNumber7",
     "ClassDoc: can parse nested extend.",
     "test"
@@ -732,7 +738,7 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "methoddoc#@_name methoddoc#@_name,methoddoc#@_name",
+    "* *,*",
     "test-file/src/BuilderTest/ComputedMethodTest.js.html#lineNumber4",
     "ComputedMethod:",
     "test"

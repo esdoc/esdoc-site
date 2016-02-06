@@ -142,6 +142,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/changelog.html#changelog" data-ice="link">Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-4-3-2015-11-02-" data-ice="link">0.4.3 (2015-11-02)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-4-2-2015-11-01-" data-ice="link">0.4.2 (2015-11-01)</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-4-1-2015-10-18-" data-ice="link">0.4.1 (2015-10-18)</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-4-0-2015-10-04-" data-ice="link">0.4.0 (2015-10-04)</a></li>
 <li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/changelog.html#0-3-1-2015-09-27-" data-ice="link">0.3.1 (2015-09-27)</a></li>
@@ -171,7 +173,7 @@
   </div>
   <div data-ice="content"><h1 id="overview">Overview</h1>
 <p>ESDoc is a documentation generator for JavaScript(ES6).</p>
-<p><img src="https://esdoc.org/image/top.png" width="500px"></p>
+<p><img class="screen-shot" src="https://esdoc.org/image/top.png" width="500px"></p>
 <h2 id="feature">Feature</h2>
 <ul>
 <li>Generates detailed document.</li>
@@ -214,8 +216,8 @@ This means that ESDoc can generate a document without using a tag for these.</p>
 <li>Inherited methods and members from super class.</li>
 <li>Override methods and members from super class.</li>
 </ul>
-<p><img src="./manual/./asset/image/feature/class1.png" width="500px"></p>
-<p><img src="./manual/./asset/image/feature/class2.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/class1.png" class="screen-shot" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/class2.png" class="screen-shot" width="500px"></p>
 <h2 id="es6-module">ES6 Module</h2>
 <p>ESDoc supports ES6 Module syntax and targets a code that is written by it.
 ES6 Modules syntax is file base. So ESDoc treats as one file = one module.</p>
@@ -225,7 +227,7 @@ ES6 Modules syntax is file base. So ESDoc treats as one file = one module.</p>
 <li>If <code>export class Foo{}</code>, displays <code>import {Foo} from &apos;./Foo.js&apos;</code></li>
 </ul>
 <p>This is useful because you not need to see export style in source code.</p>
-<p><img src="./manual/./asset/image/feature/module1.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/module1.png" class="screen-shot" width="500px"></p>
 <h2 id="documentation-coverage">Documentation Coverage</h2>
 <p>ESDoc measures a documentation coverage. This is useful information for following.</p>
 <ul>
@@ -236,7 +238,7 @@ ES6 Modules syntax is file base. So ESDoc treats as one file = one module.</p>
 This is based on, ESDoc measures coverage by how much the document is being written out of all the processing target.
 And, ESDoc is also to measure coverage of each module, you will have become easier to also find a missing of the document.
 For example, <a href="./manual/./esdoc/source.html">this</a> is coverage of ESDoc itself.</p>
-<p><img src="./manual/./asset/image/feature/coverage1.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/coverage1.png" class="screen-shot" width="500px"></p>
 <h2 id="integration-test-codes">Integration Test Codes</h2>
 <p>Test codes are important information.
 So, ESDoc generates a cross reference of test codes and document.
@@ -251,8 +253,8 @@ describe(&apos;MyClass is super useful class.&apos;, ()=&gt;{
   })
 });</code>
 </code></pre>
-<p><img src="./manual/./asset/image/feature/test1.png" width="500px"></p>
-<p><img src="./manual/./asset/image/feature/test2.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/test1.png" class="screen-shot" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/test2.png" class="screen-shot" width="500px"></p>
 <p>However, for now, ESDoc supports only Mocha.</p>
 <h2 id="integration-manual">Integration Manual</h2>
 <p>You can integrate manual into documentation. The manual is:</p>
@@ -283,8 +285,8 @@ describe(&apos;MyClass is super useful class.&apos;, ()=&gt;{
 }</code>
 </code></pre>
 <p>You can specify a only part of these manuals (e.g. only overview and installation).</p>
-<p><img src="./manual/./asset/image/feature/manual1.png" width="500px"></p>
-<p><img src="./manual/./asset/image/feature/manual2.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/manual1.png" class="screen-shot" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/manual2.png" class="screen-shot" width="500px"></p>
 <h2 id="search-documentation">Search Documentation</h2>
 <p>ESDoc supports searching in document with only JavaScript(without server implementation).
 The implementation of searching:</p>
@@ -293,7 +295,7 @@ The implementation of searching:</p>
 <li>The user search from the index.</li>
 </ul>
 <p>However, this implementation is very naive. There might be a problem in search performance. For now, no problem in 500 indexes.</p>
-<p><img src="./manual/./asset/image/feature/search1.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/search1.png" class="screen-shot" width="500px"></p>
 <h2 id="guess-type">Guess Type</h2>
 <p>ESDoc guesses type of function arguments by ES6 default argument syntax if there is not  <code>@param</code> at the function.
 This implementation is very simply. If Arguments has a primitive(number, boolean, string, etc) default value, ESDoc guesses that the function arguments type is the primitive value.
@@ -307,7 +309,7 @@ ESDoc guesses type of function return in the same way if there is not <code>@ret
   method(p){}
 }</code>
 </code></pre>
-<p><img src="./manual/./asset/image/feature/lint.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/lint.png" class="screen-shot" width="500px"></p>
 <p>For now, only validate method|function signature.</p>
 <h2 id="customize">Customize</h2>
 <p>If you want to customize a document, you can includes your stylesheets and scripts to the document.
@@ -315,13 +317,13 @@ And, ESDoc support to plugin feature. But, ESDoc has goal that generates the use
 Please read <a href="/api.html">API</a> for more information.</p>
 <h2 id="esdoc-hosting-service">ESDoc Hosting Service</h2>
 <p><a href="https://doc.esdoc.org">ESDoc Hosting Service</a> generates your documentation via GitHub and hosts it.</p>
-<p><img src="./manual/./asset/image/feature/hosting1.png" width="500px"></p>
+<p><img src="./manual/./asset/image/feature/hosting1.png" class="screen-shot" width="500px"></p>
 </div>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.1)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>
