@@ -32,11 +32,11 @@
       "expectCount": 54,
       "actualCount": 49,
       "undocumentLines": [
-        21,
-        24,
         22,
+        25,
         23,
-        25
+        24,
+        26
       ]
     },
     "src/Doc/AssignmentDoc.js": {
@@ -148,7 +148,7 @@
       "expectCount": 6,
       "actualCount": 5,
       "undocumentLines": [
-        91
+        95
       ]
     },
     "src/Publisher/Builder/ManualDocBuilder.js": {
@@ -191,7 +191,7 @@
       "actualCount": 15,
       "undocumentLines": [
         11,
-        142
+        143
       ]
     },
     "src/Publisher/Builder/SearchIndexBuilder.js": {

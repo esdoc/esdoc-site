@@ -1243,7 +1243,7 @@ window.esdocSearchIndex = [
   ],
   [
     "singledocbuilder#_buildsingledoc src/publisher/builder/singledocbuilder.js~singledocbuilder#_buildsingledoc,singledocbuilder#_buildsingledoc",
-    "test-file/src/BuilderTest/VariableDocTest.js.html#lineNumber29",
+    "test-file/src/BuilderTest/VariableDocTest.js.html#lineNumber28",
     "MyVariable: has detail.",
     "test"
   ],
@@ -1269,6 +1269,12 @@ window.esdocSearchIndex = [
     "paramparser src/parser/paramparser.js~paramparser,paramparser",
     "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber5",
     "ParamParser:",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber114",
+    "ParamParser: parse param even if description has {}.",
     "test"
   ],
   [
@@ -1303,13 +1309,13 @@ window.esdocSearchIndex = [
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber98",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
     "ParamParser: parse param with complex.",
     "test"
   ],
   [
     "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
-    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber66",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber98",
     "ParamParser: parse param with complex.",
     "test"
   ],
@@ -1326,6 +1332,12 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "paramparser.parseparam src/parser/paramparser.js~paramparser.parseparam,paramparser.parseparam",
+    "test-file/src/UnitTest/ParamParserTest.js.html#lineNumber129",
+    "ParamParser: throws error when empty type.",
+    "test"
+  ],
+  [
     "plugin src/plugin/plugin.js~plugin,plugin",
     "test-file/src/UnitTest/ESDocPluginTest.js.html#lineNumber7",
     "Plugin:",
@@ -1339,7 +1351,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/src/UnitTest/ESDocPluginTest.js.html#lineNumber42",
+    "test-file/src/UnitTest/ESDocPluginTest.js.html#lineNumber43",
     "Plugin: call multi plugins",
     "test"
   ],
