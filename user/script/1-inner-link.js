@@ -5,7 +5,7 @@
   if (matched) return;
 
   function adjust() {
-    window.scrollBy(0, -55);
+    window.scrollBy(0, -70);
     var el = document.querySelector('.inner-link-active');
     if (el) el.classList.remove('inner-link-active');
 
@@ -22,10 +22,10 @@
   }
 })();
 
-(function(){
+window.addEventListener('DOMContentLoaded', function(){
   var els = document.querySelectorAll('[href^="#"]');
   for (var i = 0; i < els.length; i++) {
     var el = els[i];
-    el.href = location.href + el.getAttribute('href'); // because el.href is absolute path
+    el.href = location.pathname + el.getAttribute('href'); // because el.href is absolute path
   }
-})();
+});
