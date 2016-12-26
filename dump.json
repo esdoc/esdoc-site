@@ -732,7 +732,6 @@
     "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
     "access": null,
     "description": "",
-    "lineNumber": 193,
     "builtinExternal": true
   },
   {
@@ -829,7 +828,6 @@
     "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
     "access": null,
     "description": "",
-    "lineNumber": 34,
     "builtinExternal": true
   }
 ]
