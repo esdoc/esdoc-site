@@ -39,12 +39,13 @@
     <a href="./" class="logo"><img src="./manual/asset/image/logo.png"></a>
     <a href="./" class="brand">ESDoc</a>
     <ul>
-      <li><a href="./manual/usage/usage.html">Usage</a></li>
+      <li><a href="https://try.esdoc.org" target="_blank">Try it out</a></li>
+      <li><a href="./manual/usage/usage.html" class="hair-line">Usage</a></li>
       <li><a href="./manual/usage/feature.html">Features</a></li>
       <li><a href="./manual/configuration/config.html">Config</a></li>
       <li><a href="./manual/usage/tags.html">Tags</a></li>
       <li><a href="./manual/advanced/api.html">API</a></li>
-      <li><a href="./manual/changelog/CHANGELOG.html">Releases</a></li>
+      <li><a href="./manual/changelog/CHANGELOG.html" class="hair-line">Releases</a></li>
       <li><a href="./manual/faq/faq.html">FAQ</a></li>
     </ul>
     <a href="https://github.com/esdoc/esdoc" class="github"><img src="./manual/asset/image/github.png"></a>
@@ -194,7 +195,8 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="github-markdown">
-  <div class="manual-user-index" data-ice="manualUserIndex"><p>ESDoc is a good documentation generator for JavaScript.</p>
+  <div class="manual-user-index" data-ice="manualUserIndex"><p>ESDoc is a good documentation generator for JavaScript.<br>
+Please <a href="https://try.esdoc.org" target="_blank">try it out</a>!</p>
 <p><img class="screen-shot no-border" src="./manual/asset/image/top.png" width="400px"></p>
 <h1 id="features">Features</h1>
 <ul>
@@ -466,7 +468,7 @@ And, ESDoc supports plugin feature. Please read <a href="./manual/./advanced/api
  * @example
  * let myClass = new MyClass();
  */
-class MyClass {
+export default class MyClass {
   /**
    * this is constructor description.
    * @param {number} arg1 this is arg1 description.
@@ -1426,6 +1428,14 @@ However, the import path may be different from real import path because usually 
 <li>Display error message when invalid function type (<a href="https://github.com/esdoc/esdoc/issues/351">#351</a>) Thanks <a href="https://github.com/LukasHechenberger">@LukasHechenberger</a></li>
 <li>Crash when destructure sparse array (<a href="https://github.com/esdoc/esdoc/issues/350">#350</a>)</li>
 <li>Crash when guess type of array detructuring (<a href="https://github.com/esdoc/esdoc/issues/301">#301</a>)</li>
+<li>A union type in a generics type (<a href="https://github.com/esdoc/esdoc/commit/eb051e729b83bca552a3d4b43351dc1272ee4154">eb051e7</a>)</li>
+<li>A union type with a spread type (<a href="https://github.com/esdoc/esdoc/commit/199d834cfe68ba986212b51cb59ea2d9de55ba1c">199d834</a>)</li>
+<li>Crash when function was assigned by member expression (<a href="https://github.com/esdoc/esdoc/commit/e59820aed2f3e2091f32d35de34925d0132630e0">e59820a</a>)</li>
+<li>Broken to guess type when property has null value or object expression using string key (<a href="https://github.com/esdoc/esdoc/commit/5920c1f91633202ec795f360bb0ac12f68f258f2">5920c1f</a>)</li>
+</ul>
+</li>
+<li><strong>Feat</strong><ul>
+<li>Automatically take a super class description if the method override a super class method. (<a href="https://github.com/esdoc/esdoc/commit/7b515f0367a386ceb732b4606b96abf24bfab627">7b515f0</a>)</li>
 </ul>
 </li>
 </ul><h2>0.5.1 (2016-12-26)</h2><ul>
