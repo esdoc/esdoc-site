@@ -50,7 +50,7 @@ This is useful because you not need to see export style in source code.
 
 <img src="./asset/image/feature/module1.png" class="screen-shot" width="500px">
 
-And you may as well as use [esdoc-importpath-plugin](https://github.com/esdoc/esdoc-importpath-plugin) to transform path.
+And you may as well as use [esdoc-importpath-plugin](https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-importpath-plugin) to transform path.
 
 Note: ESDoc doesn't support `module/require` of Node.js.
 
