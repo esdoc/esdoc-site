@@ -1,0 +1,47 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "excludes": [".*"],
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "brand": {
+          "description": "A good documentation generator for JavaScript.",
+          "repository": "https://github.com/esdoc/esdoc",
+          "site": "https://esdoc.org",
+          "author": "https://twitter.com/h13i32maru",
+          "image": "https://esdoc.org/logo.png"
+        },
+        "manual": {
+          "index": "./src/manual/index.md",
+          "globalIndex": true,
+          "asset": "./src/manual/asset",
+          "files": [
+            "./src/manual/usage.md",
+            "./src/manual/feature.md",
+            "./src/manual/tags.md",
+            "./src/manual/config.md",
+            "./src/manual/api.md",
+            "./src/manual/faq.md",
+            "../esdoc/CHANGELOG.md"
+          ]
+        }
+      }
+    },
+    {
+      "name": "esdoc-inject-script-plugin",
+      "option": {"scripts": ["./src/js/analytics.js", "./src/js/inner-link.js"]}
+    },
+    {
+      "name": "esdoc-inject-style-plugin",
+      "option": {"enable": true, "styles": ["./src/css/style.css"]}
+    },
+    {
+      "name": "esdoc-exclude-source-plugin"
+    },
+    {
+      "name": "./src/plugin/site-plugin.js"
+    }
+  ]
+}
