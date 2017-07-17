@@ -1,2 +1,7 @@
 node_modules
 npm-debug.log
+docs/source.html
+docs/identifiers.html
+docs/index.json
+docs/coverage.json
+docs/lint.json
