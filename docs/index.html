@@ -180,6 +180,7 @@
 <li>Integrate test codes into documentation.</li>
 <li>Integrate manual into documentation.</li>
 <li>Parse ECMAScript proposals.</li>
+<li>Add custom features by <a href="https://github.com/esdoc/esdoc-plugins">plugin system</a></li>
 <li><a href="https://doc.esdoc.org">ESDoc Hosting Service</a></li>
 </ul>
 <h1 id="users">Users</h1><ul>
@@ -188,20 +189,24 @@
 <li><a href="http://developer.sketchapp.com/reference/api/">Sketch API</a></li>
 </ul>
 <p>And <a href="https://github.com/search?o=desc&amp;q=esdoc+filename%3Apackage.json+-user%3Ah13i32maru+-user%3Aesdoc+-user%3Aes-doc&amp;ref=searchresults&amp;s=indexed&amp;type=Code&amp;utf8=%E2%9C%93">more</a>.</p>
-<h1 id="quick-start">Quick Start</h1><pre><code class="lang-sh"><code class="source-code prettyprint"># install ESDoc from npm
-npm install -g esdoc
-
-# move to a your project directory
+<h1 id="quick-start">Quick Start</h1><pre><code class="lang-sh"><code class="source-code prettyprint"># move to a your project directory
 cd your-project/
 
+# install ESDoc and standard plugin
+npm install esdoc esdoc-standard-plugin
+
 # write a configuration file.
-echo &apos;{&quot;source&quot;: &quot;./src&quot;, &quot;destination&quot;: &quot;./doc&quot;}&apos; &gt; .esdoc.json
+echo &apos;{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./docs&quot;,
+  &quot;plugins&quot;: [{&quot;name&quot;: &quot;esdoc-standard-plugin&quot;}]
+}&apos; &gt; .esdoc.json
 
 # run ESDoc
-esdoc
+./node_modules/.bin/esdoc
 
 # see a documentation
-open ./doc/index.html</code>
+open ./docs/index.html</code>
 </code></pre>
 <h1 id="license">License</h1><p>MIT</p>
 <h1 id="author">Author</h1><p><a href="https://twitter.com/h13i32maru">Ryo Maruyama@h13i32maru</a></p>
