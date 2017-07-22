@@ -1,16 +1,8 @@
 # API
-If you want to customize output, you can choose following way.
 
-- [Style sheets and scripts](#style-sheets-and-scripts)
-- [Plugin feature](#plugin-feature)
-- [Publisher](#publisher)
+You can modify data(config, code, parser, AST, doc and content) at hook points with plugins.
 
-## Style Sheets and Scripts
-You can includes your style sheets and scripts into output documentation.
-To see ``styles`` and ``scripts`` in [Config](./configuration/config.html)
-
-## Plugin Feature
-You can modify data(config, code, parser, AST, tag and HTML) at hook points with plugins.
+## Plugin API
 
 First, you set ``plugins`` property in config.
 - specify directly JavaScript file (e.g. `./my-plugin.js`)
@@ -19,9 +11,9 @@ First, you set ``plugins`` property in config.
 ```json
 {
   "source": "./src",
-  "destination": "./doc",
+  "destination": "./docs",
   "plugins": [
-    {"name": "./my-plugin.js"},
+    {"name": "./MyPlugin.js"},
     {"name": "esdoc-foo-plugin", "option": {"foo": 123}}
   ]
 }
@@ -29,69 +21,74 @@ First, you set ``plugins`` property in config.
 
 Second, you write plugin code.
 
-<div class="file-path">my-plugin.js</div>
+<div class="file-path">MyPlugin.js</div>
 
 ```javascript
-exports.onStart = function(ev) {
-  // take option
-  ev.data.option;
-};
+class MyPlugin {
+  onStart(ev) {
+    console.log(ev.data);
+  }
+  
+  onHandlePlugins(ev) {
+    // modify plugins
+    ev.data.plugins = ...; 
+  }
+  
+  onHandleConfig(ev) {
+    // modify config
+    ev.data.config.title = ...;
+  }
+  
+  onHandleCode(ev) {
+    // modify code
+    ev.data.code = ...;
+  }
+  
+  onHandleCodeParser(ev) {
+    // modify parser
+    ev.data.parser = function(code){ ... };
+  }
+  
+  onHandleAST(ev) {
+    // modify AST
+    ev.data.ast = ...;
+  }
+  
+  onHandleDocs(ev) {
+    // modify docs
+    ev.data.docs = ...;
+  };
+  
+  onPublish(ev) {
+    // write content to output dir
+    ev.data.writeFile(filePath, content);
+    
+    // copy file to output dir
+    ev.data.copyFile(src, dest);
+    
+    // copy dir to output dir
+    ev.data.copyDir(src, dest);
+    
+    // read file from output dir
+    ev.data.readFile(filePath);
+  };
+  
+  onHandleContent(ev) {
+    // modify content
+    ev.data.content = ...;
+  };
+  
+  onComplete(ev) {
+    // complete
+  };
+}
 
-exports.onHandleConfig = function(ev) {
-  // modify config
-  ev.data.config.title = ...;
-};
-
-exports.onHandleCode = function(ev) {
-  // modify code
-  ev.data.code = ...;
-};
-
-exports.onHandleCodeParser = function(ev) {
-  // modify parser
-  ev.data.parser = function(code){ ... };
-};
-
-exports.onHandleAST = function(ev) {
-  // modify AST
-  ev.data.ast = ...;
-};
-
-exports.onHandleDocs = function(ev) {
-  // modify docs
-  ev.data.docs = ...;
-};
-
-exports.onHandleContent = function(ev) {
-  // modify content
-  ev.data.content = ...;
-};
-
-exports.onComplete = function(ev) {
-  // complete
-};
+// exports plugin
+module.exports = new MyPlugin();
 ```
 
-Note: [esdoc-importpath-plugin](https://github.com/esdoc/esdoc-importpath-plugin) is helpful for writing plugins.
+Note: [esdoc/esdoc-plugins](https://github.com/esdoc/esdoc-plugins) is helpful for writing plugins.
 
-## Publisher
-This is useful for programmable operation ESDoc(e.g. making grunt plugin of ESDoc)
-
-```javascript
-import ESDoc from 'esdoc/out/src/ESDoc.js';
-import publisher from 'esdoc/out/src/Publisher/publish.js';
-
-const config = {source: './src', destination: './doc'};
-
-ESDoc.generate(config, publisher);
-
-// if you want to use own publisher
-// function publisher(results, config) {
-//  console.log(results);
-// }
-// ESDoc.generate(config, publisher);
-```
-
-## Internal Data
-TODO: describe internal data.
+## Data Format
+TODO: describe data format.
 

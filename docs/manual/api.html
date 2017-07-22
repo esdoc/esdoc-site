@@ -120,10 +120,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/api.html"><a href="manual/api.html" data-ice="link">API</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#style-sheets-and-scripts" data-ice="link">Style Sheets and Scripts</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#plugin-feature" data-ice="link">Plugin Feature</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#publisher" data-ice="link">Publisher</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#internal-data" data-ice="link">Internal Data</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#plugin-api" data-ice="link">Plugin API</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#data-format" data-ice="link">Data Format</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -174,88 +172,89 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="api">API</h1><p>If you want to customize output, you can choose following way.</p>
-<ul>
-<li><a href="#style-sheets-and-scripts">Style sheets and scripts</a></li>
-<li><a href="#plugin-feature">Plugin feature</a></li>
-<li><a href="#publisher">Publisher</a></li>
-</ul>
-<h2 id="style-sheets-and-scripts">Style Sheets and Scripts</h2><p>You can includes your style sheets and scripts into output documentation.
-To see <code>styles</code> and <code>scripts</code> in <a href="./manual/./configuration/config.html">Config</a></p>
-<h2 id="plugin-feature">Plugin Feature</h2><p>You can modify data(config, code, parser, AST, tag and HTML) at hook points with plugins.</p>
-<p>First, you set <code>plugins</code> property in config.</p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="api">API</h1><p>You can modify data(config, code, parser, AST, doc and content) at hook points with plugins.</p>
+<h2 id="plugin-api">Plugin API</h2><p>First, you set <code>plugins</code> property in config.</p>
 <ul>
 <li>specify directly JavaScript file (e.g. <code>./my-plugin.js</code>)</li>
 <li>specify npm module name (e.g. <code>esdoc-foo-plugin</code>), before you need to install the module.</li>
 </ul>
 <pre><code class="lang-json"><code class="source-code prettyprint">{
   &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
+  &quot;destination&quot;: &quot;./docs&quot;,
   &quot;plugins&quot;: [
-    {&quot;name&quot;: &quot;./my-plugin.js&quot;},
+    {&quot;name&quot;: &quot;./MyPlugin.js&quot;},
     {&quot;name&quot;: &quot;esdoc-foo-plugin&quot;, &quot;option&quot;: {&quot;foo&quot;: 123}}
   ]
 }</code>
 </code></pre>
 <p>Second, you write plugin code.</p>
-<p></p><div class="file-path">my-plugin.js</div>
+<p></p><div class="file-path">MyPlugin.js</div>
 
 <p></p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">exports.onStart = function(ev) {
-  // take option
-  ev.data.option;
-};
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class MyPlugin {
+  onStart(ev) {
+    console.log(ev.data);
+  }
 
-exports.onHandleConfig = function(ev) {
-  // modify config
-  ev.data.config.title = ...;
-};
+  onHandlePlugins(ev) {
+    // modify plugins
+    ev.data.plugins = ...; 
+  }
 
-exports.onHandleCode = function(ev) {
-  // modify code
-  ev.data.code = ...;
-};
+  onHandleConfig(ev) {
+    // modify config
+    ev.data.config.title = ...;
+  }
 
-exports.onHandleCodeParser = function(ev) {
-  // modify parser
-  ev.data.parser = function(code){ ... };
-};
+  onHandleCode(ev) {
+    // modify code
+    ev.data.code = ...;
+  }
 
-exports.onHandleAST = function(ev) {
-  // modify AST
-  ev.data.ast = ...;
-};
+  onHandleCodeParser(ev) {
+    // modify parser
+    ev.data.parser = function(code){ ... };
+  }
 
-exports.onHandleDocs = function(ev) {
-  // modify docs
-  ev.data.docs = ...;
-};
+  onHandleAST(ev) {
+    // modify AST
+    ev.data.ast = ...;
+  }
 
-exports.onHandleContent = function(ev) {
-  // modify content
-  ev.data.content = ...;
-};
+  onHandleDocs(ev) {
+    // modify docs
+    ev.data.docs = ...;
+  };
 
-exports.onComplete = function(ev) {
-  // complete
-};</code>
+  onPublish(ev) {
+    // write content to output dir
+    ev.data.writeFile(filePath, content);
+
+    // copy file to output dir
+    ev.data.copyFile(src, dest);
+
+    // copy dir to output dir
+    ev.data.copyDir(src, dest);
+
+    // read file from output dir
+    ev.data.readFile(filePath);
+  };
+
+  onHandleContent(ev) {
+    // modify content
+    ev.data.content = ...;
+  };
+
+  onComplete(ev) {
+    // complete
+  };
+}
+
+// exports plugin
+module.exports = new MyPlugin();</code>
 </code></pre>
-<p>Note: <a href="https://github.com/esdoc/esdoc-importpath-plugin">esdoc-importpath-plugin</a> is helpful for writing plugins.</p>
-<h2 id="publisher">Publisher</h2><p>This is useful for programmable operation ESDoc(e.g. making grunt plugin of ESDoc)</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">import ESDoc from &apos;esdoc/out/src/ESDoc.js&apos;;
-import publisher from &apos;esdoc/out/src/Publisher/publish.js&apos;;
-
-const config = {source: &apos;./src&apos;, destination: &apos;./doc&apos;};
-
-ESDoc.generate(config, publisher);
-
-// if you want to use own publisher
-// function publisher(results, config) {
-//  console.log(results);
-// }
-// ESDoc.generate(config, publisher);</code>
-</code></pre>
-<h2 id="internal-data">Internal Data</h2><p>TODO: describe internal data.</p>
+<p>Note: <a href="https://github.com/esdoc/esdoc-plugins">esdoc/esdoc-plugins</a> is helpful for writing plugins.</p>
+<h2 id="data-format">Data Format</h2><p>TODO: describe data format.</p>
 </div>
 </div>
 
