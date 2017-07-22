@@ -17,7 +17,8 @@ Please use the plugin with the following config.
 }
 ```
 
-The full config description is [here](./config.html#full-config)
+The full config description is [here](./config.html#full-config).<br/>
+Especially [integration test codes](./config.html#integrate-test-codes-config) and [integration manual](./config.html#integrate-manual-config) were big changed.
 
 ## Using Other Plugins
 The following features were carved out to each plugins. If you want to use the features, please use the plugins.
