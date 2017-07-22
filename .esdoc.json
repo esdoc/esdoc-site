@@ -8,7 +8,6 @@
       "option": {
         "brand": {
           "description": "A good documentation generator for JavaScript.",
-          "repository": "https://github.com/esdoc/esdoc",
           "site": "https://esdoc.org",
           "author": "https://twitter.com/h13i32maru",
           "image": "https://esdoc.org/logo.png"

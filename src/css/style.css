@@ -142,6 +142,13 @@ header .hair-line {
   line-height: normal;
 }
 
+header .button {
+  border: #E55151 solid 1px;
+  color: #e55151;
+  padding: 0.25em 0.5em;
+  border-radius: 0.2em;
+}
+
 #changelog + h2 {
   margin-top: 1em;
 }

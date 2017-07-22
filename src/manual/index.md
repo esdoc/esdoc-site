@@ -8,7 +8,7 @@ ESDoc is a good documentation generator for JavaScript.
 - Integrate test codes into documentation.
 - Integrate manual into documentation.
 - Parse ECMAScript proposals.
-- Add custom features by [plugin system](https://github.com/esdoc/esdoc-plugins)
+- Add custom features by [plugin architecture](https://github.com/esdoc/esdoc-plugins)
 - [ESDoc Hosting Service](https://doc.esdoc.org)
 
 # Users
