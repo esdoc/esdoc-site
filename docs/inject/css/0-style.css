@@ -149,6 +149,11 @@ header .button {
   border-radius: 0.2em;
 }
 
+header .button:hover {
+  background-color: #E55151;
+  color: #fff;
+}
+
 #changelog + h2 {
   margin-top: 1em;
 }
