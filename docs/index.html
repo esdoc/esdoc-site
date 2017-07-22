@@ -139,6 +139,14 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/migration.html"><a href="manual/migration.html" data-ice="link">Migration to V1.0.0</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/migration.html"><a href="manual/migration.html#using-esdoc-standard-plugin" data-ice="link">Using esdoc-standard-plugin</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/migration.html"><a href="manual/migration.html#using-other-plugins" data-ice="link">Using Other Plugins</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
     <li data-ice="manualNav" class="indent-h1" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html" data-ice="link">Changelog</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#0-5-2--2017-01-02-" data-ice="link">0.5.2 (2017-01-02)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#0-5-1--2016-12-26-" data-ice="link">0.5.1 (2016-12-26)</a></li>
@@ -1141,6 +1149,24 @@ However, the import path may be different from real import path because usually 
 </li>
 </ul></div>
         <a data-ice="link" href="manual/faq.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Migration to V1.0.0</h1><p>ESDoc v1.0 adopts plugin architecture. So, almost all features are provided as plugins.<br>
+Please change your config to load plugins.</p><h2>Using esdoc-standard-plugin</h2><p>Main features of ESDoc were carved out to <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">esdoc-standard-plugin</a></p><p>Please use the plugin with the following config.</p><p><code>npm install esdoc-standard-plugin</code></p><pre><code class="lang-json"><code class="source-code prettyprint">{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./docs&quot;,
+  &quot;plugins&quot;: [{&quot;name&quot;: &quot;esdoc-standard-plugin&quot;}]
+}</code>
+</code></pre><p>The full config description is <a href="./manual/./config.html#full-config">here</a></p><h2>Using Other Plugins</h2><p>The following features were carved out to each plugins. If you want to use the features, please use the plugins.</p><ul>
+<li><code>config.includeSource</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-exclude-source-plugin">esdoc-exclude-source-plugin</a></li>
+<li><code>config.styles</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-inject-style-plugin">esdoc-inject-style-plugin</a></li>
+<li><code>config.scripts</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-inject-script-plugin">esdoc-inject-script-plugin</a></li>
+<li><code>config.experimentalProposal</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-ecmascript-proposal-plugin">esdoc-ecmascript-proposal-plugin</a></li>
+<li>Parsing JSX =&gt; <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-jsx-plugin">esdoc-jsx-plugin</a></li>
+</ul></div>
+        <a data-ice="link" href="manual/migration.html"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">

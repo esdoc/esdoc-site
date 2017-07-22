@@ -23,6 +23,7 @@
             "./src/manual/config.md",
             "./src/manual/api.md",
             "./src/manual/faq.md",
+            "./src/manual/migration.md",
             "../esdoc/CHANGELOG.md"
           ]
         }

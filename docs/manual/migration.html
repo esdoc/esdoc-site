@@ -179,138 +179,26 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="features">Features</h1><p>ESDoc provides a lot of features.</p>
-<p><strong>Core Features (via body)</strong></p>
-<ul>
-<li><a href="#doc-comment-and-tag">Doc Comment and Tag</a></li>
-<li><a href="#es-class">ES Class</a></li>
-<li><a href="#es-module">ES Module</a></li>
-<li><a href="#plugin-architecture">Plugin Architecture</a></li>
-</ul>
-<p><strong>Standard Features (via <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">esdoc-standard-plugin</a>)</strong></p>
-<ul>
-<li><a href="">Publish HTML</a></li>
-<li><a href="#documentation-coverage">Documentation Coverage</a></li>
-<li><a href="#documentation-lint">Documentation Lint</a></li>
-<li><a href="#integration-test-codes">Integration Test Codes</a></li>
-<li><a href="#integration-manual">Integration Manual</a></li>
-<li><a href="#search-documentation">Search Documentation</a></li>
-<li><a href="#type-inference">Type Inference</a></li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">and more</a></li>
-</ul>
-<p><strong>Other Features (via <a href="https://github.com/esdoc/esdoc-plugins">various plugins</a>)</strong></p>
-<ul>
-<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-inject-style-plugin">Inject Style</a></li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-inject-script-plugin">Inject Script</a></li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-ecmascript-proposal-plugin">ECMAScript Proposal</a></li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-flow-type-plugin">Flow</a> [PoC]</li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-typescript-plugin">TypeScript</a> [PoC]</li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-jsx-plugin">JSX</a></li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-react-plugin">React</a> [PoC]</li>
-<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-publish-markdown-plugin">Publish Markdown</a> [PoC]</li>
-<li><a href="https://github.com/esdoc/esdoc-plugins">and more</a></li>
-</ul>
-<h2 id="doc-comment-and-tag">Doc Comment and Tag</h2><p>ESDoc obtains a comment called <code>doc comment</code> from a source code. <br>
-Then ESDoc generates a document from a <code>tag</code> in a <code>doc comment</code>.</p>
-<p>A <code>doc comment</code> is block comment beginning with <code>*</code>. A <code>tag</code> is a text of the form <code>@tagName</code>.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">/**
- * This is Foo.
- */
-export default class Foo {
-  /**
-   * @param {number} p - this is p.
-   */
-  method(p){}
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="migration-to-v1-0-0">Migration to V1.0.0</h1><p>ESDoc v1.0 adopts plugin architecture. So, almost all features are provided as plugins.<br>
+Please change your config to load plugins.</p>
+<h2 id="using-esdoc-standard-plugin">Using esdoc-standard-plugin</h2><p>Main features of ESDoc were carved out to <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">esdoc-standard-plugin</a></p>
+<p>Please use the plugin with the following config.</p>
+<p><code>npm install esdoc-standard-plugin</code></p>
+<pre><code class="lang-json"><code class="source-code prettyprint">{
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./docs&quot;,
+  &quot;plugins&quot;: [{&quot;name&quot;: &quot;esdoc-standard-plugin&quot;}]
 }</code>
 </code></pre>
-<h2 id="es-class">ES Class</h2><p>ESDoc supports ES class syntax and targets codes that are written by it.</p>
-<p>ES class syntax makes the clear relation of class, method, member, constructor and inheritance.<br>
-This means that ESDoc can generate a document without using a tag for these. In other words, you don&apos;t need to write tags for classes.</p>
-<p>ESDoc automatically generates the under contents by class syntax.</p>
+<p>The full config description is <a href="./manual/./config.html#full-config">here</a></p>
+<h2 id="using-other-plugins">Using Other Plugins</h2><p>The following features were carved out to each plugins. If you want to use the features, please use the plugins.</p>
 <ul>
-<li>Super classes</li>
-<li>Direct Subclasses and Indirect Subclasses.</li>
-<li>Inherited methods and members from super class.</li>
-<li>Override methods and members from super class.</li>
+<li><code>config.includeSource</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-exclude-source-plugin">esdoc-exclude-source-plugin</a></li>
+<li><code>config.styles</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-inject-style-plugin">esdoc-inject-style-plugin</a></li>
+<li><code>config.scripts</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-inject-script-plugin">esdoc-inject-script-plugin</a></li>
+<li><code>config.experimentalProposal</code> =&gt; <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-ecmascript-proposal-plugin">esdoc-ecmascript-proposal-plugin</a></li>
+<li>Parsing JSX =&gt; <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-jsx-plugin">esdoc-jsx-plugin</a></li>
 </ul>
-<p><img src="./manual/./asset/image/feature/class1.png" class="screen-shot" width="500px"></p>
-<p><img src="./manual/./asset/image/feature/class2.png" class="screen-shot" width="500px"></p>
-<p>Note: ESDoc doesn&apos;t support prototype base codes and function base codes.</p>
-<h2 id="es-module">ES Module</h2><p>ESDoc supports ES modules syntax and targets codes that are written by it.<br>
-ES modules syntax is file base. So ESDoc treats as one file = one module.</p>
-<p>ESDoc displays a import style in accordance with the export style.</p>
-<ul>
-<li>If <code>export default class Foo{}</code>, displays <code>import Foo from &apos;./Foo.js&apos;</code> in <code>Foo</code> class documentation.</li>
-<li>If <code>export class Foo{}</code>, displays <code>import {Foo} from &apos;./Foo.js&apos;</code>in <code>Foo</code> class documentation.</li>
-</ul>
-<p>This is useful because you not need to see export style in source code.</p>
-<p><img src="./manual/./asset/image/feature/module1.png" class="screen-shot" width="500px"></p>
-<p>And you may as well as use <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-importpath-plugin">esdoc-importpath-plugin</a> to transform path.</p>
-<p>Note: ESDoc doesn&apos;t support commonjs.</p>
-<h2 id="plugin-architecture">Plugin Architecture</h2><p>ESDoc adopts plugin architecture. So, almost all features are provided as plugins.</p>
-<p>Especially <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">esdoc-standard-plugin</a> is a packaging plugin with major plugins.<br>
-Normally we recommend using this plugin. There are various plugins in <a href="https://github.com/esdoc/esdoc-plugins">esdoc/esdoc-plugins</a>.</p>
-<p>You can easily make plugins, and there are many <a href="https://www.npmjs.com/search?q=esdoc%20plugin&amp;page=1&amp;ranking=optimal">third party plugins</a>.<br>
-Please click <a href="./manual/./api.html">here</a> for how to make plugins.</p>
-<h2 id="publish-html">Publish HTML</h2><p>ESDoc generates HTML documents that are easy to see and plain looks.</p>
-<p><img class="screen-shot no-border" src="./manual/./asset/image/top.png" width="500px"></p>
-<h2 id="documentation-coverage">Documentation Coverage</h2><p>ESDoc inspects a documentation coverage. This is useful information for the following.</p>
-<ul>
-<li>This leads the motivation of documentation.</li>
-<li>This inspects a missing of documentation.</li>
-</ul>
-<p>ESDoc processes only top-level class, function and variable.<br>
-This is based on, ESDoc measures coverage by how much the document is being written out of all the processing target.<br>
-And, ESDoc is also to measure coverage of each module, you will have become easier to also find a missing of the document.</p>
-<p>For example, <a href="https://doc.esdoc.org/github.com/esdoc/esdoc/source.html">this</a> is coverage of ESDoc itself.</p>
-<p><img src="./manual/./asset/image/feature/coverage1.png" class="screen-shot" width="500px"></p>
-<h2 id="documentation-lint">Documentation Lint</h2><p>If documentation is invalid, ESDoc shows warning log.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">export default class Foo {
-  /**
-   * @param {number} x
-   */
-  method(p){}
-}</code>
-</code></pre>
-<p><img src="./manual/./asset/image/feature/lint.png" class="screen-shot" width="500px"></p>
-<p>Note: For now, ESDoc lints only method/function signature.</p>
-<h2 id="integration-test-codes">Integration Test Codes</h2><p>Test codes are important information.<br>
-So, ESDoc generates a cross reference of test codes and document.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">/** @test {MyClass} */
-describe(&apos;MyClass is super useful class.&apos;, ()=&gt;{
-
-  /** @test {MyClass#sayMyName} */
-  it(&apos;say my name&apos;, ()=&gt;{
-    let foo = new MyClass(&apos;Alice&apos;);
-    assert.equal(foo.sayMyName(), &apos;My name is Alice&apos;);
-  })
-});</code>
-</code></pre>
-<p><img src="./manual/./asset/image/feature/test1.png" class="screen-shot" width="500px"></p>
-<p><img src="./manual/./asset/image/feature/test2.png" class="screen-shot" width="500px"></p>
-<h2 id="integration-manual">Integration Manual</h2><p>You can integrate a manual of a your project into documentation.</p>
-<pre><code><code class="source-code prettyprint"># Overview
-This is my project overview.
-...</code>
-</code></pre><p><img src="./manual/./asset/image/feature/manual1.png" class="screen-shot" width="500px"></p>
-<p><img src="./manual/./asset/image/feature/manual2.png" class="screen-shot" width="500px"></p>
-<h2 id="search-documentation">Search Documentation</h2><p>ESDoc supports built-in searching in document with only JavaScript(without server implementation).</p>
-<p>The implementation of searching:</p>
-<ul>
-<li>ESDoc made the index(JSON) at the time of document generation.</li>
-<li>The user search from the index.</li>
-</ul>
-<p><img src="./manual/./asset/image/feature/search1.png" class="screen-shot" width="500px"></p>
-<p>Note: This implementation is very naive. There might be a problem in search performance. For now, no problem in 500 indexes.</p>
-<h2 id="type-inference">Type Inference</h2><p>ESDoc infers type of variables using codes if those have no <code>@param</code>.</p>
-<p>The following variables are supported.</p>
-<ul>
-<li>A class type using class syntax.</li>
-<li>A method/function arguments type using default argument syntax.</li>
-<li>A property type using assignment value.</li>
-<li>A return type using return value.</li>
-</ul>
-<p>Note: This implementation is very simple. So ESDoc infers only primitive values(number, boolean, string).</p>
 </div>
 </div>
 
