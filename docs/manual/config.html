@@ -113,7 +113,6 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#minimum-config" data-ice="link">Minimum Config</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#integrate-test-codes-config" data-ice="link">Integrate Test Codes Config</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#integrate-manual-config" data-ice="link">Integrate Manual Config</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#use-ecmascript-proposal" data-ice="link">Use ECMAScript Proposal</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#full-config" data-ice="link">Full Config</a></li>
 </ul>
   </div>
@@ -175,26 +174,34 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="config">Config</h1><p>ESDoc config example files.</p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="config">Config</h1><p>Introduce config files of ESDoc with esdoc-standard-plugin.</p>
 <ul>
 <li><a href="#minimum-config">Minimum Config</a></li>
 <li><a href="#integrate-test-codes-config">Integrate Test Codes Config</a></li>
 <li><a href="#integrate-manual-config">Integrate Manual Config</a></li>
-<li><a href="#use-ecmascript-proposal">Use ECMAScript Proposal</a></li>
 <li><a href="#full-config">Full Config</a></li>
 </ul>
 <h2 id="minimum-config">Minimum Config</h2><pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./path/to/src&quot;,
-  &quot;destination&quot;: &quot;./path/to/esdoc&quot;
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./docs&quot;,
+  &quot;plugins&quot;: [{&quot;name&quot;: &quot;esdoc-standard-plugin&quot;}]
 }</code>
 </code></pre>
 <h2 id="integrate-test-codes-config">Integrate Test Codes Config</h2><pre><code class="lang-json"><code class="source-code prettyprint">{
   &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;test&quot;: {
-    &quot;type&quot;: &quot;mocha&quot;,
-    &quot;source&quot;: &quot;./test&quot;
-  }
+  &quot;destination&quot;: &quot;./docs&quot;,
+  &quot;plugins&quot;: [
+  {
+    &quot;name&quot;: &quot;esdoc-standard-plugin&quot;,
+    &quot;option&quot;: {
+      &quot;test&quot;: {
+        &quot;source&quot;: &quot;./test/&quot;,
+        &quot;interfaces&quot;: [&quot;describe&quot;, &quot;it&quot;, &quot;context&quot;, &quot;suite&quot;, &quot;test&quot;],
+        &quot;includes&quot;: [&quot;(spec|Spec|test|Test)\\.js$&quot;],
+        &quot;excludes&quot;: [&quot;\\.config\\.js$&quot;]
+      }
+    }
+  }]
 }</code>
 </code></pre>
 <p>And if use <code>@test</code>, more better integration.</p>
@@ -209,90 +216,71 @@ describe(&apos;MyClass has foo bar feature&apos;, ()=&gt;{
 </code></pre>
 <h2 id="integrate-manual-config">Integrate Manual Config</h2><pre><code class="lang-json"><code class="source-code prettyprint">{
   &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;manual&quot;: {
-    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
-    &quot;design&quot;: [&quot;./manual/design.md&quot;],
-    &quot;installation&quot;: [&quot;./manual/installation.md&quot;],
-    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
-    &quot;tutorial&quot;: [&quot;./manual/tutorial.md&quot;],
-    &quot;configuration&quot;: [&quot;./manual/configuration.md&quot;],
-    &quot;example&quot;: [&quot;./manual/example.md&quot;],
-    &quot;advanced&quot;: [&quot;./manual/advanced.md&quot;],
-    &quot;faq&quot;: [&quot;./manual/faq.md&quot;],
-    &quot;changelog&quot;: [&quot;./CHANGELOG.md&quot;]
-  }
-}</code>
-</code></pre>
-<h2 id="use-ecmascript-proposal">Use ECMAScript Proposal</h2><pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;experimentalProposal&quot;: {
-    &quot;classProperties&quot;: true,
-    &quot;objectRestSpread&quot;: true,
-    &quot;decorators&quot;: true,
-    &quot;doExpressions&quot;: true,
-    &quot;functionBind&quot;: true,
-    &quot;asyncGenerators&quot;: true,
-    &quot;exportExtensions&quot;: true,
-    &quot;dynamicImport&quot;: true
-  }
+  &quot;destination&quot;: &quot;./docs&quot;,
+  &quot;plugins&quot;: [
+  {
+    &quot;name&quot;: &quot;esdoc-standard-plugin&quot;,
+    &quot;option&quot;: {
+      &quot;manual&quot;: {
+        &quot;index&quot;: &quot;./manual/index.md&quot;,
+        &quot;asset&quot;: &quot;./manual/asset&quot;,
+        &quot;files&quot;: [
+          &quot;./manual/overview.md&quot;,
+          &quot;./manual/installation.md&quot;,
+          &quot;./manual/usage.md&quot;,
+          &quot;./manual/tutorial.md&quot;,
+          &quot;./manual/configuration.md&quot;,
+          &quot;./manual/example.md&quot;,
+          &quot;./CHANGELOG.md&quot;
+        ]
+      }
+    }
+  }]
 }</code>
 </code></pre>
 <h2 id="full-config">Full Config</h2><pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./path/to/src&quot;,
-  &quot;destination&quot;: &quot;./path/to/esdoc&quot;,
-  &quot;includes&quot;: [&quot;\\.(js|es6)$&quot;],
-  &quot;excludes&quot;: [&quot;\\.config\\.(js|es6)$&quot;],
-  &quot;access&quot;: [&quot;public&quot;, &quot;protected&quot;],
-  &quot;autoPrivate&quot;: true,
-  &quot;unexportIdentifier&quot;: false,
-  &quot;undocumentIdentifier&quot;: true,
-  &quot;builtinExternal&quot;: true,
-  &quot;index&quot;: &quot;./README.md&quot;,
-  &quot;package&quot;: &quot;./package.json&quot;,
-  &quot;coverage&quot;: true,
-  &quot;includeSource&quot;: true,
-  &quot;test&quot;: {
-    &quot;type&quot;: &quot;mocha&quot;,
-    &quot;source&quot;: &quot;./test/src&quot;,
-    &quot;includes&quot;: [&quot;Test\\.(js|es6)$&quot;],
-    &quot;excludes&quot;: [&quot;\\.config\\.(js|es6)$&quot;]
-  },
-  &quot;title&quot;: &quot;My Software Name&quot;,
-  &quot;styles&quot;: [&quot;./path/to/style.css&quot;],
-  &quot;scripts&quot;: [&quot;./path/to/script.js&quot;],
+  &quot;source&quot;: &quot;./src&quot;,
+  &quot;destination&quot;: &quot;./docs&quot;,
+  &quot;includes&quot;: [&quot;\\.js$&quot;],
+  &quot;excludes&quot;: [&quot;\\.config\\.js$&quot;],
   &quot;plugins&quot;: [
-    {&quot;name&quot;: &quot;plugin-name-or-file-path&quot;, &quot;option&quot;: null}
-  ],
-  &quot;manual&quot;: {
-    &quot;globalIndex&quot;: true,
-    &quot;index&quot;: &quot;./manual/index.md&quot;,
-    &quot;asset&quot;: &quot;./manual/asset&quot;,
-    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
-    &quot;design&quot;: [&quot;./manual/design.md&quot;],
-    &quot;installation&quot;: [&quot;./manual/installation.md&quot;],
-    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
-    &quot;tutorial&quot;: [&quot;./manual/tutorial.md&quot;],
-    &quot;configuration&quot;: [&quot;./manual/configuration.md&quot;],
-    &quot;example&quot;: [&quot;./manual/example.md&quot;],
-    &quot;advanced&quot;: [&quot;./manual/advanced.md&quot;],
-    &quot;faq&quot;: [&quot;./manual/faq.md&quot;],
-    &quot;changelog&quot;: [&quot;./CHANGELOG.md&quot;]
-  },
-  &quot;lint&quot;: true,
-  &quot;experimentalProposal&quot;: {
-    &quot;classProperties&quot;: true,
-    &quot;objectRestSpread&quot;: true,
-    &quot;decorators&quot;: true,
-    &quot;doExpressions&quot;: true,
-    &quot;functionBind&quot;: true,
-    &quot;asyncGenerators&quot;: true,
-    &quot;exportExtensions&quot;: true,
-    &quot;dynamicImport&quot;: true
-  }
+  {
+    &quot;name&quot;: &quot;esdoc-standard-plugin&quot;,
+    &quot;option&quot;: {
+      &quot;lint&quot;: {&quot;enable&quot;: true},
+      &quot;coverage&quot;: {&quot;enable&quot;: true},
+      &quot;accessor&quot;: {&quot;access&quot;: [&quot;public&quot;, &quot;protected&quot;, &quot;private&quot;], &quot;autoPrivate&quot;: true},
+      &quot;undocumentIdentifier&quot;: {&quot;enable&quot;: true},
+      &quot;unexportedIdentifier&quot;: {&quot;enable&quot;: false},
+      &quot;typeInference&quot;: {&quot;enable&quot;: true},
+      &quot;brand&quot;: {
+        &quot;logo&quot;: &quot;./logo.png&quot;,
+        &quot;title&quot;: &quot;My Library&quot;,
+        &quot;description&quot;: &quot;this is awesome library&quot;,
+        &quot;repository&quot;: &quot;https://github.com/foo/bar&quot;,
+        &quot;site&quot;: &quot;http://my-library.org&quot;,
+        &quot;author&quot;: &quot;https://twitter.com/foo&quot;,
+        &quot;image&quot;: &quot;http://my-library.org/logo.png&quot;
+      },
+      &quot;manual&quot;: {
+        &quot;index&quot;: &quot;./manual/index.md&quot;,
+        &quot;globalIndex&quot;: true,
+        &quot;asset&quot;: &quot;./manual/asset&quot;,
+        &quot;files&quot;: [
+          &quot;./manual/overview.md&quot;
+        ]
+      },
+      &quot;test&quot;: {
+        &quot;source&quot;: &quot;./test/&quot;,
+        &quot;interfaces&quot;: [&quot;describe&quot;, &quot;it&quot;, &quot;context&quot;, &quot;suite&quot;, &quot;test&quot;],
+        &quot;includes&quot;: [&quot;(spec|Spec|test|Test)\\.js$&quot;],
+        &quot;excludes&quot;: [&quot;\\.config\\.js$&quot;]
+      }
+    }
+  }] 
 }</code>
 </code></pre>
+<p><strong>ESDoc Config</strong></p>
 <table>
 <thead>
 <tr>
@@ -318,44 +306,14 @@ describe(&apos;MyClass has foo bar feature&apos;, ()=&gt;{
 <tr>
 <td><code>includes</code></td>
 <td>-</td>
-<td><code>[&quot;\\.(js|es6)$&quot;]</code></td>
+<td><code>[&quot;\\.js$&quot;]</code></td>
 <td>Process files that are matched with the regexp at any one.</td>
 </tr>
 <tr>
 <td><code>excludes</code></td>
 <td>-</td>
-<td><code>[&quot;\\.config\\.(js|es6)$&quot;]</code></td>
+<td><code>[&quot;\\.config\\.js$&quot;]</code></td>
 <td>Not process files that are matched with the regexp at any one.</td>
-</tr>
-<tr>
-<td><code>access</code></td>
-<td>-</td>
-<td><code>[&quot;public&quot;, &quot;protected&quot;]</code></td>
-<td>Process only identifiers(class, method, etc...) that are have the access(public, protected and private).</td>
-</tr>
-<tr>
-<td><code>autoPrivate</code></td>
-<td>-</td>
-<td><code>true</code></td>
-<td>Deal with identifiers beginning with &quot;_&quot; as a private. <br> e.g. <code>this._foo</code> is private. but <code>/** @public */ this._foo</code> is public.</td>
-</tr>
-<tr>
-<td><code>unexportIdentifier</code></td>
-<td>-</td>
-<td><code>false</code></td>
-<td>If true, also process unexported Identifiers. <br> e.g. <code>export class MyClass</code> is exported, <code>class MyClass</code> is not exported.</td>
-</tr>
-<tr>
-<td><code>undocumentIdentifier</code></td>
-<td>-</td>
-<td><code>true</code></td>
-<td>If true, also process undocument Identifiers. <br> e.g. <code>/** @foo bar */ class MyClass</code> is document identifier, <code>class MyClass</code> is undocument identifier.</td>
-</tr>
-<tr>
-<td><code>builtinExternal</code></td>
-<td>-</td>
-<td><code>true</code></td>
-<td>If true, use built-in external tag. The built-in external has number, string, boolean, Promise, Map, etc...</td>
 </tr>
 <tr>
 <td><code>index</code></td>
@@ -368,66 +326,6 @@ describe(&apos;MyClass has foo bar feature&apos;, ()=&gt;{
 <td>-</td>
 <td><code>./package.json</code></td>
 <td>Use package.json info.</td>
-</tr>
-<tr>
-<td><code>coverage</code></td>
-<td>-</td>
-<td><code>true</code></td>
-<td>If true, output document coverage.</td>
-</tr>
-<tr>
-<td><code>includeSource</code></td>
-<td>-</td>
-<td><code>true</code></td>
-<td>If true, output includes source codes.</td>
-</tr>
-<tr>
-<td><code>test</code></td>
-<td>-</td>
-<td><code>null</code></td>
-<td>If specified, generate document from test code.</td>
-</tr>
-<tr>
-<td><code>test.type</code></td>
-<td>true</td>
-<td>-</td>
-<td>Test code type. Now only support &quot;mocha&quot;.</td>
-</tr>
-<tr>
-<td><code>test.source</code></td>
-<td>true</td>
-<td>-</td>
-<td>Test codes directory path.</td>
-</tr>
-<tr>
-<td><code>test.includes</code></td>
-<td>-</td>
-<td><code>[&quot;(spec|Spec|test|Test)\\.(js|es6)$&quot;]</code></td>
-<td>Process files that are matched with the regexp at any one.</td>
-</tr>
-<tr>
-<td><code>test.excludes</code></td>
-<td>-</td>
-<td><code>[&quot;\\.config\\.(js|es6)$&quot;]</code></td>
-<td>Not process files that are matched with the regexp at any one.</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>-</td>
-<td>&quot;&quot;</td>
-<td>Use title for output.</td>
-</tr>
-<tr>
-<td><code>styles</code></td>
-<td>-</td>
-<td><code>null</code></td>
-<td>Includes styles into output document.</td>
-</tr>
-<tr>
-<td><code>scripts</code></td>
-<td>-</td>
-<td><code>null</code></td>
-<td>Includes scripts into output document.</td>
 </tr>
 <tr>
 <td><code>plugins</code></td>
@@ -447,11 +345,103 @@ describe(&apos;MyClass has foo bar feature&apos;, ()=&gt;{
 <td>null</td>
 <td>If specified, the plugin get the option.</td>
 </tr>
+</tbody>
+</table>
+<p><br>
+<strong><code>esdoc-standard-plugin</code> Option</strong></p>
+<table>
+<thead>
 <tr>
-<td><code>manual</code></td>
+<th>Name</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lint.enable</code></td>
 <td>-</td>
-<td>null</td>
-<td>If specified, generate manual from markdown.</td>
+<td><code>true</code></td>
+<td>If specified, execute documentation lint.</td>
+</tr>
+<tr>
+<td><code>coverage.enable</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>If true, output document coverage.</td>
+</tr>
+<tr>
+<td><code>accessor.access</code></td>
+<td>-</td>
+<td><code>[&quot;public&quot;, &quot;protected&quot;, &quot;private&quot;&quot;]</code></td>
+<td>Process only identifiers(class, method, etc...) that are have the access(public, protected and private).</td>
+</tr>
+<tr>
+<td><code>accessor.autoPrivate</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>Deal with identifiers beginning with &quot;_&quot; as a private. <br> e.g. <code>this._foo</code> is private. but <code>/** @public */ this._foo</code> is public.</td>
+</tr>
+<tr>
+<td><code>undocumentIdentifier.enable</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>If true, also process undocument Identifiers. <br> e.g. <code>/** @foo bar */ class MyClass</code> is document identifier, <code>class MyClass</code> is undocument identifier.</td>
+</tr>
+<tr>
+<td><code>unexportIdentifier.enable</code></td>
+<td>-</td>
+<td><code>false</code></td>
+<td>If true, also process unexported Identifiers. <br> e.g. <code>export class MyClass</code> is exported, <code>class MyClass</code> is not exported.</td>
+</tr>
+<tr>
+<td><code>typeInference.true</code></td>
+<td>-</td>
+<td><code>true</code></td>
+<td>If true, infer type of variable, return value.</td>
+</tr>
+<tr>
+<td><code>brand.logo</code></td>
+<td>-</td>
+<td>-</td>
+<td>aaa</td>
+</tr>
+<tr>
+<td><code>brand.title</code></td>
+<td>-</td>
+<td>-</td>
+<td>Use title for output.</td>
+</tr>
+<tr>
+<td><code>brand.description</code></td>
+<td>-</td>
+<td>-</td>
+<td>If specified, write meta tag, og tag and twitter card.</td>
+</tr>
+<tr>
+<td><code>brand.repository</code></td>
+<td>-</td>
+<td>-</td>
+<td>If specified, write URL in header navigation.</td>
+</tr>
+<tr>
+<td><code>brand.site</code></td>
+<td>-</td>
+<td>-</td>
+<td>If specified, write og tag and twitter card.</td>
+</tr>
+<tr>
+<td><code>brand.author</code></td>
+<td>-</td>
+<td>-</td>
+<td>If specified, write og tag and twitter card.</td>
+</tr>
+<tr>
+<td><code>brand.image</code></td>
+<td>-</td>
+<td>-</td>
+<td>If specified, write og tag and twitter card.</td>
 </tr>
 <tr>
 <td><code>manual.globalIndex</code></td>
@@ -472,130 +462,34 @@ describe(&apos;MyClass has foo bar feature&apos;, ()=&gt;{
 <td>if specify asset(image) directory path, include the directory into manual.</td>
 </tr>
 <tr>
-<td><code>manual.badge</code></td>
+<td><code>manual.files</code></td>
 <td>-</td>
+<td>null</td>
+<td>If specify markdown files, include manual into output.</td>
+</tr>
+<tr>
+<td><code>test.source</code></td>
 <td>true</td>
-<td>if specify true, show manual coverage badge.</td>
+<td>-</td>
+<td>Test codes directory path.</td>
 </tr>
 <tr>
-<td><code>manual.overview</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show overview.</td>
+<td><code>test.interfaces</code></td>
+<td></td>
+<td><code>[&quot;describe&quot;, &quot;it&quot;, &quot;context&quot;, &quot;suite&quot;, &quot;test&quot;]</code></td>
+<td>Test code interfaces.</td>
 </tr>
 <tr>
-<td><code>manual.design</code></td>
+<td><code>test.includes</code></td>
 <td>-</td>
-<td>null</td>
-<td>If specify markdown files, show design.</td>
+<td><code>[&quot;(spec|Spec|test|Test)\\.js$&quot;]</code></td>
+<td>Process files that are matched with the regexp at any one.</td>
 </tr>
 <tr>
-<td><code>manual.installation</code></td>
+<td><code>test.excludes</code></td>
 <td>-</td>
-<td>null</td>
-<td>If specify markdown files, show installation.</td>
-</tr>
-<tr>
-<td><code>manual.usage</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show usage.</td>
-</tr>
-<tr>
-<td><code>manual.tutorial</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show tutorial.</td>
-</tr>
-<tr>
-<td><code>manual.configuration</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show configuration.</td>
-</tr>
-<tr>
-<td><code>manual.example</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show example.</td>
-</tr>
-<tr>
-<td><code>manual.advanced</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show advanced.</td>
-</tr>
-<tr>
-<td><code>manual.faq</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show FAQ.</td>
-</tr>
-<tr>
-<td><code>manual.changelog</code></td>
-<td>-</td>
-<td>null</td>
-<td>If specify markdown files, show changelog.</td>
-</tr>
-<tr>
-<td><code>lint</code></td>
-<td>-</td>
-<td>true</td>
-<td>If specified, execute documentation lint.</td>
-</tr>
-<tr>
-<td><code>experimentalProposal</code></td>
-<td>-</td>
-<td>null</td>
-<td>Enable ECMAScript experimental proposal features</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.classProperties</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/transform-class-properties/">Class Properties</a>(Babel).</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.objectRestSpread</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/transform-object-rest-spread/">Object Rest/Spread</a>(Babel).</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.decorators</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/transform-decorators/">Decorators</a>(Babel).</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.doExpressions</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/transform-do-expressions/">Do Expressions</a>(Babel).</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.functionBind</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/transform-function-bind/">Function Bind</a>(Babel).</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.asyncGenerators</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/transform-async-generator-functions/">Async Generators</a>(Babel).</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.exportExtensions</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/transform-export-extensions/">Export Extensions</a>(Babel).</td>
-</tr>
-<tr>
-<td><code>experimentalProposal.dynamicImport</code></td>
-<td>-</td>
-<td>false</td>
-<td>If specify true, enable <a href="http://babeljs.io/docs/plugins/syntax-dynamic-import/">Dynamic Import</a>(Babel).</td>
+<td><code>[&quot;\\.config\\.js$&quot;]</code></td>
+<td>Not process files that are matched with the regexp at any one.</td>
 </tr>
 </tbody>
 </table>
