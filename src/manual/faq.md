@@ -1,7 +1,6 @@
 # FAQ
 - [Goal](#goal)
 - [Difference between ESDoc and JSDoc](#difference-between-esdoc-and-jsdoc)
-- [Supported Languages](#supported-languages)
 - [Supported Environment](#supported-environment)
 - [Import Path In Documentation](#import-path-in-documentation)
 - [Who's Using ESDoc](#who-s-using-esdoc)
@@ -9,8 +8,9 @@
 
 ## Goal
 ESDoc has two goals.
-The first goal is reducing the cost to write an documentation, it is able to continuously maintenance.
-The second goal is without looking the source code of a library, it is to be able to use the library.
+
+- To make documentation maintenance comfortable and pleasant
+- To create easy-to-understand documentation.
 
 In order to achieve this two goals, ESDoc produces a practical document, measures the coverage, integrates the test code and more.
 
@@ -31,27 +31,14 @@ ESDoc is inspired by JSDoc.
   - targets Class-base OOP and Prototype-base OOP
   - has many flexible document tags
 
-## Supported Languages
-ESDoc supports ES2015 and later.
-
-| Version | Y/N |
-| ------- | --- |
-| ES2015 | Support all features. But a part of export syntax is not supported. |
-| ES2016 | Support all features. |
-| ES2017 | Support all features. |
-| [ES Proposal](https://github.com/tc39/proposals) | Support a part of proposals. See [Use ECMAScript Proposal](./configuration/config.html#use-ecmascript-proposal). |
-| ES3 | Not support. Please use other tools. |
-| ES5 | Not support. Please use other tools. |
-| Alt-JS(TypeScript, Dart, etc...) | Not support. Please use other tools. |
-
 ## Supported Environment
 ESDoc supports Node.js(v6 or later)
 
 ## Import Path In Documentation
-ESDoc displays the import path of class/function into the document.
+ESDoc displays the import path of class/function into the document.<br/>
 However, the import path may be different from real import path because usually ES modules is transpiled to use it.
 
-So, [ESDoc Import Path Plugin](https://github.com/esdoc/esdoc-importpath-plugin) converts import path to real import path.
+So, [ESDoc Import Path Plugin](https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-importpath-plugin) converts import path to real import path.
 
 ## Who's Using ESDoc
 - [RxJS](http://reactivex.io/rxjs/)

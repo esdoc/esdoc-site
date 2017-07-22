@@ -130,7 +130,6 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/faq.html"><a href="manual/faq.html" data-ice="link">FAQ</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#goal" data-ice="link">Goal</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#difference-between-esdoc-and-jsdoc" data-ice="link">Difference between ESDoc and JSDoc</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#supported-languages" data-ice="link">Supported Languages</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#supported-environment" data-ice="link">Supported Environment</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#import-path-in-documentation" data-ice="link">Import Path In Documentation</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#who--39-s-using-esdoc" data-ice="link">Who&apos;s Using ESDoc</a></li>
@@ -1091,14 +1090,14 @@ module.exports = new MyPlugin();</code>
         <div data-ice="card"><h1>FAQ</h1><ul>
 <li><a href="#goal">Goal</a></li>
 <li><a href="#difference-between-esdoc-and-jsdoc">Difference between ESDoc and JSDoc</a></li>
-<li><a href="#supported-languages">Supported Languages</a></li>
 <li><a href="#supported-environment">Supported Environment</a></li>
 <li><a href="#import-path-in-documentation">Import Path In Documentation</a></li>
 <li><a href="#who-s-using-esdoc">Who&apos;s Using ESDoc</a></li>
 <li><a href="#articles">Articles</a></li>
-</ul><h2>Goal</h2><p>ESDoc has two goals.
-The first goal is reducing the cost to write an documentation, it is able to continuously maintenance.
-The second goal is without looking the source code of a library, it is to be able to use the library.</p><p>In order to achieve this two goals, ESDoc produces a practical document, measures the coverage, integrates the test code and more.</p><h2>Difference between ESDoc and JSDoc</h2><p>JSDoc is most popular JavaScript API Documentation tool.
+</ul><h2>Goal</h2><p>ESDoc has two goals.</p><ul>
+<li>To make documentation maintenance comfortable and pleasant</li>
+<li>To create easy-to-understand documentation.</li>
+</ul><p>In order to achieve this two goals, ESDoc produces a practical document, measures the coverage, integrates the test code and more.</p><h2>Difference between ESDoc and JSDoc</h2><p>JSDoc is most popular JavaScript API Documentation tool.
 ESDoc is inspired by JSDoc.</p><ul>
 <li>ESDoc<ul>
 <li>supports ES2015 and later</li>
@@ -1116,45 +1115,8 @@ ESDoc is inspired by JSDoc.</p><ul>
 <li>has many flexible document tags</li>
 </ul>
 </li>
-</ul><h2>Supported Languages</h2><p>ESDoc supports ES2015 and later.</p><table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Y/N</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ES2015</td>
-<td>Support all features. But a part of export syntax is not supported.</td>
-</tr>
-<tr>
-<td>ES2016</td>
-<td>Support all features.</td>
-</tr>
-<tr>
-<td>ES2017</td>
-<td>Support all features.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/tc39/proposals">ES Proposal</a></td>
-<td>Support a part of proposals. See <a href="./manual/./configuration/config.html#use-ecmascript-proposal">Use ECMAScript Proposal</a>.</td>
-</tr>
-<tr>
-<td>ES3</td>
-<td>Not support. Please use other tools.</td>
-</tr>
-<tr>
-<td>ES5</td>
-<td>Not support. Please use other tools.</td>
-</tr>
-<tr>
-<td>Alt-JS(TypeScript, Dart, etc...)</td>
-<td>Not support. Please use other tools.</td>
-</tr>
-</tbody>
-</table><h2>Supported Environment</h2><p>ESDoc supports Node.js(v6 or later)</p><h2>Import Path In Documentation</h2><p>ESDoc displays the import path of class/function into the document.
-However, the import path may be different from real import path because usually ES modules is transpiled to use it.</p><p>So, <a href="https://github.com/esdoc/esdoc-importpath-plugin">ESDoc Import Path Plugin</a> converts import path to real import path.</p><h2>Who&apos;s Using ESDoc</h2><ul>
+</ul><h2>Supported Environment</h2><p>ESDoc supports Node.js(v6 or later)</p><h2>Import Path In Documentation</h2><p>ESDoc displays the import path of class/function into the document.<br>
+However, the import path may be different from real import path because usually ES modules is transpiled to use it.</p><p>So, <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-importpath-plugin">ESDoc Import Path Plugin</a> converts import path to real import path.</p><h2>Who&apos;s Using ESDoc</h2><ul>
 <li><a href="http://reactivex.io/rxjs/">RxJS</a></li>
 <li><a href="http://developer.sketchapp.com/reference/api/">Sketch API</a></li>
 <li><a href="https://github.com/Netflix/unleash">Netflix/unleash</a></li>
