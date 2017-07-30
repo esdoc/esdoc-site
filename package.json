@@ -5,7 +5,7 @@
     "build": "./node_modules/.bin/esdoc"
   },
   "dependencies": {
-    "esdoc": "alpha",
+    "esdoc": "latest",
     "esdoc-standard-plugin": "latest",
     "esdoc-inject-style-plugin": "latest",
     "esdoc-inject-script-plugin": "latest",
