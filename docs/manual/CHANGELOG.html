@@ -13,16 +13,20 @@
     <a href="./" class="logo"><img src="./manual/asset/image/logo.png"></a>
     <a href="./" class="brand">ESDoc</a>
     <ul>
-      <li><a href="https://try.esdoc.org" target="_blank">Try it out</a></li>
-      <li><a href="./manual/usage.html" class="hair-line">Usage</a></li>
+      <li><a href="./manual/usage.html">Usage</a></li>
       <li><a href="./manual/feature.html">Features</a></li>
       <li><a href="./manual/config.html">Config</a></li>
       <li><a href="./manual/tags.html">Tags</a></li>
       <li><a href="./manual/api.html">API</a></li>
       <li><a href="./manual/CHANGELOG.html" class="hair-line">Releases</a></li>
       <li><a href="./manual/faq.html">FAQ</a></li>
+      <li><a style="position:relative; top:3px;" href="https://github.com/esdoc/esdoc"><img width="20px" src="./image/github.png"></a></li>
+      <li><span class="hair-line" style="margin: 0.4em; padding: 0"></span></li>
+      <li><a href="https://github.com/esdoc/esdoc-plugins" target="_blank" class="button hair-line">Plugins</a></li>
+      <li><a href="https://try.esdoc.org" target="_blank" class="button">Try it out</a></li>
+      <li><a href="https://doc.esdoc.org" target="_blank" class="button">Hosting</a></li>
     </ul>
-  <a style="position:relative; top:3px;" href="https://github.com/esdoc/esdoc"><img width="20px" src="./image/github.png"></a></header>
+  </header>
 
 <nav class="navigation" data-ice="nav"><div class="manual-toc-root">
   
@@ -39,17 +43,17 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/feature.html"><a href="manual/feature.html" data-ice="link">Features</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es2015-class" data-ice="link">ES2015 Class</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es2015-module" data-ice="link">ES2015 Module</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#built-in-search-documentation" data-ice="link">Built-in Search Documentation</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#guess-type-of-variables" data-ice="link">Guess Type of Variables</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#doc-comment-and-tag" data-ice="link">Doc Comment and Tag</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es-class" data-ice="link">ES Class</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es-module" data-ice="link">ES Module</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#plugin-architecture" data-ice="link">Plugin Architecture</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#publish-html" data-ice="link">Publish HTML</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#documentation-coverage" data-ice="link">Documentation Coverage</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#documentation-lint" data-ice="link">Documentation Lint</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#integration-test-codes" data-ice="link">Integration Test Codes</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#integration-manual" data-ice="link">Integration Manual</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#ecmascript-proposal" data-ice="link">ECMAScript Proposal</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#customize-documentation" data-ice="link">Customize Documentation</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#esdoc-hosting-service" data-ice="link">ESDoc Hosting Service</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#search-documentation" data-ice="link">Search Documentation</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#type-inference" data-ice="link">Type Inference</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -109,7 +113,6 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#minimum-config" data-ice="link">Minimum Config</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#integrate-test-codes-config" data-ice="link">Integrate Test Codes Config</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#integrate-manual-config" data-ice="link">Integrate Manual Config</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#use-ecmascript-proposal" data-ice="link">Use ECMAScript Proposal</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#full-config" data-ice="link">Full Config</a></li>
 </ul>
   </div>
@@ -117,10 +120,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/api.html"><a href="manual/api.html" data-ice="link">API</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#style-sheets-and-scripts" data-ice="link">Style Sheets and Scripts</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#plugin-feature" data-ice="link">Plugin Feature</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#publisher" data-ice="link">Publisher</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#internal-data" data-ice="link">Internal Data</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#plugin-api" data-ice="link">Plugin API</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#data-format" data-ice="link">Data Format</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -129,11 +130,18 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/faq.html"><a href="manual/faq.html" data-ice="link">FAQ</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#goal" data-ice="link">Goal</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#difference-between-esdoc-and-jsdoc" data-ice="link">Difference between ESDoc and JSDoc</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#supported-languages" data-ice="link">Supported Languages</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#supported-environment" data-ice="link">Supported Environment</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#import-path-in-documentation" data-ice="link">Import Path In Documentation</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#who--39-s-using-esdoc" data-ice="link">Who&apos;s Using ESDoc</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#articles" data-ice="link">Articles</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/migration.html"><a href="manual/migration.html" data-ice="link">Migration to V1.0.0</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/migration.html"><a href="manual/migration.html#using-esdoc-standard-plugin" data-ice="link">Using esdoc-standard-plugin</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/migration.html"><a href="manual/migration.html#using-other-plugins" data-ice="link">Using Other Plugins</a></li>
 </ul>
   </div>
 <div data-ice="manual">

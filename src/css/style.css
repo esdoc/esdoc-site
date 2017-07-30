@@ -81,7 +81,7 @@ p + ul {
   color: #E55151;
   font-size: 1.2em;
   margin-bottom: 0.5em;
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 .github-markdown h3 {
@@ -140,6 +140,18 @@ header .hair-line {
   padding-left: 1em;
   border-left: 1px solid #bbb;
   line-height: normal;
+}
+
+header .button {
+  border: #E55151 solid 1px;
+  color: #e55151;
+  padding: 0.25em 0.5em;
+  border-radius: 0.2em;
+}
+
+header .button:hover {
+  background-color: #E55151;
+  color: #fff;
 }
 
 #changelog + h2 {

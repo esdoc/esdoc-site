@@ -13,16 +13,20 @@
     <a href="./" class="logo"><img src="./manual/asset/image/logo.png"></a>
     <a href="./" class="brand">ESDoc</a>
     <ul>
-      <li><a href="https://try.esdoc.org" target="_blank">Try it out</a></li>
-      <li><a href="./manual/usage.html" class="hair-line">Usage</a></li>
+      <li><a href="./manual/usage.html">Usage</a></li>
       <li><a href="./manual/feature.html">Features</a></li>
       <li><a href="./manual/config.html">Config</a></li>
       <li><a href="./manual/tags.html">Tags</a></li>
       <li><a href="./manual/api.html">API</a></li>
       <li><a href="./manual/CHANGELOG.html" class="hair-line">Releases</a></li>
       <li><a href="./manual/faq.html">FAQ</a></li>
+      <li><a style="position:relative; top:3px;" href="https://github.com/esdoc/esdoc"><img width="20px" src="./image/github.png"></a></li>
+      <li><span class="hair-line" style="margin: 0.4em; padding: 0"></span></li>
+      <li><a href="https://github.com/esdoc/esdoc-plugins" target="_blank" class="button hair-line">Plugins</a></li>
+      <li><a href="https://try.esdoc.org" target="_blank" class="button">Try it out</a></li>
+      <li><a href="https://doc.esdoc.org" target="_blank" class="button">Hosting</a></li>
     </ul>
-  <a style="position:relative; top:3px;" href="https://github.com/esdoc/esdoc"><img width="20px" src="./image/github.png"></a></header>
+  </header>
 
 <nav class="navigation" data-ice="nav"><div class="manual-toc-root">
   
@@ -39,17 +43,17 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/feature.html"><a href="manual/feature.html" data-ice="link">Features</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es2015-class" data-ice="link">ES2015 Class</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es2015-module" data-ice="link">ES2015 Module</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#built-in-search-documentation" data-ice="link">Built-in Search Documentation</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#guess-type-of-variables" data-ice="link">Guess Type of Variables</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#doc-comment-and-tag" data-ice="link">Doc Comment and Tag</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es-class" data-ice="link">ES Class</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#es-module" data-ice="link">ES Module</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#plugin-architecture" data-ice="link">Plugin Architecture</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#publish-html" data-ice="link">Publish HTML</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#documentation-coverage" data-ice="link">Documentation Coverage</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#documentation-lint" data-ice="link">Documentation Lint</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#integration-test-codes" data-ice="link">Integration Test Codes</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#integration-manual" data-ice="link">Integration Manual</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#ecmascript-proposal" data-ice="link">ECMAScript Proposal</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#customize-documentation" data-ice="link">Customize Documentation</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#esdoc-hosting-service" data-ice="link">ESDoc Hosting Service</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#search-documentation" data-ice="link">Search Documentation</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/feature.html"><a href="manual/feature.html#type-inference" data-ice="link">Type Inference</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -109,7 +113,6 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#minimum-config" data-ice="link">Minimum Config</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#integrate-test-codes-config" data-ice="link">Integrate Test Codes Config</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#integrate-manual-config" data-ice="link">Integrate Manual Config</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#use-ecmascript-proposal" data-ice="link">Use ECMAScript Proposal</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/config.html"><a href="manual/config.html#full-config" data-ice="link">Full Config</a></li>
 </ul>
   </div>
@@ -117,10 +120,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/api.html"><a href="manual/api.html" data-ice="link">API</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#style-sheets-and-scripts" data-ice="link">Style Sheets and Scripts</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#plugin-feature" data-ice="link">Plugin Feature</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#publisher" data-ice="link">Publisher</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#internal-data" data-ice="link">Internal Data</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#plugin-api" data-ice="link">Plugin API</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/api.html"><a href="manual/api.html#data-format" data-ice="link">Data Format</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -129,11 +130,18 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/faq.html"><a href="manual/faq.html" data-ice="link">FAQ</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#goal" data-ice="link">Goal</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#difference-between-esdoc-and-jsdoc" data-ice="link">Difference between ESDoc and JSDoc</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#supported-languages" data-ice="link">Supported Languages</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#supported-environment" data-ice="link">Supported Environment</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#import-path-in-documentation" data-ice="link">Import Path In Documentation</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#who--39-s-using-esdoc" data-ice="link">Who&apos;s Using ESDoc</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/faq.html"><a href="manual/faq.html#articles" data-ice="link">Articles</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/migration.html"><a href="manual/migration.html" data-ice="link">Migration to V1.0.0</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/migration.html"><a href="manual/migration.html#using-esdoc-standard-plugin" data-ice="link">Using esdoc-standard-plugin</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/migration.html"><a href="manual/migration.html#using-other-plugins" data-ice="link">Using Other Plugins</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -171,31 +179,54 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="features">Features</h1><p>ESDoc has some useful features.</p>
-<p><strong>Automatically Features</strong></p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="features">Features</h1><p>ESDoc provides a lot of features.</p>
+<p><strong>Core Features (via body)</strong></p>
 <ul>
-<li><a href="#es2015-class">ES2015 Class</a></li>
-<li><a href="#es2015-module">ES2015 Module</a></li>
-<li><a href="#built-in-search-documentation">Built-in Search Documentation</a></li>
-<li><a href="#guess-type-of-variables">Guess Type of Variables</a></li>
+<li><a href="#doc-comment-and-tag">Doc Comment and Tag</a></li>
+<li><a href="#es-class">ES Class</a></li>
+<li><a href="#es-module">ES Module</a></li>
+<li><a href="#plugin-architecture">Plugin Architecture</a></li>
 </ul>
-<p><strong>Optional Features</strong></p>
+<p><strong>Standard Features (via <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">esdoc-standard-plugin</a>)</strong></p>
 <ul>
+<li><a href="">Publish HTML</a></li>
 <li><a href="#documentation-coverage">Documentation Coverage</a></li>
 <li><a href="#documentation-lint">Documentation Lint</a></li>
 <li><a href="#integration-test-codes">Integration Test Codes</a></li>
 <li><a href="#integration-manual">Integration Manual</a></li>
+<li><a href="#search-documentation">Search Documentation</a></li>
+<li><a href="#type-inference">Type Inference</a></li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">and more</a></li>
 </ul>
-<p><strong>Other Features</strong></p>
+<p><strong>Other Features (via <a href="https://github.com/esdoc/esdoc-plugins">various plugins</a>)</strong></p>
 <ul>
-<li><a href="#ecmascript-proposal">ECMAScript Proposal</a></li>
-<li><a href="#customize-documentation">Customize Documentation</a></li>
-<li><a href="#esdoc-hosting-service">ESDoc Hosting Service</a></li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-inject-style-plugin">Inject Style</a></li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-inject-script-plugin">Inject Script</a></li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-ecmascript-proposal-plugin">ECMAScript Proposal</a></li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-flow-type-plugin">Flow</a> [PoC]</li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-typescript-plugin">TypeScript</a> [PoC]</li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-jsx-plugin">JSX</a></li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-react-plugin">React</a> [PoC]</li>
+<li><a href="https://github.com/esdoc/esdoc-plugins/blob/master/esdoc-publish-markdown-plugin">Publish Markdown</a> [PoC]</li>
+<li><a href="https://github.com/esdoc/esdoc-plugins">and more</a></li>
 </ul>
-<h2 id="es2015-class">ES2015 Class</h2><p>ESDoc supports ES2015 Class syntax and targets codes that are written by it.</p>
-<p>ES2015 Class syntax makes the clear relation of class, method, member, constructor and inheritance.<br>
+<h2 id="doc-comment-and-tag">Doc Comment and Tag</h2><p>ESDoc obtains a comment called <code>doc comment</code> from a source code. <br>
+Then ESDoc generates a document from a <code>tag</code> in a <code>doc comment</code>.</p>
+<p>A <code>doc comment</code> is block comment beginning with <code>*</code>. A <code>tag</code> is a text of the form <code>@tagName</code>.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">/**
+ * This is Foo.
+ */
+export default class Foo {
+  /**
+   * @param {number} p - this is p.
+   */
+  method(p){}
+}</code>
+</code></pre>
+<h2 id="es-class">ES Class</h2><p>ESDoc supports ES class syntax and targets codes that are written by it.</p>
+<p>ES class syntax makes the clear relation of class, method, member, constructor and inheritance.<br>
 This means that ESDoc can generate a document without using a tag for these. In other words, you don&apos;t need to write tags for classes.</p>
-<p>ESDoc automatically generates the under contents by Class syntax.</p>
+<p>ESDoc automatically generates the under contents by class syntax.</p>
 <ul>
 <li>Super classes</li>
 <li>Direct Subclasses and Indirect Subclasses.</li>
@@ -205,8 +236,8 @@ This means that ESDoc can generate a document without using a tag for these. In 
 <p><img src="./manual/./asset/image/feature/class1.png" class="screen-shot" width="500px"></p>
 <p><img src="./manual/./asset/image/feature/class2.png" class="screen-shot" width="500px"></p>
 <p>Note: ESDoc doesn&apos;t support prototype base codes and function base codes.</p>
-<h2 id="es2015-module">ES2015 Module</h2><p>ESDoc supports ES2015 Modules syntax and targets codes that are written by it.<br>
-ES2015 Modules syntax is file base. So ESDoc treats as one file = one module.</p>
+<h2 id="es-module">ES Module</h2><p>ESDoc supports ES modules syntax and targets codes that are written by it.<br>
+ES modules syntax is file base. So ESDoc treats as one file = one module.</p>
 <p>ESDoc displays a import style in accordance with the export style.</p>
 <ul>
 <li>If <code>export default class Foo{}</code>, displays <code>import Foo from &apos;./Foo.js&apos;</code> in <code>Foo</code> class documentation.</li>
@@ -215,25 +246,15 @@ ES2015 Modules syntax is file base. So ESDoc treats as one file = one module.</p
 <p>This is useful because you not need to see export style in source code.</p>
 <p><img src="./manual/./asset/image/feature/module1.png" class="screen-shot" width="500px"></p>
 <p>And you may as well as use <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-importpath-plugin">esdoc-importpath-plugin</a> to transform path.</p>
-<p>Note: ESDoc doesn&apos;t support <code>module/require</code> of Node.js.</p>
-<h2 id="built-in-search-documentation">Built-in Search Documentation</h2><p>ESDoc supports built-in searching in document with only JavaScript(without server implementation).</p>
-<p>The implementation of searching:</p>
-<ul>
-<li>ESDoc made the index(JSON) at the time of document generation.</li>
-<li>The user search from the index.</li>
-</ul>
-<p><img src="./manual/./asset/image/feature/search1.png" class="screen-shot" width="500px"></p>
-<p>Note: This implementation is very naive. There might be a problem in search performance. For now, no problem in 500 indexes.</p>
-<h2 id="guess-type-of-variables">Guess Type of Variables</h2><p>ESDoc guesses type of variables using codes if those have no <code>@param</code>.</p>
-<p>The following variables are supported.</p>
-<ul>
-<li>A class type using class syntax(ES2015).</li>
-<li>A method/function arguments type using default argument syntax(ES2015).</li>
-<li>A property type using assignment value.</li>
-<li>A return type using return value.</li>
-</ul>
-<p>Note: This implementation is very simple. So ESDoc guesses only primitive values(number, boolean, string).</p>
-<h2 id="documentation-coverage">Documentation Coverage</h2><p>ESDoc measures a documentation coverage. This is useful information for the following.</p>
+<p>Note: ESDoc doesn&apos;t support commonjs.</p>
+<h2 id="plugin-architecture">Plugin Architecture</h2><p>ESDoc adopts plugin architecture. So, almost all features are provided as plugins.</p>
+<p>Especially <a href="https://github.com/esdoc/esdoc-plugins/tree/master/esdoc-standard-plugin">esdoc-standard-plugin</a> is a packaging plugin with major plugins.<br>
+Normally we recommend using this plugin. There are various plugins in <a href="https://github.com/esdoc/esdoc-plugins">esdoc/esdoc-plugins</a>.</p>
+<p>You can easily make plugins, and there are many <a href="https://www.npmjs.com/search?q=esdoc%20plugin&amp;page=1&amp;ranking=optimal">third party plugins</a>.<br>
+Please click <a href="./manual/./api.html">here</a> for how to make plugins.</p>
+<h2 id="publish-html">Publish HTML</h2><p>ESDoc generates HTML documents that are easy to see and plain looks.</p>
+<p><img class="screen-shot no-border" src="./manual/./asset/image/top.png" width="500px"></p>
+<h2 id="documentation-coverage">Documentation Coverage</h2><p>ESDoc inspects a documentation coverage. This is useful information for the following.</p>
 <ul>
 <li>This leads the motivation of documentation.</li>
 <li>This inspects a missing of documentation.</li>
@@ -243,13 +264,6 @@ This is based on, ESDoc measures coverage by how much the document is being writ
 And, ESDoc is also to measure coverage of each module, you will have become easier to also find a missing of the document.</p>
 <p>For example, <a href="https://doc.esdoc.org/github.com/esdoc/esdoc/source.html">this</a> is coverage of ESDoc itself.</p>
 <p><img src="./manual/./asset/image/feature/coverage1.png" class="screen-shot" width="500px"></p>
-<p>If you want to disable coverage, you need to specify <code>false</code> at configuration.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./path/to/src&quot;,
-  &quot;destination&quot;: &quot;./path/to/esdoc&quot;,
-  &quot;coverage&quot;: false
-}</code>
-</code></pre>
 <h2 id="documentation-lint">Documentation Lint</h2><p>If documentation is invalid, ESDoc shows warning log.</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">export default class Foo {
   /**
@@ -259,27 +273,9 @@ And, ESDoc is also to measure coverage of each module, you will have become easi
 }</code>
 </code></pre>
 <p><img src="./manual/./asset/image/feature/lint.png" class="screen-shot" width="500px"></p>
-<p>If you want to disable this lint, you need to specify <code>false</code> at configuration.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./path/to/src&quot;,
-  &quot;destination&quot;: &quot;./path/to/esdoc&quot;,
-  &quot;lint&quot;: false
-}</code>
-</code></pre>
 <p>Note: For now, ESDoc lints only method/function signature.</p>
 <h2 id="integration-test-codes">Integration Test Codes</h2><p>Test codes are important information.<br>
 So, ESDoc generates a cross reference of test codes and document.</p>
-<p>You need to write configurations.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;test&quot;: {
-    &quot;type&quot;: &quot;mocha&quot;,
-    &quot;source&quot;: &quot;./test&quot;
-  }
-}</code>
-</code></pre>
-<p>And write <code>@test</code> tag.</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">/** @test {MyClass} */
 describe(&apos;MyClass is super useful class.&apos;, ()=&gt;{
 
@@ -292,121 +288,29 @@ describe(&apos;MyClass is super useful class.&apos;, ()=&gt;{
 </code></pre>
 <p><img src="./manual/./asset/image/feature/test1.png" class="screen-shot" width="500px"></p>
 <p><img src="./manual/./asset/image/feature/test2.png" class="screen-shot" width="500px"></p>
-<p>Note: For now, ESDoc supports only Mocha style(<code>describe/it</code>).</p>
-<h2 id="integration-manual">Integration Manual</h2><p>You can integrate a manual of a your project into documentation. The manual is:</p>
-<ul>
-<li>Overview</li>
-<li>Design</li>
-<li>Installation</li>
-<li>Usage</li>
-<li>Tutorial</li>
-<li>Configuration</li>
-<li>Example</li>
-<li>Advanced</li>
-<li>FAQ</li>
-<li>Changelog</li>
-</ul>
-<p>You need to write configurations. All configurations are <a href="./manual/./configuration/config.html#full-config">here</a>.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;manual&quot;: {
-    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
-    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
-    &quot;example&quot;: [&quot;./manual/example.md&quot;]
-  }
-}</code>
-</code></pre>
-<p>And write manual file using markdown.</p>
+<h2 id="integration-manual">Integration Manual</h2><p>You can integrate a manual of a your project into documentation.</p>
 <pre><code><code class="source-code prettyprint"># Overview
 This is my project overview.
 ...</code>
 </code></pre><p><img src="./manual/./asset/image/feature/manual1.png" class="screen-shot" width="500px"></p>
 <p><img src="./manual/./asset/image/feature/manual2.png" class="screen-shot" width="500px"></p>
-<p>Note: ESDoc doesn&apos;t support free-style manual sections.</p>
-<p>If you want to use asset(image) for manual, you can specify asset directory path.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;manual&quot;: {
-    &quot;asset&quot;: &quot;./manual/asset&quot;,
-    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
-    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
-    &quot;example&quot;: [&quot;./manual/example.md&quot;]
-  }
-}</code>
-</code></pre>
-<p>If you want to write index of manual, you can specify index file path.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;manual&quot;: {
-    &quot;index&quot;: &quot;./manual/index.md&quot;,
-    &quot;asset&quot;: &quot;./manual/asset&quot;,
-    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
-    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
-    &quot;example&quot;: [&quot;./manual/example.md&quot;]
-  }
-}</code>
-</code></pre>
-<p>If you want to use manual as documentation index, you can specify global index.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;manual&quot;: {
-    &quot;globalIndex&quot;: true,
-    &quot;index&quot;: &quot;./manual/index.md&quot;,
-    &quot;asset&quot;: &quot;./manual/asset&quot;,
-    &quot;overview&quot;: [&quot;./manual/overview.md&quot;],
-    &quot;usage&quot;: [&quot;./manual/usage.md&quot;],
-    &quot;example&quot;: [&quot;./manual/example.md&quot;]
-  }
-}</code>
-</code></pre>
-<h2 id="ecmascript-proposal">ECMAScript Proposal</h2><p>ESDoc supports a part of <a href="https://github.com/tc39/proposals">ECMAScript Proposal</a> that are implemented by <a href="http://babeljs.io/docs/plugins/#transform-plugins-experimental">Babel</a>.</p>
-<p>If you want to use this, you need to specify <code>experimentalProposal</code> at configuration.<br>
-All configurations are <a href="./manual/./configuration/config.html#full-config">here</a>.</p>
-<pre><code class="lang-json"><code class="source-code prettyprint">{
-  &quot;source&quot;: &quot;./src&quot;,
-  &quot;destination&quot;: &quot;./doc&quot;,
-  &quot;experimentalProposal&quot;: {
-    &quot;classProperties&quot;: true,
-    &quot;objectRestSpread&quot;: true
-  }
-}</code>
-</code></pre>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">
-/**
- * this is Foo class.
- */
-export default class Foo {
-  /**
-   * this is static p.
-   * @type {number}
-   */
-  static p = 123;
-
-  /**
-   * this is p.
-   * @type {number}
-   */
-  p = 123;
-
-  /**
-  * this is method.
-  * @param {Object} config - this is config.
-  * @param {number} config.x - this is number x.
-  * @param {string} config.y - this is string y.
-  * @param {number[]} config.a - thi is number[] a.
-  * @param {string[]} config.b - thi is number[] b.
-  */
-  method({x, y, ...z}){}
-}</code>
-</code></pre>
-<h2 id="customize-documentation">Customize Documentation</h2><p>If you want to customize a document, you can includes your stylesheets and scripts to the document.<br>
-And, ESDoc supports plugin feature. Please read <a href="./manual/./advanced/api.html">API</a> for more information.</p>
-<h2 id="esdoc-hosting-service">ESDoc Hosting Service</h2><p><a href="https://doc.esdoc.org">ESDoc Hosting Service</a> generates your documentation via GitHub and hosts it.</p>
-<p><img src="./manual/./asset/image/feature/hosting1.png" class="screen-shot" width="500px"></p>
+<h2 id="search-documentation">Search Documentation</h2><p>ESDoc supports built-in searching in document with only JavaScript(without server implementation).</p>
+<p>The implementation of searching:</p>
+<ul>
+<li>ESDoc made the index(JSON) at the time of document generation.</li>
+<li>The user search from the index.</li>
+</ul>
+<p><img src="./manual/./asset/image/feature/search1.png" class="screen-shot" width="500px"></p>
+<p>Note: This implementation is very naive. There might be a problem in search performance. For now, no problem in 500 indexes.</p>
+<h2 id="type-inference">Type Inference</h2><p>ESDoc infers type of variables using codes if those have no <code>@param</code>.</p>
+<p>The following variables are supported.</p>
+<ul>
+<li>A class type using class syntax.</li>
+<li>A method/function arguments type using default argument syntax.</li>
+<li>A property type using assignment value.</li>
+<li>A return type using return value.</li>
+</ul>
+<p>Note: This implementation is very simple. So ESDoc infers only primitive values(number, boolean, string).</p>
 </div>
 </div>
 
