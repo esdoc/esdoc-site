@@ -148,7 +148,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html" data-ice="link">Changelog</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#next" data-ice="link">Next</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-1-0--2018-04-29-" data-ice="link">1.1.0 (2018-04-29)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-4--2017-11-12-" data-ice="link">1.0.4 (2017-11-12)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-3--2017-09-20-" data-ice="link">1.0.3 (2017-09-20)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-2--2017-09-03-" data-ice="link">1.0.2 (2017-09-03)</a></li>
@@ -425,7 +425,7 @@ export default class MyClass {
 </ul>
 </li>
 <li><a href="#identifier-syntax">Identifier Syntax</a></li>
-</ul><h2>For Common</h2><h3>@access</h3><p>syntax: <code>@access &lt;public|protected|private&gt;</code></p><p>Alias are <code>@public</code>, <code>@protected</code> and <code>@private</code>.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">/**
+</ul><h2>For Common</h2><h3>@access</h3><p>syntax: <code>@access &lt;public|protected|package|private&gt;</code></p><p>Alias are <code>@public</code>, <code>@protected</code>, <code>@package</code> and <code>@private</code>.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">/**
  * @access public
  */
 class MyClass {
@@ -1183,9 +1183,10 @@ Especially <a href="./manual/./config.html#integrate-test-codes-config">integrat
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Changelog</h1><h2>Next</h2><ul>
+        <div data-ice="card"><h1>Changelog</h1><h2>1.1.0 (2018-04-29)</h2><ul>
 <li><strong>Feat</strong><ul>
-<li><code>config.outputAST</code> (<a href="https://github.com/esdoc/esdoc/pull/483">#483</a>). Thanks <a href="https://github.com/MattMcFarland">@MattMcFarland</a></li>
+<li>Add <code>config.outputAST</code> (<a href="https://github.com/esdoc/esdoc/pull/483">#483</a>). Thanks <a href="https://github.com/MattMcFarland">@MattMcFarland</a></li>
+<li>Add <code>@package</code> tag (<a href="https://github.com/esdoc/esdoc/pull/486">#486</a>). Thanks <a href="https://github.com/bmaupin">@bmaupin</a></li>
 </ul>
 </li>
 <li><strong>Fix</strong><ul>
