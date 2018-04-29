@@ -148,6 +148,10 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html" data-ice="link">Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#next" data-ice="link">Next</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-4--2017-11-12-" data-ice="link">1.0.4 (2017-11-12)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-3--2017-09-20-" data-ice="link">1.0.3 (2017-09-20)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-2--2017-09-03-" data-ice="link">1.0.2 (2017-09-03)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#1-0-1--2017-07-30-" data-ice="link">1.0.1 (2017-07-30)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#0-5-2--2017-01-02-" data-ice="link">0.5.2 (2017-01-02)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#0-5-1--2016-12-26-" data-ice="link">0.5.1 (2016-12-26)</a></li>
@@ -180,7 +184,43 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="changelog">Releases</h1><h2 id="1-0-1--2017-07-30-">1.0.1 (2017-07-30)</h2><ul>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="changelog">Releases</h1><h2 id="next">Next</h2><ul>
+<li><strong>Feat</strong><ul>
+<li><code>config.outputAST</code> (<a href="https://github.com/esdoc/esdoc/pull/483">#483</a>). Thanks <a href="https://github.com/MattMcFarland">@MattMcFarland</a></li>
+</ul>
+</li>
+<li><strong>Fix</strong><ul>
+<li>Crash if <code>config.index</code> file was not found (<a href="https://github.com/esdoc/esdoc/pull/490">#490</a>). Thanks <a href="https://github.com/22a">@22a</a></li>
+</ul>
+</li>
+<li><strong>Chore</strong><ul>
+<li>Update <code>marked</code>. (<a href="https://github.com/esdoc/esdoc/pull/503">#503</a>) Thanks <a href="https://github.com/jan-molak">@jan-molak</a></li>
+<li>Update some packages.</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-0-4--2017-11-12-">1.0.4 (2017-11-12)</h2><ul>
+<li><strong>Fix</strong><ul>
+<li>Fix <code>import { type foo } from &apos;./Bar&apos;</code> (flowtype syntax). (<a href="https://github.com/esdoc/esdoc/pull/464">#464</a>) Thanks <a href="https://github.com/mprobber">@mprobber</a></li>
+<li>Fix decorate that has object literal arguments. (<a href="https://github.com/esdoc/esdoc/pull/472">#472</a>) Thanks <a href="https://github.com/mysim1">@mysim1</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-0-3--2017-09-20-">1.0.3 (2017-09-20)</h2><ul>
+<li><strong>Fix</strong><ul>
+<li>Broken if using <code>@foo.bar</code> decorator. (<a href="https://github.com/esdoc/esdoc/issues/439">#439</a>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-0-2--2017-09-03-">1.0.2 (2017-09-03)</h2><ul>
+<li><strong>Fix</strong><ul>
+<li>Broken if code block has <code>@</code>. (<a href="https://github.com/esdoc/esdoc/pull/436">#436</a>) Thanks <a href="https://github.com/pzuraq">@pzuraq</a></li>
+<li>Broken if anonymous default export is exist. (<a href="https://github.com/esdoc/esdoc/issues/431">#431</a>) Thanks <a href="https://github.com/zemzheng">@zemzheng</a></li>
+<li>Broken if expression extends is exist. (<a href="https://github.com/esdoc/esdoc/pull/409">#409</a>) Thanks <a href="https://github.com/dimitryvolkov">@dimitryvolkov</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-0-1--2017-07-30-">1.0.1 (2017-07-30)</h2><ul>
 <li><strong>Breaking</strong><ul>
 <li>Some features were carved out to plugins<ul>
 <li><a href="https://esdoc.org/manual/migration.html">Migration to v1.0</a></li>

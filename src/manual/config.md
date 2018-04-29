@@ -131,6 +131,7 @@ describe('MyClass has foo bar feature', ()=>{
 | ``excludes`` | - | `["\\.config\\.js$"]` | Not process files that are matched with the regexp at any one. |
 | ``index`` | - | ``./README.md``| Includes file into index page of document |
 | ``package`` | - | ``./package.json`` | Use package.json info. |
+| ``outputAST`` | - | `true` | If specified false, does not generate AST files. |
 | ``plugins`` | - | ``null`` | If specified, use each plugins. To see [Plugin Feature](./api.html#plugin-feature) for more information. |
 | ``plugins[].name`` | true | - | Plugin module name(e.g. ``your-awesome-plugin``) or plugin file path(e.g. ``./your-awesome-plugin.js``). |
 | ``plugins[].option`` | - | null | If specified, the plugin get the option. |
